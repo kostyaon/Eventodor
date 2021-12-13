@@ -56,7 +56,7 @@
                                                         <constraint firstAttribute="height" constant="45" id="ase-vt-nZg"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" textContentType="nickname"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>
@@ -75,7 +75,7 @@
                                                         <constraint firstAttribute="height" constant="45" id="mIl-Dw-Cvy"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                                                 </textField>
                                             </subviews>
                                         </stackView>

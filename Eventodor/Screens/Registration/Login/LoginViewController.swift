@@ -64,7 +64,8 @@ extension LoginViewController {
             print("Login button")
         }
         registerButton.onTap = { [weak self] in
-            print("Sign up button")
+            let registrationViewController = RegistrationViewController()
+            self?.navigationController?.pushViewController(registrationViewController, animated: true)
         }
     }
 }
