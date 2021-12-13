@@ -20,6 +20,7 @@
 		6E7D79A42767A8AA004F9228 /* EVENTODORButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D79A32767A8AA004F9228 /* EVENTODORButton.swift */; };
 		6E7D79A62767A9CC004F9228 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E7D79A52767A9CC004F9228 /* LoginViewController.xib */; };
 		6E7D79A82767B243004F9228 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D79A72767B243004F9228 /* BaseViewController.swift */; };
+		6E7D79AA2767B5E9004F9228 /* EVENTODORTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D79A92767B5E9004F9228 /* EVENTODORTextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		6E7D79A32767A8AA004F9228 /* EVENTODORButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVENTODORButton.swift; sourceTree = "<group>"; };
 		6E7D79A52767A9CC004F9228 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		6E7D79A72767B243004F9228 /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		6E7D79A92767B5E9004F9228 /* EVENTODORTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVENTODORTextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +150,7 @@
 			isa = PBXGroup;
 			children = (
 				6E7D79A32767A8AA004F9228 /* EVENTODORButton.swift */,
+				6E7D79A92767B5E9004F9228 /* EVENTODORTextField.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -231,6 +234,7 @@
 				6E7D79A42767A8AA004F9228 /* EVENTODORButton.swift in Sources */,
 				6E7D79982767A550004F9228 /* +String.swift in Sources */,
 				6E7D79A82767B243004F9228 /* BaseViewController.swift in Sources */,
+				6E7D79AA2767B5E9004F9228 /* EVENTODORTextField.swift in Sources */,
 				6E7D799B2767A678004F9228 /* ConfigValues.swift in Sources */,
 				6E3CE51E27678915000E49D8 /* SceneDelegate.swift in Sources */,
 			);

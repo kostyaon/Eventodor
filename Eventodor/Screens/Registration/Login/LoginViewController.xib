@@ -39,7 +39,7 @@
                                     </constraints>
                                 </imageView>
                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="G3u-Dl-sag">
-                                    <rect key="frame" x="24" y="334" width="366" height="217"/>
+                                    <rect key="frame" x="24" y="334" width="366" height="154"/>
                                     <subviews>
                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="cuj-1j-7Bb">
                                             <rect key="frame" x="0.0" y="0.0" width="366" height="69.5"/>
@@ -50,7 +50,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ay-T8-m8T">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Ay-T8-m8T" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="24.5" width="366" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="ase-vt-nZg"/>
@@ -69,7 +69,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDa-bc-bpx">
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XDa-bc-bpx" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
                                                     <rect key="frame" x="0.0" y="24.5" width="366" height="45"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="45" id="mIl-Dw-Cvy"/>
@@ -79,18 +79,22 @@
                                                 </textField>
                                             </subviews>
                                         </stackView>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuZ-H9-ugn">
-                                            <rect key="frame" x="0.0" y="169" width="366" height="48"/>
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="48" id="zdK-xL-jX5"/>
-                                            </constraints>
-                                            <state key="normal" title="Button"/>
-                                            <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                        </button>
                                     </subviews>
                                 </stackView>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2R-nn-Jzx">
-                                    <rect key="frame" x="24" y="761" width="366" height="31"/>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W2R-nn-Jzx" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
+                                    <rect key="frame" x="24" y="744" width="366" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="48" id="ECP-Vj-Hqv"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZuZ-H9-ugn" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
+                                    <rect key="frame" x="24" y="667" width="366" height="48"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="48" id="dOx-5Z-2Zg"/>
+                                        <constraint firstAttribute="height" constant="48" id="zdK-xL-jX5"/>
+                                    </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 </button>
@@ -99,10 +103,13 @@
                             <constraints>
                                 <constraint firstItem="zte-o3-Luc" firstAttribute="centerX" secondItem="wTb-vJ-9P0" secondAttribute="centerX" id="2Mp-b3-L72"/>
                                 <constraint firstItem="W2R-nn-Jzx" firstAttribute="leading" secondItem="wTb-vJ-9P0" secondAttribute="leading" constant="24" id="AWd-qn-wrJ"/>
+                                <constraint firstItem="W2R-nn-Jzx" firstAttribute="top" secondItem="ZuZ-H9-ugn" secondAttribute="bottom" constant="29" id="Cka-9i-5Ag"/>
                                 <constraint firstItem="W2R-nn-Jzx" firstAttribute="centerX" secondItem="wTb-vJ-9P0" secondAttribute="centerX" id="HlT-ta-Ysz"/>
                                 <constraint firstItem="zte-o3-Luc" firstAttribute="top" secondItem="wTb-vJ-9P0" secondAttribute="top" constant="200" id="LiW-XB-VjP"/>
                                 <constraint firstAttribute="bottom" secondItem="W2R-nn-Jzx" secondAttribute="bottom" constant="60" id="MU5-QL-P4v"/>
                                 <constraint firstAttribute="trailing" secondItem="W2R-nn-Jzx" secondAttribute="trailing" constant="24" id="SFA-0o-5Yq"/>
+                                <constraint firstItem="ZuZ-H9-ugn" firstAttribute="leading" secondItem="wTb-vJ-9P0" secondAttribute="leading" constant="24" id="VRN-hX-ROQ"/>
+                                <constraint firstAttribute="trailing" secondItem="ZuZ-H9-ugn" secondAttribute="trailing" constant="24" id="ZHR-0C-hDh"/>
                                 <constraint firstAttribute="trailing" secondItem="G3u-Dl-sag" secondAttribute="trailing" constant="24" id="iDH-B6-A35"/>
                                 <constraint firstItem="G3u-Dl-sag" firstAttribute="leading" secondItem="wTb-vJ-9P0" secondAttribute="leading" constant="24" id="t8y-0b-roY"/>
                                 <constraint firstItem="G3u-Dl-sag" firstAttribute="top" secondItem="zte-o3-Luc" secondAttribute="bottom" constant="62" id="v5k-ep-bEb"/>

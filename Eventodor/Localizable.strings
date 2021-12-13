@@ -5,3 +5,6 @@
   Created by Petrykevich, Kanstantsin on 13.12.21.
   
 */
+"auth_login_title" = "   Login";
+"auth_password_title" = "   Password";
+"auth_register_button" = "Sign Up";
