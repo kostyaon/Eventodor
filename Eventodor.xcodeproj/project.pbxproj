@@ -14,6 +14,8 @@
 		6E3CE52827678918000E49D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E3CE52627678918000E49D8 /* LaunchScreen.storyboard */; };
 		6E3CE53127678BCC000E49D8 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3CE53027678BCC000E49D8 /* BaseTabBarController.swift */; };
 		6E7D799527679AF3004F9228 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E7D799427679AF3004F9228 /* Localizable.strings */; };
+		6E7D79982767A550004F9228 /* +String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D79972767A550004F9228 /* +String.swift */; };
+		6E7D799B2767A678004F9228 /* ConfigValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D799A2767A678004F9228 /* ConfigValues.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		6E3CE52927678918000E49D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E3CE53027678BCC000E49D8 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		6E7D799427679AF3004F9228 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		6E7D79972767A550004F9228 /* +String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+String.swift"; sourceTree = "<group>"; };
+		6E7D799A2767A678004F9228 /* ConfigValues.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigValues.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 		6E3CE51A27678915000E49D8 /* Eventodor */ = {
 			isa = PBXGroup;
 			children = (
+				6E7D79992767A66A004F9228 /* Config */,
+				6E7D79962767A544004F9228 /* Extensions */,
 				6E3CE52F27678BB0000E49D8 /* Navigation */,
 				6E3CE51B27678915000E49D8 /* AppDelegate.swift */,
 				6E3CE51D27678915000E49D8 /* SceneDelegate.swift */,
@@ -76,6 +82,22 @@
 				6E3CE53027678BCC000E49D8 /* BaseTabBarController.swift */,
 			);
 			path = Navigation;
+			sourceTree = "<group>";
+		};
+		6E7D79962767A544004F9228 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				6E7D79972767A550004F9228 /* +String.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		6E7D79992767A66A004F9228 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				6E7D799A2767A678004F9228 /* ConfigValues.swift */,
+			);
+			path = Config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,6 +174,8 @@
 			files = (
 				6E3CE53127678BCC000E49D8 /* BaseTabBarController.swift in Sources */,
 				6E3CE51C27678915000E49D8 /* AppDelegate.swift in Sources */,
+				6E7D79982767A550004F9228 /* +String.swift in Sources */,
+				6E7D799B2767A678004F9228 /* ConfigValues.swift in Sources */,
 				6E3CE51E27678915000E49D8 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
