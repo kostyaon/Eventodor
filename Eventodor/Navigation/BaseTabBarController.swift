@@ -57,7 +57,7 @@ extension BaseTabBarController {
     
     func setupVC() {
         viewControllers = [
-            createNavBar(for: UIViewController(), title: "Event", image: "feed_tab_icon"),
+            createNavBar(for: LoginViewController(), title: "Event", image: "feed_tab_icon"),
             createNavBar(for: UIViewController(), title: "Map", image: "score_tab_icon"),
             createNavBar(for: UIViewController(), title: "My Events", image: "logbook_tab_icon"),
             createNavBar(for: UIViewController(), title: "Profile", image: "bonus_tab_icon")
