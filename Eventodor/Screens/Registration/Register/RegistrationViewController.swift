@@ -22,6 +22,7 @@ class RegistrationViewController: BaseViewController {
     @IBOutlet weak var countryLabel: UILabel!
     @IBOutlet weak var cityLabel: UILabel!
     @IBOutlet weak var addressLabel: UILabel!
+    @IBOutlet weak var bankAccountLabel: UILabel!
     @IBOutlet weak var loginTextField: EVENTODORTextField!
     @IBOutlet weak var passwordTextField: EVENTODORTextField!
     @IBOutlet weak var nameTextField: EVENTODORTextField!
@@ -32,15 +33,16 @@ class RegistrationViewController: BaseViewController {
     @IBOutlet weak var countryTextField: EVENTODORTextField!
     @IBOutlet weak var cityTextField: EVENTODORTextField!
     @IBOutlet weak var addressTextField: EVENTODORTextField!
-    @IBOutlet weak var organizerLabel: UILabel!
+    @IBOutlet weak var bankAccountTextField: EVENTODORTextField!
+  //  @IBOutlet weak var organizerLabel: UILabel!
     @IBOutlet weak var termsOfUseLabel: UILabel!
-    @IBOutlet weak var organizerButton: EVENTODORCheckbox!
+  //  @IBOutlet weak var organizerButton: EVENTODORCheckbox!
     @IBOutlet weak var termsOfUseButton: EVENTODORCheckbox!
     @IBOutlet weak var registerButton: EVENTODORButton!
     
     // MARK: - Properties
     private var labels: [UILabel] {
-        [loginLabel, passwordLabel, nameLabel, surnameLabel, patronymicLabel, phoneLabel, emailLabel, countryLabel, cityLabel, addressLabel]
+        [loginLabel, passwordLabel, nameLabel, surnameLabel, patronymicLabel, phoneLabel, emailLabel, countryLabel, cityLabel, addressLabel, bankAccountLabel]
     }
     
     // MARK: - Lifecycle method's
@@ -77,12 +79,13 @@ extension RegistrationViewController {
         countryLabel.text = "register_country".localized()
         cityLabel.text = "register_city".localized()
         addressLabel.text = "register_address".localized()
+        bankAccountLabel.text = "register_bank".localized()
         
-        organizerLabel.font = .systemFont(ofSize: 16)
-        organizerLabel.textColor = .black
+   //     organizerLabel.font = .systemFont(ofSize: 16)
+   //     organizerLabel.textColor = .black
         termsOfUseLabel.font = .systemFont(ofSize: 16)
         termsOfUseLabel.textColor = .black
-        organizerLabel.text = "register_organizer".localized()
+   //     organizerLabel.text = "register_organizer".localized()
         termsOfUseLabel.text = "register_terms_of_use".localized()
     }
     
@@ -96,7 +99,7 @@ extension RegistrationViewController {
     }
     
     func setupCheckBox() {
-        organizerButton.isEnabled = false
+    //    organizerButton.isEnabled = false
         termsOfUseButton.isEnabled = false
     }
 }

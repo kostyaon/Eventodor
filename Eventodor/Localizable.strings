@@ -16,6 +16,7 @@
 "register_country" = "   Country";
 "register_city" = "   City";
 "register_address" = "   Address";
+"register_bank" = "   Bank Account";
 "register_organizer" = "Organizer";
 "register_terms_of_use" = "Terms of use";
 "category_next" = "Next";
