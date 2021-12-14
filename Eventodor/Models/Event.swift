@@ -11,8 +11,9 @@ struct Event: Decodable {
     
     var event_id: Int?
     var photo: Photo?
-    var coordinate: Coordinate?
-    var category: Category?
+    var organizer: String?
+    var coordinate: CoordinateEVENTODOR?
+    var category: CategoryEVENTODOR?
     var address: String?
     var persons_amount: Int?
     var register_persons_amount: Int?
@@ -23,10 +24,18 @@ struct Event: Decodable {
     var rank: Float?
 }
 
-struct Coordinate: Decodable {
+struct CoordinateEVENTODOR: Decodable {
     
     var coordinate_id: Int?
     var longitude: String?
     var latitude: String?
     var height: String?
 }
+
+struct CategoryEVENTODOR: Decodable {
+    
+    var category_id: Int?
+    var name: String?
+}
+
+

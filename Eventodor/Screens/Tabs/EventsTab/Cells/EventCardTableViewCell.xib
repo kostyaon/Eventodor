@@ -33,16 +33,16 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="JNu-5W-xMl">
-                                <rect key="frame" x="76" y="13" width="318" height="46.5"/>
+                                <rect key="frame" x="76" y="11.5" width="318" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xdf-Yr-UeU">
-                                        <rect key="frame" x="0.0" y="0.0" width="318" height="14.5"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="318" height="17"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EnE-Os-j8T">
-                                        <rect key="frame" x="0.0" y="22.5" width="318" height="24"/>
+                                        <rect key="frame" x="0.0" y="25" width="318" height="24"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
