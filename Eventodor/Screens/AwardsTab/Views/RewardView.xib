@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RewardView" customModule="TRYG" customModuleProvider="target">
+            <connections>
+                <outlet property="contentView" destination="iN0-l3-epB" id="BhM-re-gSj"/>
+                <outlet property="rewardImageView" destination="jKc-H6-LL4" id="2GF-kV-QHU"/>
+                <outlet property="rewardLabel" destination="l7M-Aq-W6R" id="obs-Ev-el8"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="55" height="111"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="M7G-3j-tuG">
+                    <rect key="frame" x="0.0" y="0.0" width="55" height="113"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="awards50" translatesAutoresizingMaskIntoConstraints="NO" id="jKc-H6-LL4">
+                            <rect key="frame" x="0.0" y="0.0" width="55" height="66"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="66" id="7u9-31-MAu"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="lette opbremsninger" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l7M-Aq-W6R">
+                            <rect key="frame" x="2" y="77" width="51" height="36"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="jKc-H6-LL4" firstAttribute="top" secondItem="M7G-3j-tuG" secondAttribute="top" id="7R8-Um-yHe"/>
+                        <constraint firstItem="l7M-Aq-W6R" firstAttribute="width" secondItem="jKc-H6-LL4" secondAttribute="width" multiplier="0.927273" id="yrh-z9-hDC"/>
+                    </constraints>
+                </stackView>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="M7G-3j-tuG" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="4Nl-ki-hM5"/>
+                <constraint firstItem="M7G-3j-tuG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="q1Z-jq-Zji"/>
+                <constraint firstItem="M7G-3j-tuG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="rWU-cl-A9l"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <point key="canvasLocation" x="138.40579710144928" y="125.55803571428571"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="awards50" width="64" height="64"/>
+    </resources>
+</document>
