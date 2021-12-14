@@ -124,6 +124,10 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
             let reviewViewController = ReviewViewController()
             reviewViewController.modalPresentationStyle = .overCurrentContext
             self.present(reviewViewController, animated: true, completion: nil)
+        } else {
+            let registerViewController = EventRegCardViewController()
+            registerViewController.modalPresentationStyle = .overCurrentContext
+            self.present(registerViewController, animated: true, completion: nil)
         }
     }
 }
