@@ -22,3 +22,5 @@
 "category_title" = "Choose category";
 "event_more" = "more";
 "event_title" = "Events";
+"create_event_title" = "Create event";
+"create_event_button" = "Create";
