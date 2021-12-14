@@ -33,5 +33,8 @@ extension ProfileViewController {
     
     func setupUI() {
         logoutButton.setTitle(with: "Logout")
+        logoutButton.onTap = { [weak self] in
+            self?.navigationController?.setViewControllers([LoginViewController()], animated: true)
+        }
     }
 }

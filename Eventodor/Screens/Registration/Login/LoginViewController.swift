@@ -61,7 +61,8 @@ extension LoginViewController {
     
     func setupActions() {
         loginButton.onTap = { [weak self] in
-            print("Login button")
+            let categoryPickerViewController = CategoryPickerViewController()
+            self?.navigationController?.pushViewController(categoryPickerViewController, animated: true)
         }
         registerButton.onTap = { [weak self] in
             let registrationViewController = RegistrationViewController()
