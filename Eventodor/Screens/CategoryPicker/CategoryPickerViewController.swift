@@ -23,7 +23,6 @@ class CategoryPickerViewController: BaseViewController {
         
         setupUI()
     }
-    
 }
 
 // MARK: - Private method's
@@ -49,6 +48,10 @@ extension CategoryPickerViewController {
     
     func setupButton() {
         nextButton.setTitle(with: "category_next".localized())
+        nextButton.onTap = { [weak self] in
+            let baseTabBarController = BaseTabBarController()
+            self?.navigationController?.setViewControllers([baseTabBarController], animated: true)
+        }
     }
     
     func setupLabel() {
