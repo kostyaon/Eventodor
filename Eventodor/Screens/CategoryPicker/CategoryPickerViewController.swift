@@ -14,6 +14,9 @@ class CategoryPickerViewController: BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var nextButton: EVENTODORButton!
     
+    // MARK: - Properties
+    private var selectedIndexes: [Int] = []
+    
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +76,14 @@ extension CategoryPickerViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let cell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell
-        cell?.isSelected.toggle()
+        guard let cell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell else { return }
+        cell.isSelected = true
+        selectedIndexes.append(indexPath.row)
+    }
+    
+    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+        guard let cell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell else { return }
+        cell.isSelected = false
+        selectedIndexes.removeAll(where: { $0 == indexPath.row })
     }
 }

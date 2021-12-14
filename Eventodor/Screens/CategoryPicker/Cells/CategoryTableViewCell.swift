@@ -11,17 +11,18 @@ class CategoryTableViewCell: UITableViewCell {
     
     // MARK: - Outlets
     @IBOutlet weak var categoryNameLabel: UILabel!
-    override var isSelected: Bool {
-        didSet {
-            isSelected ? selectedStyle() : deselectedStyle()
-        }
-    }
     
     // MARK: - Lifecycle method's
     override func awakeFromNib() {
         super.awakeFromNib()
         
         setupUI()
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+        
+        selected ? selectedStyle() : deselectedStyle()
     }
     
     // MARK: - Helper method's
