@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController" customModule="Eventodor" customModuleProvider="target">
+            <connections>
+                <outlet property="avatarImageView" destination="12h-Ll-WSq" id="oMh-dL-spW"/>
+                <outlet property="bankAccountLabel" destination="hQP-4y-BtI" id="Jes-G0-vnW"/>
+                <outlet property="emailLabel" destination="OhM-eb-iY8" id="zBV-K3-1dI"/>
+                <outlet property="logoutButton" destination="zTU-3a-Vlv" id="N96-rX-uJT"/>
+                <outlet property="nameSurnameLabel" destination="SDe-cB-iOY" id="88v-Zo-wVJ"/>
+                <outlet property="patronymicLabel" destination="7wR-EQ-8hG" id="uwN-Sr-TwV"/>
+                <outlet property="titleLabel" destination="caL-Eq-FCu" id="Z2B-EP-7z8"/>
+                <outlet property="view" destination="iN0-l3-epB" id="bwm-IT-VX2"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="caL-Eq-FCu">
+                    <rect key="frame" x="100" y="84" width="214" height="36"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="awards50" translatesAutoresizingMaskIntoConstraints="NO" id="12h-Ll-WSq">
+                    <rect key="frame" x="142" y="212" width="131" height="132"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="132" id="hfG-ia-agQ"/>
+                    </constraints>
+                </imageView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NZn-dC-y3r">
+                    <rect key="frame" x="32" y="385" width="350" height="65"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="3" translatesAutoresizingMaskIntoConstraints="NO" id="JQU-hL-YuA">
+                            <rect key="frame" x="0.0" y="0.0" width="350" height="32.5"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Konstantin Petrykevich" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SDe-cB-iOY">
+                                    <rect key="frame" x="0.0" y="0.0" width="350" height="32.5"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="27"/>
+                                    <nil key="textColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vyacheslavovich" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7wR-EQ-8hG">
+                            <rect key="frame" x="0.0" y="32.5" width="350" height="32.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="27"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="3rd-Bc-Hcj">
+                    <rect key="frame" x="32" y="511" width="350" height="94.5"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Bank account: BY380202ALFA15362" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hQP-4y-BtI">
+                            <rect key="frame" x="0.0" y="0.0" width="350" height="55"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email: Sobol_kv@mail.ru" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OhM-eb-iY8">
+                            <rect key="frame" x="0.0" y="67" width="350" height="27.5"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                </stackView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTU-3a-Vlv" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
+                    <rect key="frame" x="32" y="743" width="350" height="48"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="48" id="6dD-LR-4jU"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="12h-Ll-WSq" secondAttribute="trailing" constant="141" id="0T1-YA-dZ9"/>
+                <constraint firstItem="12h-Ll-WSq" firstAttribute="top" secondItem="caL-Eq-FCu" secondAttribute="bottom" constant="92" id="DOQ-HC-PgR"/>
+                <constraint firstItem="3rd-Bc-Hcj" firstAttribute="top" secondItem="NZn-dC-y3r" secondAttribute="bottom" constant="61" id="SRA-M8-LaE"/>
+                <constraint firstItem="zTU-3a-Vlv" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="Sga-gg-3qg"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="zTU-3a-Vlv" secondAttribute="bottom" constant="71" id="TBV-A4-ztM"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="caL-Eq-FCu" secondAttribute="trailing" constant="100" id="X8D-IK-PBe"/>
+                <constraint firstItem="NZn-dC-y3r" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="Y8l-mj-MKG"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="zTU-3a-Vlv" secondAttribute="trailing" constant="32" id="b5w-jR-VfI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="3rd-Bc-Hcj" secondAttribute="trailing" constant="32" id="bh9-Qh-Stp"/>
+                <constraint firstItem="NZn-dC-y3r" firstAttribute="top" secondItem="12h-Ll-WSq" secondAttribute="bottom" constant="41" id="g6O-ZY-EFN"/>
+                <constraint firstItem="12h-Ll-WSq" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="142" id="j8n-k6-pc0"/>
+                <constraint firstItem="caL-Eq-FCu" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="40" id="khT-QN-tok"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="NZn-dC-y3r" secondAttribute="trailing" constant="32" id="xPo-ti-HaQ"/>
+                <constraint firstItem="3rd-Bc-Hcj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="yT0-Ee-uHn"/>
+                <constraint firstItem="caL-Eq-FCu" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="100" id="yX5-Jo-w28"/>
+            </constraints>
+            <point key="canvasLocation" x="131.8840579710145" y="125.89285714285714"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="awards50" width="64" height="64"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
