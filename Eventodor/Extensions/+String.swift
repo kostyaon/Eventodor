@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension String {
     
@@ -17,5 +18,14 @@ extension String {
         localizedString = localizedString.replacingOccurrences(of: "%s", with: "%@")
         localizedString = localizedString.replacingOccurrences(of: "$s", with: "$@")
         return localizedString
+    }
+    
+    func addLineSpacing(spacing: CGFloat, textAllignment: NSTextAlignment) -> NSMutableAttributedString {
+        let attributedText = NSMutableAttributedString(string: self)
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = spacing
+        paragraphStyle.alignment = textAllignment
+        attributedText.addAttribute(NSAttributedString.Key.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedText.length))
+        return attributedText
     }
 }
