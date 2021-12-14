@@ -5,3 +5,16 @@
   Created by Petrykevich, Kanstantsin on 13.12.21.
   
 */
+"auth_login_title" = "   Login";
+"auth_password_title" = "   Password";
+"auth_register_button" = "Sign Up";
+"register_name" = "   Name";
+"register_surname" = "   Surname";
+"register_patronymic" = "   Patronymic";
+"register_phone" = "   Phone";
+"register_email" = "   Email";
+"register_country" = "   Country";
+"register_city" = "   City";
+"register_address" = "   Address";
+"register_organizer" = "Organizer";
+"register_terms_of_use" = "Terms of use";
