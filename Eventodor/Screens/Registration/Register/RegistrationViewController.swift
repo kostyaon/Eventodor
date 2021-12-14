@@ -89,6 +89,10 @@ extension RegistrationViewController {
     func setupButton() {
         setupCheckBox()
         registerButton.setTitle(with: "auth_register_button".localized())
+        registerButton.onTap = { [weak self] in
+            let categoryViewController = CategoryPickerViewController()
+            self?.navigationController?.pushViewController(categoryViewController, animated: true)
+        }
     }
     
     func setupCheckBox() {

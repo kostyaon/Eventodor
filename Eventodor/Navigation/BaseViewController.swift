@@ -20,7 +20,7 @@ class BaseViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.navigationBar.isHidden = hideNavBar
         
         if adjustableForKeyboard {
             let notificationCenter = NotificationCenter.default
