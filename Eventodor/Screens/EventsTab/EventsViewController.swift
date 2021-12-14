@@ -120,6 +120,10 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    
+        if eventState == .myEvents {
+            let reviewViewController = ReviewViewController()
+            reviewViewController.modalPresentationStyle = .overCurrentContext
+            self.present(reviewViewController, animated: true, completion: nil)
+        }
     }
 }
