@@ -39,6 +39,8 @@
 		6E7D79B32768AD03004F9228 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D79B22768AD03004F9228 /* CategoryPickerViewController.swift */; };
 		6EB670C92769386C00480908 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB670C82769386C00480908 /* ReviewViewController.swift */; };
 		6EB670CB2769388200480908 /* ReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB670CA2769388200480908 /* ReviewViewController.xib */; };
+		6EBB398427693EFF00C34CD1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB398327693EFF00C34CD1 /* ProfileViewController.swift */; };
+		6EBB39862769412B00C34CD1 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EBB39852769412B00C34CD1 /* ProfileViewController.xib */; };
 		6EEA34C32768B05200481985 /* CategoryPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EEA34C22768B05200481985 /* CategoryPickerViewController.xib */; };
 		6EEA34C62768B31D00481985 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA34C52768B31C00481985 /* CategoryTableViewCell.swift */; };
 		6EEA34C82768B40400481985 /* CategoryTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EEA34C72768B40400481985 /* CategoryTableViewCell.xib */; };
@@ -84,6 +86,8 @@
 		6E7D79B22768AD03004F9228 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
 		6EB670C82769386C00480908 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		6EB670CA2769388200480908 /* ReviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewViewController.xib; sourceTree = "<group>"; };
+		6EBB398327693EFF00C34CD1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		6EBB39852769412B00C34CD1 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
 		6EEA34C22768B05200481985 /* CategoryPickerViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryPickerViewController.xib; sourceTree = "<group>"; };
 		6EEA34C52768B31C00481985 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		6EEA34C72768B40400481985 /* CategoryTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryTableViewCell.xib; sourceTree = "<group>"; };
@@ -234,9 +238,8 @@
 		6E7D799C2767A7C1004F9228 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
+				6EBB398227693EE900C34CD1 /* Tabs */,
 				6EB670C72769385C00480908 /* Review */,
-				6E60F17127692D8F00D8D133 /* AwardsTab */,
-				6EEA34CB2768C52200481985 /* EventsTab */,
 				6E7D79B12768ACEB004F9228 /* CategoryPicker */,
 				6E7D799D2767A7CC004F9228 /* Registration */,
 			);
@@ -297,6 +300,25 @@
 				6EB670CA2769388200480908 /* ReviewViewController.xib */,
 			);
 			path = Review;
+			sourceTree = "<group>";
+		};
+		6EBB398127693EE100C34CD1 /* ProfileTab */ = {
+			isa = PBXGroup;
+			children = (
+				6EBB398327693EFF00C34CD1 /* ProfileViewController.swift */,
+				6EBB39852769412B00C34CD1 /* ProfileViewController.xib */,
+			);
+			path = ProfileTab;
+			sourceTree = "<group>";
+		};
+		6EBB398227693EE900C34CD1 /* Tabs */ = {
+			isa = PBXGroup;
+			children = (
+				6EBB398127693EE100C34CD1 /* ProfileTab */,
+				6E60F17127692D8F00D8D133 /* AwardsTab */,
+				6EEA34CB2768C52200481985 /* EventsTab */,
+			);
+			path = Tabs;
 			sourceTree = "<group>";
 		};
 		6EEA34C42768B2E700481985 /* Cells */ = {
@@ -387,6 +409,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6EBB39862769412B00C34CD1 /* ProfileViewController.xib in Resources */,
 				6E7D79A62767A9CC004F9228 /* LoginViewController.xib in Resources */,
 				6E60F17B276930C000D8D133 /* RewardView.xib in Resources */,
 				6E3CE52827678918000E49D8 /* LaunchScreen.storyboard in Resources */,
@@ -420,6 +443,7 @@
 				6E7D79B32768AD03004F9228 /* CategoryPickerViewController.swift in Sources */,
 				6E7D79B0276888DB004F9228 /* EVENTODORCheckbox.swift in Sources */,
 				6E60F17A276930C000D8D133 /* RewardView.swift in Sources */,
+				6EBB398427693EFF00C34CD1 /* ProfileViewController.swift in Sources */,
 				6E7D79A12767A7EE004F9228 /* LoginViewController.swift in Sources */,
 				6EEA34CA2768B4DF00481985 /* +UITableView.swift in Sources */,
 				6E3CE53127678BCC000E49D8 /* BaseTabBarController.swift in Sources */,
