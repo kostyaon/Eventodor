@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="FilterEventCardViewController" customModule="Eventodor" customModuleProvider="target">
+            <connections>
+                <outlet property="bgView" destination="oOk-xm-iQG" id="E08-C5-b4d"/>
+                <outlet property="cardView" destination="S6f-Zf-l3b" id="gwJ-9x-UcA"/>
+                <outlet property="dateTextField" destination="hJl-dU-GBc" id="NQV-nG-JUQ"/>
+                <outlet property="filterButton" destination="w3B-Bl-Zv0" id="Baf-jB-via"/>
+                <outlet property="priceTextField" destination="k6b-PU-qx3" id="YEn-vi-BEc"/>
+                <outlet property="titleLabel" destination="H9X-ub-dY1" id="uNK-Xc-2ic"/>
+                <outlet property="view" destination="iN0-l3-epB" id="izb-h6-Vb9"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oOk-xm-iQG">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.050000000000000003" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6f-Zf-l3b">
+                    <rect key="frame" x="50" y="327" width="314" height="208"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9X-ub-dY1">
+                            <rect key="frame" x="10" y="30" width="294" height="21"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="21" id="lep-SW-pci"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="IAb-kO-I6F">
+                            <rect key="frame" x="20" y="61" width="274" height="117"/>
+                            <subviews>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hJl-dU-GBc" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="274" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="34" id="Qrc-Aa-FlQ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k6b-PU-qx3" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="43" width="274" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="34" id="hkn-KY-WKP"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </textField>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3B-Bl-Zv0" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="86" width="274" height="31"/>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                </button>
+                            </subviews>
+                            <constraints>
+                                <constraint firstItem="hJl-dU-GBc" firstAttribute="leading" secondItem="IAb-kO-I6F" secondAttribute="leading" id="BUW-p5-Jn6"/>
+                                <constraint firstAttribute="trailing" secondItem="hJl-dU-GBc" secondAttribute="trailing" id="CmM-M5-gay"/>
+                                <constraint firstAttribute="trailing" secondItem="w3B-Bl-Zv0" secondAttribute="trailing" id="HH1-T2-NoK"/>
+                                <constraint firstItem="k6b-PU-qx3" firstAttribute="leading" secondItem="IAb-kO-I6F" secondAttribute="leading" id="HJz-N4-1Tb"/>
+                                <constraint firstItem="w3B-Bl-Zv0" firstAttribute="leading" secondItem="IAb-kO-I6F" secondAttribute="leading" id="Uiz-75-PjK"/>
+                                <constraint firstAttribute="trailing" secondItem="k6b-PU-qx3" secondAttribute="trailing" id="i3G-jn-Fwe"/>
+                            </constraints>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="IAb-kO-I6F" secondAttribute="trailing" constant="20" id="8mE-tg-Krc"/>
+                        <constraint firstItem="IAb-kO-I6F" firstAttribute="top" secondItem="H9X-ub-dY1" secondAttribute="bottom" constant="10" id="Hfe-Nh-HlY"/>
+                        <constraint firstItem="H9X-ub-dY1" firstAttribute="top" secondItem="S6f-Zf-l3b" secondAttribute="top" constant="30" id="YCg-dt-PU6"/>
+                        <constraint firstAttribute="trailing" secondItem="H9X-ub-dY1" secondAttribute="trailing" constant="10" id="csf-rC-kUp"/>
+                        <constraint firstItem="IAb-kO-I6F" firstAttribute="leading" secondItem="S6f-Zf-l3b" secondAttribute="leading" constant="20" id="lHS-x6-zEx"/>
+                        <constraint firstAttribute="height" constant="208" id="mPc-hz-AoB"/>
+                        <constraint firstItem="H9X-ub-dY1" firstAttribute="leading" secondItem="S6f-Zf-l3b" secondAttribute="leading" constant="10" id="tVQ-5C-UC6"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="oOk-xm-iQG" secondAttribute="trailing" id="476-Fu-Gc2"/>
+                <constraint firstItem="S6f-Zf-l3b" firstAttribute="centerX" secondItem="oOk-xm-iQG" secondAttribute="centerX" id="5HC-IT-4rS"/>
+                <constraint firstItem="S6f-Zf-l3b" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="50" id="AJh-fJ-UR9"/>
+                <constraint firstItem="oOk-xm-iQG" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="AKA-oa-R9k"/>
+                <constraint firstItem="oOk-xm-iQG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Saz-5v-SRw"/>
+                <constraint firstItem="S6f-Zf-l3b" firstAttribute="centerY" secondItem="oOk-xm-iQG" secondAttribute="centerY" id="aVd-mr-9wU"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="S6f-Zf-l3b" secondAttribute="trailing" constant="50" id="eZU-aw-5SZ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="oOk-xm-iQG" secondAttribute="bottom" id="rGV-Ii-ra5"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="93"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

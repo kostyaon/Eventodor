@@ -24,3 +24,5 @@
 "event_title" = "Events";
 "create_event_title" = "Create event";
 "create_event_button" = "Create";
+"filter_event_title" = "Filter events";
+"filter_event_button" = "Filter";

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		6E0AE09D27691662006A3FDA /* CreateEventCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0AE09C27691662006A3FDA /* CreateEventCardViewController.swift */; };
 		6E0AE09F2769166C006A3FDA /* CreateEventCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E0AE09E2769166C006A3FDA /* CreateEventCardViewController.xib */; };
+		6E0AE0A22769243E006A3FDA /* FilterEventCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0AE0A12769243E006A3FDA /* FilterEventCardViewController.swift */; };
+		6E0AE0A42769244A006A3FDA /* FilterEventCardViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E0AE0A32769244A006A3FDA /* FilterEventCardViewController.xib */; };
 		6E3CE51C27678915000E49D8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3CE51B27678915000E49D8 /* AppDelegate.swift */; };
 		6E3CE51E27678915000E49D8 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3CE51D27678915000E49D8 /* SceneDelegate.swift */; };
 		6E3CE52327678915000E49D8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E3CE52127678915000E49D8 /* Main.storyboard */; };
@@ -40,6 +42,8 @@
 /* Begin PBXFileReference section */
 		6E0AE09C27691662006A3FDA /* CreateEventCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventCardViewController.swift; sourceTree = "<group>"; };
 		6E0AE09E2769166C006A3FDA /* CreateEventCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateEventCardViewController.xib; sourceTree = "<group>"; };
+		6E0AE0A12769243E006A3FDA /* FilterEventCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEventCardViewController.swift; sourceTree = "<group>"; };
+		6E0AE0A32769244A006A3FDA /* FilterEventCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FilterEventCardViewController.xib; sourceTree = "<group>"; };
 		6E3CE51827678915000E49D8 /* Eventodor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Eventodor.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E3CE51B27678915000E49D8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6E3CE51D27678915000E49D8 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -88,6 +92,15 @@
 				6E0AE09E2769166C006A3FDA /* CreateEventCardViewController.xib */,
 			);
 			path = CreateEventCard;
+			sourceTree = "<group>";
+		};
+		6E0AE0A02769242A006A3FDA /* FilterEventCard */ = {
+			isa = PBXGroup;
+			children = (
+				6E0AE0A12769243E006A3FDA /* FilterEventCardViewController.swift */,
+				6E0AE0A32769244A006A3FDA /* FilterEventCardViewController.xib */,
+			);
+			path = FilterEventCard;
 			sourceTree = "<group>";
 		};
 		6E3CE50F27678914000E49D8 = {
@@ -220,6 +233,7 @@
 		6EEA34CB2768C52200481985 /* EventsTab */ = {
 			isa = PBXGroup;
 			children = (
+				6E0AE0A02769242A006A3FDA /* FilterEventCard */,
 				6E0AE09B2769163E006A3FDA /* CreateEventCard */,
 				6EEA34D02768C79400481985 /* Cells */,
 				6EEA34CC2768C55B00481985 /* EventsViewController.swift */,
@@ -305,6 +319,7 @@
 				6E7D79AE2767E84D004F9228 /* RegistrationViewController.xib in Resources */,
 				6E0AE09F2769166C006A3FDA /* CreateEventCardViewController.xib in Resources */,
 				6E3CE52527678918000E49D8 /* Assets.xcassets in Resources */,
+				6E0AE0A42769244A006A3FDA /* FilterEventCardViewController.xib in Resources */,
 				6E3CE52327678915000E49D8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +331,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E0AE0A22769243E006A3FDA /* FilterEventCardViewController.swift in Sources */,
 				6E7D79B32768AD03004F9228 /* CategoryPickerViewController.swift in Sources */,
 				6E7D79B0276888DB004F9228 /* EVENTODORCheckbox.swift in Sources */,
 				6E7D79A12767A7EE004F9228 /* LoginViewController.swift in Sources */,

@@ -36,6 +36,9 @@ extension EventsViewController {
     
     @objc func onFilter() {
         print("Filter events")
+        let filterCardViewController = FilterEventCardViewController()
+        filterCardViewController.modalPresentationStyle = .overCurrentContext
+        self.present(filterCardViewController, animated: true, completion: nil)
     }
     
     func setupUI() {
