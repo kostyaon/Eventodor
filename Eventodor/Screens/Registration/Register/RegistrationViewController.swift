@@ -32,10 +32,10 @@ class RegistrationViewController: BaseViewController {
     @IBOutlet weak var countryTextField: EVENTODORTextField!
     @IBOutlet weak var cityTextField: EVENTODORTextField!
     @IBOutlet weak var addressTextField: EVENTODORTextField!
-//    @IBOutlet weak var organizerLabel: UILabel!
-//    @IBOutlet weak var termsOfUseLabel: UILabel!
-//    @IBOutlet weak var organizerButton: UIButton!
-//    @IBOutlet weak var termsOfUseButton: UIButton!
+    @IBOutlet weak var organizerLabel: UILabel!
+    @IBOutlet weak var termsOfUseLabel: UILabel!
+    @IBOutlet weak var organizerButton: EVENTODORCheckbox!
+    @IBOutlet weak var termsOfUseButton: EVENTODORCheckbox!
     @IBOutlet weak var registerButton: EVENTODORButton!
     
     // MARK: - Properties
@@ -77,9 +77,22 @@ extension RegistrationViewController {
         countryLabel.text = "register_country".localized()
         cityLabel.text = "register_city".localized()
         addressLabel.text = "register_address".localized()
+        
+        organizerLabel.font = .systemFont(ofSize: 16)
+        organizerLabel.textColor = .black
+        termsOfUseLabel.font = .systemFont(ofSize: 16)
+        termsOfUseLabel.textColor = .black
+        organizerLabel.text = "register_organizer".localized()
+        termsOfUseLabel.text = "register_terms_of_use".localized()
     }
     
     func setupButton() {
+        setupCheckBox()
         registerButton.setTitle(with: "auth_register_button".localized())
+    }
+    
+    func setupCheckBox() {
+        organizerButton.isEnabled = false
+        termsOfUseButton.isEnabled = false
     }
 }

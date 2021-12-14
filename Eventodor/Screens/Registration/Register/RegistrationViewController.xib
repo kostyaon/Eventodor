@@ -23,6 +23,8 @@
                 <outlet property="logoImageView" destination="Vd5-B9-CeP" id="o0X-Qj-RsH"/>
                 <outlet property="nameLabel" destination="zdx-ix-zpe" id="a71-c8-vV4"/>
                 <outlet property="nameTextField" destination="dOm-eR-RTx" id="Tj8-xZ-PaC"/>
+                <outlet property="organizerButton" destination="SRb-J7-IKP" id="e81-do-MsO"/>
+                <outlet property="organizerLabel" destination="5tL-S7-uYk" id="EG7-lJ-cck"/>
                 <outlet property="passwordLabel" destination="9Nf-ij-2n2" id="z5H-yU-U5g"/>
                 <outlet property="passwordTextField" destination="fQD-17-yGv" id="k3V-EO-iIg"/>
                 <outlet property="patronymicLabel" destination="e46-nP-ihb" id="c5i-Fg-kB4"/>
@@ -34,6 +36,8 @@
                 <outlet property="rootScrollView" destination="118-Hm-pKm" id="SiQ-OL-Q9D"/>
                 <outlet property="surnameLabel" destination="85W-A6-qp2" id="2lC-uG-1zq"/>
                 <outlet property="surnameTextField" destination="rqj-EP-ViP" id="g5i-vr-eib"/>
+                <outlet property="termsOfUseButton" destination="Elz-lw-NkA" id="xFY-uH-fIi"/>
+                <outlet property="termsOfUseLabel" destination="9AH-sT-ka2" id="Zf2-Lr-y8f"/>
                 <outlet property="view" destination="iN0-l3-epB" id="fhS-KN-EVu"/>
             </connections>
         </placeholder>
@@ -254,13 +258,66 @@
                                                 </textField>
                                             </subviews>
                                         </stackView>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3C2-i9-fLP">
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="11" translatesAutoresizingMaskIntoConstraints="NO" id="lyW-X3-pIf">
                                             <rect key="frame" x="0.0" y="855" width="366" height="53"/>
-                                            <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="4bM-gd-alz">
+                                                    <rect key="frame" x="0.0" y="0.0" width="366" height="21"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bgq-fx-2S9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="5" height="21"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="5" id="Ngg-B2-q4b"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SRb-J7-IKP" customClass="EVENTODORCheckbox" customModule="Eventodor" customModuleProvider="target">
+                                                            <rect key="frame" x="17" y="0.0" width="21" height="21"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="21" id="azn-jH-qB2"/>
+                                                                <constraint firstAttribute="width" constant="21" id="vgb-ch-Bdh"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organizer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5tL-S7-uYk">
+                                                            <rect key="frame" x="50" y="0.0" width="316" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="Uof-Tt-AeV">
+                                                    <rect key="frame" x="0.0" y="32" width="366" height="21"/>
+                                                    <subviews>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mmV-ik-m7B">
+                                                            <rect key="frame" x="0.0" y="0.0" width="5" height="21"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="5" id="OQK-J4-4e7"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Elz-lw-NkA" customClass="EVENTODORCheckbox" customModule="Eventodor" customModuleProvider="target">
+                                                            <rect key="frame" x="17" y="0.0" width="21" height="21"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="width" constant="21" id="e8h-by-vZE"/>
+                                                                <constraint firstAttribute="height" constant="21" id="hLW-bi-0nS"/>
+                                                            </constraints>
+                                                        </view>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Organizer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9AH-sT-ka2">
+                                                            <rect key="frame" x="50" y="0.0" width="316" height="21"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="53" id="ie7-eB-NUW"/>
+                                                <constraint firstAttribute="height" constant="53" id="1ei-Z5-YjE"/>
                                             </constraints>
-                                        </view>
+                                        </stackView>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nfl-Bk-iqd" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
                                             <rect key="frame" x="0.0" y="924" width="366" height="48"/>
                                             <constraints>
@@ -312,9 +369,6 @@
         <image name="logo" width="172" height="72"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

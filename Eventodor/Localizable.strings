@@ -16,3 +16,5 @@
 "register_country" = "   Country";
 "register_city" = "   City";
 "register_address" = "   Address";
+"register_organizer" = "Organizer";
+"register_terms_of_use" = "Terms of use";
