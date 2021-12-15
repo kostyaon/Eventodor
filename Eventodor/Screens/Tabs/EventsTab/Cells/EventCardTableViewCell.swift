@@ -30,7 +30,20 @@ class EventCardTableViewCell: UITableViewCell {
     }
     
     // MARK: - Helper method's
-    
+    func configureCell(event: Event, distance: Int?) {
+        if let distance = distance {
+            distanceLabel.text = "\(distance) km"
+        } else {
+            distanceLabel.text = "MY"
+            moreLabel.text = " "
+        }
+        organizerNameLabel.text = event.organizer
+        eventNameLabel.text = event.name
+        descriptionLabel.text = event.descriptioin
+        priceLabel.text = "Price: \(event.price ?? 0.0) dollars"
+        dateLabel.text = "Date: " + (event.time ?? "")
+        eventPhotoImageView.image = UIImage(named: event.photo?.url ?? "logo")
+    }
 }
 
 // MARK: - Private method's
@@ -43,7 +56,7 @@ extension EventCardTableViewCell {
     }
     
     func setupLabels() {
-        organizerNameLabel.font = .boldSystemFont(ofSize: 12)
+        organizerNameLabel.font = .boldSystemFont(ofSize: 14)
         organizerNameLabel.textColor = UIColor(red: 83/256, green: 92/256, blue: 94/256, alpha: 1.0)
         organizerNameLabel.text = "Organizer name"
         
