@@ -67,6 +67,12 @@ extension EventsViewController {
         print("Filter events")
         let filterCardViewController = FilterEventCardViewController()
         filterCardViewController.modalPresentationStyle = .overCurrentContext
+        filterCardViewController.onFilter = { [weak self] (price, date) in
+            self?.events.removeAll {
+                (($0.price ?? 0.0) > price) && $0.time != date
+            }
+            self?.tableView.reloadData()
+        }
         self.present(filterCardViewController, animated: true, completion: nil)
     }
     

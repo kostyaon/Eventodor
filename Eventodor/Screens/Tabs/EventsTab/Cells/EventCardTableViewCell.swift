@@ -30,9 +30,15 @@ class EventCardTableViewCell: UITableViewCell {
         setupUI()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        
+        eventPhotoImageView.image = nil
+    }
+    
     // MARK: - Helper method's
     func configureCell(event: Event, distance: Int?) {
-        if let distance = distance {
+        if let distance = event.distance {
             distanceLabel.text = "\(distance) km"
         } else {
             distanceLabel.text = "MY"
@@ -44,7 +50,6 @@ class EventCardTableViewCell: UITableViewCell {
         descriptionLabel.text = event.description
         priceLabel.text = "Price: \(event.price ?? 0.0) dollars"
         dateLabel.text = "Date: " + (event.time ?? "")
-        eventPhotoImageView.image = UIImage(named: event.photo?.url ?? "logo")
     }
 }
 
