@@ -97,6 +97,7 @@
 		6EAF9946276A9FC0000C6470 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		6EAF9948276AA048000C6470 /* +MKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+MKMapView.swift"; sourceTree = "<group>"; };
 		6EAF994A276AA2E3000C6470 /* EventMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMap.swift; sourceTree = "<group>"; };
+		6EAF994D276AB149000C6470 /* Coordinates.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Coordinates.json; sourceTree = "<group>"; };
 		6EB670C82769386C00480908 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		6EB670CA2769388200480908 /* ReviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewViewController.xib; sourceTree = "<group>"; };
 		6EBB398327693EFF00C34CD1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -177,6 +178,7 @@
 				6E7D799427679AF3004F9228 /* Localizable.strings */,
 				6E3CE52627678918000E49D8 /* LaunchScreen.storyboard */,
 				6E3CE52927678918000E49D8 /* Info.plist */,
+				6EAF994D276AB149000C6470 /* Coordinates.json */,
 			);
 			path = Eventodor;
 			sourceTree = "<group>";
