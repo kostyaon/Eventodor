@@ -22,7 +22,8 @@
         "description": "Party for everybody! Dance! Come on and Dance! Come on and Dance!",
         "time": "20/12/2021 18:00",
         "price": 5.0,
-        "rank": null
+        "rank": null,
+        "distance": 0.05
     },
     {
         "event_id": 1,
@@ -47,7 +48,8 @@
         "description": "BNTU party! Enterance only for engineer! We're waiting for you!",
         "time": "19/12/2021 20:00",
         "price": 10.0,
-        "rank": null
+        "rank": null,
+        "distance": 0.1
     },
     {
         "event_id": 2,
@@ -72,7 +74,8 @@
         "description": "If you want to create a cocktail, you like to experiment? We are waiting for you, my friend!",
         "time": "21/12/2021 21:00",
         "price": 20.0,
-        "rank": null
+        "rank": null,
+        "distance": 0.12
     },
     {
         "event_id": 3,
@@ -97,7 +100,8 @@
         "description": "If you like Nikolay Nikolay Kooooolya, this event is for you, we will be waiting for you!",
         "time": "22/12/2021 21:00",
         "price": 50.0,
-        "rank": null
+        "rank": null,
+        "distance": 0.4
     },
     {
         "event_id": 4,
@@ -122,7 +126,8 @@
         "description": "I like cola, pasta, pizza and board games. But most of all I like to communicate with persons!",
         "time": "17/12/2021 18:30",
         "price": 0.0,
-        "rank": null
+        "rank": null,
+        "distance": 0.5
     },
     {
         "event_id": 5,
@@ -147,7 +152,8 @@
         "description": "BANYA, SAYNA, VSE CHTO HOTITE, NO V RAMKAH RAZYMNOGO",
         "time": "18/12/2021 19:30",
         "price": 200.0,
-        "rank": null
+        "rank": null,
+        "distance": 0.45
     },
     {
         "event_id": 6,
@@ -172,6 +178,7 @@
         "description": "Course paper review!",
         "time": "16/12/2021 17:30",
         "price": 0.0,
-        "rank": null
+        "rank": null,
+        "distance": null
     }
 ]
