@@ -27,9 +27,8 @@ struct Event: Decodable {
 struct CoordinateEVENTODOR: Decodable {
     
     var coordinate_id: Int?
-    var longitude: String?
-    var latitude: String?
-    var height: String?
+    var longitude: Double?
+    var latitude: Double?
 }
 
 struct CategoryEVENTODOR: Decodable {

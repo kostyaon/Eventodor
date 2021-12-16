@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="MapViewController" customModule="Eventodor" customModuleProvider="target">
+            <connections>
+                <outlet property="mapView" destination="Fi4-cF-hsM" id="nCR-K8-idV"/>
+                <outlet property="view" destination="iN0-l3-epB" id="QLF-y4-efp"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NG9-kv-Hqy">
+                    <rect key="frame" x="125.5" y="94" width="163" height="36"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fi4-cF-hsM">
+                    <rect key="frame" x="0.0" y="138" width="414" height="758"/>
+                </mapView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNF-yk-gGM">
+                    <rect key="frame" x="360" y="190" width="44" height="31"/>
+                    <color key="tintColor" red="0.0" green="0.75254814988232854" blue="0.80523619988952022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" image="location.circle.fill" catalog="system"/>
+                    <connections>
+                        <action selector="onGetLocation:" destination="-1" eventType="touchUpInside" id="HdK-tN-ypm"/>
+                    </connections>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="Fi4-cF-hsM" firstAttribute="top" secondItem="NG9-kv-Hqy" secondAttribute="bottom" constant="8" symbolic="YES" id="6i4-od-fNE"/>
+                <constraint firstItem="NG9-kv-Hqy" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Biy-xD-Lkd"/>
+                <constraint firstAttribute="bottom" secondItem="Fi4-cF-hsM" secondAttribute="bottom" id="DT6-1W-iBR"/>
+                <constraint firstItem="SNF-yk-gGM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="146" id="LcD-Ws-HL3"/>
+                <constraint firstItem="SNF-yk-gGM" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-10" id="MK1-ws-PIM"/>
+                <constraint firstItem="Fi4-cF-hsM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dsa-fd-5ec"/>
+                <constraint firstItem="NG9-kv-Hqy" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="pPw-fI-kYe"/>
+                <constraint firstItem="Fi4-cF-hsM" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="wIA-h6-wbV"/>
+            </constraints>
+            <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="location.circle.fill" catalog="system" width="128" height="121"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

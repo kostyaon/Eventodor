@@ -37,6 +37,10 @@
 		6E7D79AE2767E84D004F9228 /* RegistrationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E7D79AD2767E84D004F9228 /* RegistrationViewController.xib */; };
 		6E7D79B0276888DB004F9228 /* EVENTODORCheckbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D79AF276888DB004F9228 /* EVENTODORCheckbox.swift */; };
 		6E7D79B32768AD03004F9228 /* CategoryPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7D79B22768AD03004F9228 /* CategoryPickerViewController.swift */; };
+		6EAF9945276A9F66000C6470 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF9944276A9F66000C6470 /* MapViewController.swift */; };
+		6EAF9947276A9FC0000C6470 /* MapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF9946276A9FC0000C6470 /* MapViewController.xib */; };
+		6EAF9949276AA048000C6470 /* +MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF9948276AA048000C6470 /* +MKMapView.swift */; };
+		6EAF994B276AA2E3000C6470 /* EventMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF994A276AA2E3000C6470 /* EventMap.swift */; };
 		6EB670C92769386C00480908 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB670C82769386C00480908 /* ReviewViewController.swift */; };
 		6EB670CB2769388200480908 /* ReviewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EB670CA2769388200480908 /* ReviewViewController.xib */; };
 		6EBB398427693EFF00C34CD1 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EBB398327693EFF00C34CD1 /* ProfileViewController.swift */; };
@@ -89,6 +93,12 @@
 		6E7D79AD2767E84D004F9228 /* RegistrationViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RegistrationViewController.xib; sourceTree = "<group>"; };
 		6E7D79AF276888DB004F9228 /* EVENTODORCheckbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVENTODORCheckbox.swift; sourceTree = "<group>"; };
 		6E7D79B22768AD03004F9228 /* CategoryPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewController.swift; sourceTree = "<group>"; };
+		6EAF9944276A9F66000C6470 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		6EAF9946276A9FC0000C6470 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
+		6EAF9948276AA048000C6470 /* +MKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+MKMapView.swift"; sourceTree = "<group>"; };
+		6EAF994A276AA2E3000C6470 /* EventMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMap.swift; sourceTree = "<group>"; };
+		6EAF994D276AB149000C6470 /* Coordinates.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Coordinates.json; sourceTree = "<group>"; };
+		6EAF994E276ABC90000C6470 /* Authentification.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Authentification.json; sourceTree = "<group>"; };
 		6EB670C82769386C00480908 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		6EB670CA2769388200480908 /* ReviewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewViewController.xib; sourceTree = "<group>"; };
 		6EBB398327693EFF00C34CD1 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -169,6 +179,8 @@
 				6E7D799427679AF3004F9228 /* Localizable.strings */,
 				6E3CE52627678918000E49D8 /* LaunchScreen.storyboard */,
 				6E3CE52927678918000E49D8 /* Info.plist */,
+				6EAF994D276AB149000C6470 /* Coordinates.json */,
+				6EAF994E276ABC90000C6470 /* Authentification.json */,
 			);
 			path = Eventodor;
 			sourceTree = "<group>";
@@ -234,6 +246,7 @@
 			children = (
 				6E7D79972767A550004F9228 /* +String.swift */,
 				6EEA34C92768B4DF00481985 /* +UITableView.swift */,
+				6EAF9948276AA048000C6470 /* +MKMapView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -305,6 +318,15 @@
 			path = CategoryPicker;
 			sourceTree = "<group>";
 		};
+		6EAF9943276A9F57000C6470 /* MapTab */ = {
+			isa = PBXGroup;
+			children = (
+				6EAF9944276A9F66000C6470 /* MapViewController.swift */,
+				6EAF9946276A9FC0000C6470 /* MapViewController.xib */,
+			);
+			path = MapTab;
+			sourceTree = "<group>";
+		};
 		6EB670C72769385C00480908 /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -326,6 +348,7 @@
 		6EBB398227693EE900C34CD1 /* Tabs */ = {
 			isa = PBXGroup;
 			children = (
+				6EAF9943276A9F57000C6470 /* MapTab */,
 				6EBB398127693EE100C34CD1 /* ProfileTab */,
 				6E60F17127692D8F00D8D133 /* AwardsTab */,
 				6EEA34CB2768C52200481985 /* EventsTab */,
@@ -348,6 +371,7 @@
 				6EBB398D27694F2900C34CD1 /* User.swift */,
 				6EBB398F27694FAF00C34CD1 /* Event.swift */,
 				6EBB3991276950E500C34CD1 /* Review.swift */,
+				6EAF994A276AA2E3000C6470 /* EventMap.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -443,6 +467,7 @@
 				6EBB39862769412B00C34CD1 /* ProfileViewController.xib in Resources */,
 				6E7D79A62767A9CC004F9228 /* LoginViewController.xib in Resources */,
 				6E60F17B276930C000D8D133 /* RewardView.xib in Resources */,
+				6EAF9947276A9FC0000C6470 /* MapViewController.xib in Resources */,
 				6E3CE52827678918000E49D8 /* LaunchScreen.storyboard in Resources */,
 				6EB670CB2769388200480908 /* ReviewViewController.xib in Resources */,
 				6EEA34C32768B05200481985 /* CategoryPickerViewController.xib in Resources */,
@@ -472,8 +497,10 @@
 				6EBB398E27694F2900C34CD1 /* User.swift in Sources */,
 				6EB670C92769386C00480908 /* ReviewViewController.swift in Sources */,
 				6E0AE0A22769243E006A3FDA /* FilterEventCardViewController.swift in Sources */,
+				6EAF994B276AA2E3000C6470 /* EventMap.swift in Sources */,
 				6E60F184276930C800D8D133 /* LabelCollectionCell.swift in Sources */,
 				6E7D79B32768AD03004F9228 /* CategoryPickerViewController.swift in Sources */,
+				6EAF9949276AA048000C6470 /* +MKMapView.swift in Sources */,
 				6E7D79B0276888DB004F9228 /* EVENTODORCheckbox.swift in Sources */,
 				6E60F17A276930C000D8D133 /* RewardView.swift in Sources */,
 				6EBB398427693EFF00C34CD1 /* ProfileViewController.swift in Sources */,
@@ -496,6 +523,7 @@
 				6E60F186276930C800D8D133 /* RewardCollectionCell.swift in Sources */,
 				6EEA34C62768B31D00481985 /* CategoryTableViewCell.swift in Sources */,
 				6E3CE51E27678915000E49D8 /* SceneDelegate.swift in Sources */,
+				6EAF9945276A9F66000C6470 /* MapViewController.swift in Sources */,
 				6EEA34CD2768C55B00481985 /* EventsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
