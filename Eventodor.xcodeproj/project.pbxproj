@@ -65,9 +65,12 @@
 		6EEA34CF2768C72700481985 /* EventsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EEA34CE2768C72700481985 /* EventsViewController.xib */; };
 		6EEA34D22768C7AB00481985 /* EventCardTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EEA34D12768C7AB00481985 /* EventCardTableViewCell.swift */; };
 		6EEA34D82768CAF700481985 /* EventCardTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6EEA34D72768CAF700481985 /* EventCardTableViewCell.xib */; };
+		BE4174ECC9DF327FF7F660F4 /* Pods_Eventodor.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E424DB5599D9E53CE3EFF6B /* Pods_Eventodor.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		48EA34E3EC84224E11EE8227 /* Pods-Eventodor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventodor.release.xcconfig"; path = "Target Support Files/Pods-Eventodor/Pods-Eventodor.release.xcconfig"; sourceTree = "<group>"; };
+		5E424DB5599D9E53CE3EFF6B /* Pods_Eventodor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Eventodor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E0AE09C27691662006A3FDA /* CreateEventCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventCardViewController.swift; sourceTree = "<group>"; };
 		6E0AE09E2769166C006A3FDA /* CreateEventCardViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CreateEventCardViewController.xib; sourceTree = "<group>"; };
 		6E0AE0A12769243E006A3FDA /* FilterEventCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterEventCardViewController.swift; sourceTree = "<group>"; };
@@ -128,6 +131,7 @@
 		6EEA34CE2768C72700481985 /* EventsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventsViewController.xib; sourceTree = "<group>"; };
 		6EEA34D12768C7AB00481985 /* EventCardTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventCardTableViewCell.swift; sourceTree = "<group>"; };
 		6EEA34D72768CAF700481985 /* EventCardTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EventCardTableViewCell.xib; sourceTree = "<group>"; };
+		F483C4CEF41180F44D785728 /* Pods-Eventodor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Eventodor.debug.xcconfig"; path = "Target Support Files/Pods-Eventodor/Pods-Eventodor.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,12 +139,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE4174ECC9DF327FF7F660F4 /* Pods_Eventodor.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		31740DF2B2D34B8B4D768959 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5E424DB5599D9E53CE3EFF6B /* Pods_Eventodor.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		6E0AE09B2769163E006A3FDA /* CreateEventCard */ = {
 			isa = PBXGroup;
 			children = (
@@ -164,6 +177,8 @@
 			children = (
 				6E3CE51A27678915000E49D8 /* Eventodor */,
 				6E3CE51927678915000E49D8 /* Products */,
+				F6D768D65E0E000C18A14A0F /* Pods */,
+				31740DF2B2D34B8B4D768959 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -423,6 +438,16 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		F6D768D65E0E000C18A14A0F /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F483C4CEF41180F44D785728 /* Pods-Eventodor.debug.xcconfig */,
+				48EA34E3EC84224E11EE8227 /* Pods-Eventodor.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -430,9 +455,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6E3CE52C27678918000E49D8 /* Build configuration list for PBXNativeTarget "Eventodor" */;
 			buildPhases = (
+				FA3D5A1A533E1D9C273F2C07 /* [CP] Check Pods Manifest.lock */,
 				6E3CE51427678915000E49D8 /* Sources */,
 				6E3CE51527678915000E49D8 /* Frameworks */,
 				6E3CE51627678915000E49D8 /* Resources */,
+				0F71579CA19C48481597D9B0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -508,6 +535,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0F71579CA19C48481597D9B0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eventodor/Pods-Eventodor-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Eventodor/Pods-Eventodor-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Eventodor/Pods-Eventodor-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA3D5A1A533E1D9C273F2C07 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Eventodor-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6E3CE51427678915000E49D8 /* Sources */ = {
@@ -694,6 +763,7 @@
 		};
 		6E3CE52D27678918000E49D8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F483C4CEF41180F44D785728 /* Pods-Eventodor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -721,6 +791,7 @@
 		};
 		6E3CE52E27678918000E49D8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 48EA34E3EC84224E11EE8227 /* Pods-Eventodor.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -9,8 +9,8 @@ import Foundation
 
 class EventsViewModel {
     
-    var availableEvents: [Event]?
-    var myEvents: [Event]?
+    var availableEvents: [Event] = []
+    var myEvents: [Event] = []
     
     func getEvents() {
         if let path = Bundle.main.path(forResource: "Coordinates", ofType: "json") {
@@ -19,10 +19,10 @@ class EventsViewModel {
                 if let events = try? jsonDecoder.decode([Event].self, from: data) {
                     for event in events {
                         if AppEnvironment.categoryIndexes?.contains(event.category?.category_id ?? -1) ?? false {
-                            availableEvents?.append(event)
+                            availableEvents.append(event)
                         } else {
                             if event.category?.name == "My events" {
-                                myEvents?.append(event)
+                                myEvents.append(event)
                             }
                         }
                     }

@@ -66,8 +66,8 @@ extension EventsViewController {
     
     func loadData() {
         viewModel.getEvents()
-        events = viewModel.availableEvents ?? []
-        myEvents = viewModel.myEvents ?? []
+        events = viewModel.availableEvents
+        myEvents = viewModel.myEvents
         tableView.reloadData()
     }
     
@@ -122,7 +122,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if eventState == .events {
-            return 10
+            return events.count
         } else {
             return myEvents.count
         }

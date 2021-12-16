@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class EventCardTableViewCell: UITableViewCell {
     
@@ -37,6 +38,7 @@ class EventCardTableViewCell: UITableViewCell {
             distanceLabel.text = "MY"
             moreLabel.text = " "
         }
+        eventPhotoImageView.kf.setImage(with: URL(string: event.photo?.url ?? ""))
         organizerNameLabel.text = event.organizer
         eventNameLabel.text = event.name
         descriptionLabel.text = event.descriptioin
