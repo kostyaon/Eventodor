@@ -57,6 +57,10 @@ extension MapViewController {
     
     @objc func onEventPin() {
         print("Select event - \(selectedEvent?.name ?? "NOPE")")
+        let registerViewController = EventRegCardViewController()
+        registerViewController.event = selectedEvent
+        registerViewController.modalPresentationStyle = .overCurrentContext
+        self.present(registerViewController, animated: true, completion: nil)
     }
     
     func loadData() {

@@ -48,6 +48,12 @@ class AwardsViewController: BaseViewController {
         setupCollectionView()
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        collectionView.reloadData()
+    }
 
     // MARK: - Private method's
     private func setupUI() {
@@ -89,7 +95,11 @@ extension AwardsViewController: UICollectionViewDataSource, UICollectionViewDele
         case 0:
             return 1
         case 1:
-            return 10
+            if (AppEnvironment.isRegisterOnEvent ?? false) {
+                return 1
+            } else {
+                return 0
+            }
         default:
             return 0
         }
@@ -102,7 +112,7 @@ extension AwardsViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RewardCollectionCell.reuseId, for: indexPath) as? RewardCollectionCell
-            cell?.configureCell(text: "NAME OF AWARD", imageName: "logo")
+            cell?.configureCell(text: "First step", imageName: "award4")
             return cell ?? UICollectionViewCell()
         default:
             return UICollectionViewCell()
