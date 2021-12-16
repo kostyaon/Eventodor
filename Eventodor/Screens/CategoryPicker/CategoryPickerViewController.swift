@@ -15,12 +15,15 @@ class CategoryPickerViewController: BaseViewController {
     @IBOutlet weak var nextButton: EVENTODORButton!
     
     // MARK: - Properties
+    private var categories: [CategoryEVENTODOR]?
     private var selectedIndexes: [Int] = []
+    private let viewModel = CategoryPickerViewModel()
     
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadData()
         setupUI()
     }
 }
@@ -28,6 +31,12 @@ class CategoryPickerViewController: BaseViewController {
 // MARK: - Private method's
 private
 extension CategoryPickerViewController {
+    
+    func loadData() {
+        viewModel.getCategories()
+        categories = viewModel.availableCategories
+        tableView.reloadData()
+    }
     
     func setupUI() {
         setupTableView()
@@ -49,8 +58,14 @@ extension CategoryPickerViewController {
     func setupButton() {
         nextButton.setTitle(with: "category_next".localized())
         nextButton.onTap = { [weak self] in
-            let baseTabBarController = BaseTabBarController()
-            self?.navigationController?.setViewControllers([baseTabBarController], animated: true)
+            guard let this = self else { return }
+            this.showLoading()
+            this.viewModel.postCategories(this.selectedIndexes)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                this.hideLoading()
+                let baseTabBarController = BaseTabBarController()
+                this.navigationController?.setViewControllers([baseTabBarController], animated: true)
+            }
         }
     }
     
@@ -69,12 +84,13 @@ extension CategoryPickerViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 80
+        return categories?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withType: CategoryTableViewCell.self, for: indexPath)
         cell.selectionStyle = .none
+        cell.configureCell(with: categories?[indexPath.row].name ?? "")
         return cell
     }
     

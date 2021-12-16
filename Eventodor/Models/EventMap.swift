@@ -14,10 +14,11 @@ class EventMap: NSObject, MKAnnotation {
     var locationName: String?
     var coordinate: CLLocationCoordinate2D
     
-    init(title: String?, locationName: String?, coordinate: CLLocationCoordinate2D) {
+    init(event: Event, title: String?, locationName: String?, coordinate: CLLocationCoordinate2D) {
         self.title = title
         self.locationName = locationName
         self.coordinate = coordinate
+        self.event = event
         
         super.init()
     }

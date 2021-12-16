@@ -18,7 +18,7 @@ struct Event: Decodable {
     var persons_amount: Int?
     var register_persons_amount: Int?
     var name: String?
-    var descriptioin: String?
+    var description: String?
     var time: String?
     var price: Float?
     var rank: Float?

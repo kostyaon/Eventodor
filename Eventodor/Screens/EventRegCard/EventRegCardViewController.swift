@@ -18,6 +18,9 @@ class EventRegCardViewController: BaseViewController {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var registerButton: EVENTODORButton!
     
+    // MARK: - Properties
+    var event: Event?
+    
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +39,20 @@ extension EventRegCardViewController {
     
     func setupUI() {
         registerButton.setTitle(with: "Register")
+        registerButton.onTap = { [weak self] in
+            AppEnvironment.isRegisterOnEvent = true
+            self?.dismiss(animated: true, completion: nil)
+        }
+        
         setupCardView()
         setupAction()
+        setupCardWithEvent()
+    }
+    
+    func setupCardWithEvent() {
+        eventLabel.text = event?.name
+        dateLabel.text = event?.time
+        priceLabel.text = "\(event?.price ?? 0.0)"
     }
     
     func setupAction() {

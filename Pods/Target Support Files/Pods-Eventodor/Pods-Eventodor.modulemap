@@ -1,0 +1,6 @@
+framework module Pods_Eventodor {
+  umbrella header "Pods-Eventodor-umbrella.h"
+
+  export *
+  module * { export * }
+}

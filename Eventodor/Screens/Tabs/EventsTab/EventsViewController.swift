@@ -25,11 +25,8 @@ class EventsViewController: BaseViewController {
     // MARK: - Properties
     private var eventState: EventState = .events
     private var events: [Event] = []
-    private var myEvents: [Event] = [
-        Event(event_id: nil, photo: nil, organizer: "OrganizeBEL", coordinate: nil, category: nil, address: nil, persons_amount: nil, register_persons_amount: nil, name: "New Year Eve", descriptioin: "We wish you a merry Christmas and a Happy New Year", time: "31.12.2021 23:00", price: 20.0, rank: nil),
-        Event(event_id: nil, photo: nil, organizer: "OrganizeRU", coordinate: nil, category: nil, address: nil, persons_amount: nil, register_persons_amount: nil, name: "Only for russians", descriptioin: "We will road across Russia to see beautiful places", time: "05.01.2022 10:00", price: 800.0, rank: nil),
-        Event(event_id: nil, photo: nil, organizer: "OrganizeSWISS", coordinate: nil, category: nil, address: nil, persons_amount: nil, register_persons_amount: nil, name: "Skiing and snowboarding", descriptioin: "If you like skiing and snowboarding around the nature, you're welcome!", time: "13.02.2022 12:25", price: 3500.0, rank: nil)
-    ]
+    private var myEvents: [Event] = []
+    private var viewModel = EventsViewModel()
     
     // MARK: - Lifecycle method's
     init(eventState: EventsViewController.EventState) {
@@ -44,6 +41,7 @@ class EventsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadData()
         setupUI()
     }
 }
@@ -64,6 +62,13 @@ extension EventsViewController {
         let filterCardViewController = FilterEventCardViewController()
         filterCardViewController.modalPresentationStyle = .overCurrentContext
         self.present(filterCardViewController, animated: true, completion: nil)
+    }
+    
+    func loadData() {
+        viewModel.getEvents()
+        events = viewModel.availableEvents
+        myEvents = viewModel.myEvents
+        tableView.reloadData()
     }
     
     func setupUI() {
@@ -117,7 +122,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if eventState == .events {
-            return 10
+            return events.count
         } else {
             return myEvents.count
         }
@@ -127,6 +132,8 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withType: EventCardTableViewCell.self, for: indexPath)
         if eventState == .myEvents {
             cell.configureCell(event: myEvents[indexPath.row], distance: nil)
+        } else {
+            cell.configureCell(event: events[indexPath.row], distance: nil)
         }
         cell.selectionStyle = .none
         return cell
@@ -139,6 +146,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
             self.present(reviewViewController, animated: true, completion: nil)
         } else {
             let registerViewController = EventRegCardViewController()
+            registerViewController.event = events[indexPath.row]
             registerViewController.modalPresentationStyle = .overCurrentContext
             self.present(registerViewController, animated: true, completion: nil)
         }
