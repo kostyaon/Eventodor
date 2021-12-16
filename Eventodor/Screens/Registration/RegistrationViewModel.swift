@@ -13,9 +13,9 @@ class RegistrationViewModel {
         if let path = Bundle.main.path(forResource: "Authentification", ofType: "json") {
             if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
                 let jsonDecoder = JSONDecoder()
-                let users = try! jsonDecoder.decode([User].self, from: data)
+                let users = try? jsonDecoder.decode([User].self, from: data)
                 var returnUser: User?
-                users.forEach({
+                users?.forEach({
                     if $0.password == password {
                         returnUser = $0
                     }
