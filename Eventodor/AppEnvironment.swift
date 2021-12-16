@@ -12,4 +12,5 @@ struct AppEnvironment {
     static var categoryIndexes: [Int]?
     static var isRegister: Bool? = false
     static var isRegisterOnEvent: Bool? = false
+    static var myEvent: Bool? = false
 }

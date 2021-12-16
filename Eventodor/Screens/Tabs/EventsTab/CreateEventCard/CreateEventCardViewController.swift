@@ -48,6 +48,10 @@ extension CreateEventCardViewController {
     
     func setupText() {
         createButton.setTitle(with: "create_event_title".localized())
+        createButton.onTap = { [weak self] in
+            AppEnvironment.myEvent = true
+            self?.dismiss(animated: true, completion: nil)
+        }
         titleLabel.text = "create_event_button".localized()
     }
     

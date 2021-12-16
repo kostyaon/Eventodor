@@ -44,6 +44,12 @@ class EventsViewController: BaseViewController {
         loadData()
         setupUI()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tableView.reloadData()
+    }
 }
 
 // MARK: - Private method's
@@ -124,7 +130,11 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
         if eventState == .events {
             return events.count
         } else {
-            return myEvents.count
+            if (AppEnvironment.myEvent ?? false) {
+                return myEvents.count
+            } else {
+                return 0
+            }
         }
     }
     
