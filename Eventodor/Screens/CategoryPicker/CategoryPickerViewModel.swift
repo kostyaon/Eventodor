@@ -24,6 +24,7 @@ class CategoryPickerViewModel {
     
     func postCategories(_ indexes: [Int]) {
         if let path = Bundle.main.path(forResource: "Categories", ofType: "json") {
+            AppEnvironment.categoryIndexes = indexes
             if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
                 let jsonDecoder = JSONDecoder()
                 if let categories = try? jsonDecoder.decode([CategoryEVENTODOR].self, from: data) {
