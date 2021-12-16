@@ -17,6 +17,9 @@ class FilterEventCardViewController: BaseViewController {
     @IBOutlet weak var priceTextField: EVENTODORTextField!
     @IBOutlet weak var filterButton: EVENTODORButton!
     
+    // MARK: - Properties
+    var onFilter: ((Float, String) -> ())?
+    
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +45,10 @@ extension FilterEventCardViewController {
     
     func setupText() {
         filterButton.setTitle(with: "filter_event_title".localized())
+        filterButton.onTap = { [weak self] in
+            self?.onFilter?((self?.priceTextField.text as NSString?)?.floatValue ?? 0.0, self?.dateTextField.text ?? "")
+            self?.dismiss(animated: true, completion: nil)
+        }
         titleLabel.text = "filter_event_button".localized()
     }
     
