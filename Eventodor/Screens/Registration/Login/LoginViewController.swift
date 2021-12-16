@@ -18,6 +18,7 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var passwordTextField: EVENTODORTextField!
     
     // MARK: - Properties
+    private var viewModel = RegistrationViewModel()
     
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
@@ -52,7 +53,7 @@ extension LoginViewController {
     
     func setupButtons() {
         loginButton.setTitle(with: "auth_login_title".localized())
-        loginButton.isEnabled = false
+        loginButton.isEnabled = true
         registerButton.setTitle(with: "auth_register_button".localized())
         registerButton.isEnabled = true
         
@@ -61,8 +62,19 @@ extension LoginViewController {
     
     func setupActions() {
         loginButton.onTap = { [weak self] in
-            let categoryPickerViewController = CategoryPickerViewController()
-            self?.navigationController?.pushViewController(categoryPickerViewController, animated: true)
+            guard let this = self else { return }
+            let user = this.viewModel.login(email: this.loginTextField.text ?? "", password: this.passwordTextField.text ?? "")
+            if let user = user {
+                this.showLoading()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    this.hideLoading()
+                    let categoryPickerViewController = CategoryPickerViewController()
+                    this.navigationController?.pushViewController(categoryPickerViewController, animated: true)
+                }
+            } else {
+                this.loginLabel.textColor = .red
+                this.passwordLabel.textColor = .red
+            }
         }
         registerButton.onTap = { [weak self] in
             let registrationViewController = RegistrationViewController()

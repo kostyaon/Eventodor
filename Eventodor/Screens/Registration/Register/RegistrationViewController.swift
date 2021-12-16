@@ -34,13 +34,12 @@ class RegistrationViewController: BaseViewController {
     @IBOutlet weak var cityTextField: EVENTODORTextField!
     @IBOutlet weak var addressTextField: EVENTODORTextField!
     @IBOutlet weak var bankAccountTextField: EVENTODORTextField!
-  //  @IBOutlet weak var organizerLabel: UILabel!
     @IBOutlet weak var termsOfUseLabel: UILabel!
-  //  @IBOutlet weak var organizerButton: EVENTODORCheckbox!
     @IBOutlet weak var termsOfUseButton: EVENTODORCheckbox!
     @IBOutlet weak var registerButton: EVENTODORButton!
     
     // MARK: - Properties
+    private var viewModel = RegistrationViewModel()
     private var labels: [UILabel] {
         [loginLabel, passwordLabel, nameLabel, surnameLabel, patronymicLabel, phoneLabel, emailLabel, countryLabel, cityLabel, addressLabel, bankAccountLabel]
     }
@@ -80,26 +79,47 @@ extension RegistrationViewController {
         cityLabel.text = "register_city".localized()
         addressLabel.text = "register_address".localized()
         bankAccountLabel.text = "register_bank".localized()
-        
-   //     organizerLabel.font = .systemFont(ofSize: 16)
-   //     organizerLabel.textColor = .black
         termsOfUseLabel.font = .systemFont(ofSize: 16)
         termsOfUseLabel.textColor = .black
-   //     organizerLabel.text = "register_organizer".localized()
         termsOfUseLabel.text = "register_terms_of_use".localized()
+    }
+    
+    func prepareUser() -> User {
+        return User(user_id: nil,
+                    photo: nil,
+                    name: nameTextField.text,
+                    password: passwordTextField.text,
+                    surname: surnameTextField.text,
+                    patronymic: patronymicTextField.text,
+                    phone: phoneTextField.text,
+                    email: emailTextField.text,
+                    country: countryTextField.text,
+                    city: cityTextField.text,
+                    address: addressTextField.text,
+                    bankAccount: bankAccountTextField.text)
     }
     
     func setupButton() {
         setupCheckBox()
         registerButton.setTitle(with: "auth_register_button".localized())
         registerButton.onTap = { [weak self] in
-            let categoryViewController = CategoryPickerViewController()
-            self?.navigationController?.pushViewController(categoryViewController, animated: true)
+            guard let this = self else { return }
+            if this.termsOfUseButton.isEnabled {
+                this.showLoading()
+                let user = this.prepareUser()
+                this.viewModel.register(user: user)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+                    self?.hideLoading()
+                    let categoryViewController = CategoryPickerViewController()
+                    self?.navigationController?.pushViewController(categoryViewController, animated: true)
+                }
+            } else {
+                this.termsOfUseLabel.textColor = .red
+            }
         }
     }
     
     func setupCheckBox() {
-    //    organizerButton.isEnabled = false
         termsOfUseButton.isEnabled = false
     }
 }
