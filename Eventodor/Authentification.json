@@ -1,0 +1,28 @@
+[
+    {
+        "user_id": null,
+        "photo": null,
+        "name": "Konstantin",
+        "surname": "Petrikevich",
+        "patronymic": "Vyacheslavovich",
+        "email": "kostyaon29082000@gmail.com",
+        "password": "kostya",
+        "country": null,
+        "city": null,
+        "address": null,
+        "bankAccount": "BY3003ALFA20002908"
+    },
+    {
+        "user_id": null,
+        "photo": null,
+        "name": "Main",
+        "surname": "Administrator",
+        "patronymic": "Eventodor",
+        "email": "admin@eventodor.com",
+        "password": "admin",
+        "country": null,
+        "city": null,
+        "address": null,
+        "bankAccount": "BY3003ALFA20002908"
+    }
+]
