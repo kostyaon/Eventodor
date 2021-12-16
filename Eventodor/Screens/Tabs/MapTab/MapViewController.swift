@@ -27,11 +27,14 @@ class MapViewController: BaseViewController {
         button.addTarget(self, action: #selector(onEventPin), for: .touchUpInside)
         return button
     }()
+    private let viewModel = EventsViewModel()
+    private var availableEvents: [Event] = []
     
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loadData()
         setupMapView()
         defineMappingRegion()
         addAnotation()
@@ -56,14 +59,20 @@ extension MapViewController {
         print("Select event - \(selectedEvent?.name ?? "NOPE")")
     }
     
+    func loadData() {
+        viewModel.getEvents()
+        availableEvents = viewModel.availableEvents
+        mapView.reloadInputViews()
+    }
+    
     func setupMapView() {
         mapView.delegate = self
-        let initialLocation = CLLocation(latitude: 53.9006, longitude: 27.5590)
+        let initialLocation = CLLocation(latitude: 53.91974976740907, longitude: 27.593096852856355)
         mapView.centerToLocation(initialLocation)
     }
     
     func defineMappingRegion() {
-        let minskCenter = CLLocation(latitude: 53.9006, longitude: 27.5590)
+        let minskCenter = CLLocation(latitude: 53.91974976740907, longitude: 27.593096852856355)
         let region = MKCoordinateRegion(
             center: minskCenter.coordinate,
             latitudinalMeters: 20000,
@@ -76,10 +85,12 @@ extension MapViewController {
     }
     
     func addAnotation() {
-        let galleryMinsk = EventMap(title: "Event On Gallery",
-                                    locationName: "Gallery Minsk",
-                                    coordinate: CLLocationCoordinate2D(latitude: 53.90896686425321, longitude: 27.54919321698397))
-        mapView.addAnnotation(galleryMinsk)
+        for event in availableEvents {
+            let annotation = EventMap(event: event, title: event.name,
+                                      locationName: "Price: \(event.price ?? 0.0)  Date: \(event.time ?? "")",
+                                      coordinate: CLLocationCoordinate2D(latitude: event.coordinate?.longitude ?? 0.0, longitude: event.coordinate?.latitude ?? 0.0))
+            mapView.addAnnotation(annotation)
+        }
     }
     
     func getCurrentLocation() {
@@ -106,16 +117,17 @@ extension MapViewController: MKMapViewDelegate {
         let identifier = "event"
         var view: MKMarkerAnnotationView
         if let dequeuedView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKMarkerAnnotationView {
-          dequeuedView.annotation = annotation
-          view = dequeuedView
+            dequeuedView.annotation = annotation
+            view = dequeuedView
         } else {
-          view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-          view.canShowCallout = true
-          view.calloutOffset = CGPoint(x: -5, y: 5)
-          view.rightCalloutAccessoryView = disclosureButton
+            view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            view.canShowCallout = true
+            view.calloutOffset = CGPoint(x: -5, y: 5)
+            selectedEvent = annotation.event
+            view.rightCalloutAccessoryView = disclosureButton
         }
         return view
-      }
+    }
 }
 
 // MARK: - CLLocationManagerDelegate method's
