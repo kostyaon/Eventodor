@@ -7,4 +7,5 @@ target 'Eventodor' do
 
   # Pods for Eventodor
   pod 'Kingfisher', '~> 7.0'
+  pod 'Alamofire'
 end
