@@ -7,6 +7,17 @@
 
 import Foundation
 
+struct RegUser: Decodable {
+    
+    let username: [String]?
+    let email: [String]?
+    let password: String?
+    let password1: [String]?
+    let password2: [String]?
+    let key: String?
+    let detail: String?
+}
+
 struct User: Decodable {
     
     var user_id: Int?

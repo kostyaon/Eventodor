@@ -63,14 +63,15 @@ extension LoginViewController {
     func setupActions() {
         loginButton.onTap = { [weak self] in
             guard let this = self else { return }
-            let user = this.viewModel.login(email: this.loginTextField.text ?? "", password: this.passwordTextField.text ?? "")
-            if let user = user {
-                this.showLoading()
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                    this.hideLoading()
-                    let categoryPickerViewController = CategoryPickerViewController()
-                    this.navigationController?.pushViewController(categoryPickerViewController, animated: true)
-                }
+            this.viewModel.login(username: this.loginTextField.text ?? "", password: this.passwordTextField.text ?? "")
+            if true {
+//                this.showLoading()
+//                this.viewModel.login(username: , password: <#T##String#>)
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+//                    this.hideLoading()
+//                    let categoryPickerViewController = CategoryPickerViewController()
+//                    this.navigationController?.pushViewController(categoryPickerViewController, animated: true)
+//                }
             } else {
                 this.loginLabel.textColor = .red
                 this.passwordLabel.textColor = .red

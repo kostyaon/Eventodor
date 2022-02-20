@@ -6,41 +6,36 @@
 //
 
 import Foundation
+import AVFoundation
 
 class RegistrationViewModel {
     
-    func login(email: String, password: String) -> User? {
-        if let path = Bundle.main.path(forResource: "Authentification", ofType: "json") {
-            if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
-                let jsonDecoder = JSONDecoder()
-                let users = try? jsonDecoder.decode([User].self, from: data)
-                var returnUser: User?
-                users?.forEach({
-                    if $0.password == password {
-                        returnUser = $0
-                    }
-                })
-                return returnUser
+    func login(username: String, password: String) {
+        EventodorInterface.uploadToServer(type: RegUser.self, router: EventodorRouter.login(username, password)) { result in
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let user):
+                if let token = user.key {
+                    UserDefaults.standard.set(token, forKey: "token")
+                }
+                print("Success login \(user)")
             }
         }
-        return nil
     }
     
     
-    func register(user: User) -> User? {
-        if let path = Bundle.main.path(forResource: "Authentification", ofType: "json") {
-            if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
-                let jsonDecoder = JSONDecoder()
-                let users = try? jsonDecoder.decode([User].self, from: data)
-                var returnUser: User?
-                users?.forEach({
-                    if $0.password == user.password {
-                        returnUser = $0
-                    }
-                })
-                return returnUser
+    func register(user: User) {
+        EventodorInterface.uploadToServer(type: RegUser.self, router: EventodorRouter.register(user.surname ?? "", user.email ?? "", user.password ?? "")) { result in
+            switch result {
+            case .success(let user):
+                if let token = user.key {
+                    UserDefaults.standard.set(token, forKey: "token")
+                }
+                print(user)
+            case .failure(let error):
+                print(error.localizedDescription)
             }
         }
-        return nil
     }
 }

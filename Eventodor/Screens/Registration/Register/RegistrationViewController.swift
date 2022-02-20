@@ -105,14 +105,14 @@ extension RegistrationViewController {
         registerButton.onTap = { [weak self] in
             guard let this = self else { return }
             if this.termsOfUseButton.isEnabled {
-                this.showLoading()
+            //    this.showLoading()
                 let user = this.prepareUser()
                 this.viewModel.register(user: user)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-                    self?.hideLoading()
-                    let categoryViewController = CategoryPickerViewController()
-                    self?.navigationController?.pushViewController(categoryViewController, animated: true)
-                }
+//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+//                    self?.hideLoading()
+//                    let categoryViewController = CategoryPickerViewController()
+//                    self?.navigationController?.pushViewController(categoryViewController, animated: true)
+//                }
             } else {
                 this.termsOfUseLabel.textColor = .red
             }
