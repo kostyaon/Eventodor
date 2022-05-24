@@ -10,14 +10,8 @@ import UIKit
 class EventRegCardViewController: BaseViewController {
     
     // MARK: - Outlet
-    @IBOutlet weak var bgView: UIView!
-    @IBOutlet weak var cardView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var eventLabel: UILabel!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var registerButton: EVENTODORButton!
-    
+    @IBOutlet weak var tableView: UITableView!
+
     // MARK: - Properties
     var event: Event?
     
@@ -29,41 +23,64 @@ class EventRegCardViewController: BaseViewController {
     }
 }
 
+// MARK: - UITableViewDelegate
+extension EventRegCardViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 4
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch section {
+        case 0...2:
+            return 1
+        case 3:
+            return 11
+        default:
+            return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        switch indexPath.section {
+        case 0:
+            let cell = tableView.dequeueReusableCell(withType: CardCellTableViewCell.self, for: indexPath)
+            cell.configure(with: event)
+            return cell
+        default:
+            return UITableViewCell()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print("Tap on \(indexPath.row)")
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch indexPath.section {
+        case 0:
+            return 220
+        default:
+            return 15
+        }
+    }
+}
+
 // MARK: - Private method's
 private
 extension EventRegCardViewController {
     
-    @objc func onBgView() {
-        self.dismiss(animated: true, completion: nil)
-    }
-    
     func setupUI() {
-        registerButton.setTitle(with: "Register")
-        registerButton.onTap = { [weak self] in
-            AppEnvironment.isRegisterOnEvent = true
-            self?.dismiss(animated: true, completion: nil)
-        }
-        
-        setupCardView()
-        setupAction()
-        setupCardWithEvent()
+        setupTableView()
     }
     
-    func setupCardWithEvent() {
-        eventLabel.text = event?.name
-        dateLabel.text = event?.time
-        priceLabel.text = "\(event?.price ?? "")"
-    }
-    
-    func setupAction() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onBgView))
-        bgView.addGestureRecognizer(tapGesture)
-    }
-    
-    func setupCardView() {
-        cardView.layer.cornerRadius = 24
-        cardView.layer.shadowOpacity = 0.5
-        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 10.0)
-        cardView.layer.shadowRadius = 15
+    func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.showsVerticalScrollIndicator = false
+        tableView.separatorStyle = .none
+        tableView.estimatedRowHeight = 25
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.register(nibWithClass: CardCellTableViewCell.self)
     }
 }

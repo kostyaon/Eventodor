@@ -39,3 +39,6 @@
 "error_server" = "Oops, we have some problem on the server side!";
 "error_unknown" = "Oh f***k! Please, contact a technical support!";
 "ok_title" = "💩";
+"time_title" = "Time";
+"price_title" = "Price";
+"currency_symbol" = "$";
