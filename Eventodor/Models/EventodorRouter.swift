@@ -33,7 +33,7 @@ extension EventodorRouter.Auth: EndpointType {
             return [
                 "Cookie": "",
                 "Content-Type": "application/json",
-                "Authorization": "Token \((UserDefaults.standard.string(forKey: "token") ?? ""))"
+                "Authorization": "Token \((ConfigValues.tokenKey ?? ""))"
             ]
         case .register(_, _, _), .login(_, _):
             return [
@@ -43,7 +43,7 @@ extension EventodorRouter.Auth: EndpointType {
         default:
             return [
                 "Content-Type": "application/json",
-                "Authorization": "Token \((UserDefaults.standard.string(forKey: "token") ?? ""))"
+                "Authorization": "Token \((ConfigValues.tokenKey ?? ""))"
             ]
         }
     }
