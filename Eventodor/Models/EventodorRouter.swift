@@ -30,7 +30,7 @@ extension EventodorRouter: EndpointType {
         default:
             return [
                 "Content-Type": "application/json",
-                "Authorization": (UserDefaults.standard.string(forKey: "token") ?? "")
+                "Authorization": "Token \((UserDefaults.standard.string(forKey: "token") ?? ""))"
             ]
         }
     }
