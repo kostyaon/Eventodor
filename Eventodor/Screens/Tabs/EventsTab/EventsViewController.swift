@@ -26,7 +26,7 @@ class EventsViewController: BaseViewController {
     private var eventState: EventState = .events
     private var events: [Event] = []
     private var myEvents: [Event] = []
-    private var viewModel = EventsViewModel()
+    private var viewModel = EventsViewModel(isRequestGroup: true)
     
     // MARK: - Lifecycle method's
     init(eventState: EventsViewController.EventState) {
@@ -41,14 +41,30 @@ class EventsViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadData()
         setupUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        tableView.reloadData()
+        loadData()
+    }
+    
+    // MARK: - Override handlers
+    override func handleError() {
+        viewModel.presentError = { [weak self] message in
+            guard let this = self else { return }
+            this.showError(title: "error_title".localized(), message: message)
+        }
+    }
+    
+    override func handleUpdateUI() {
+        viewModel.updateUI = { [weak self] in
+            guard let this = self else { return }
+            this.events = this.viewModel.availableEvents
+            this.myEvents = this.viewModel.myEvents
+            this.tableView.reloadData()
+        }
     }
 }
 
@@ -69,7 +85,7 @@ extension EventsViewController {
         filterCardViewController.modalPresentationStyle = .overCurrentContext
         filterCardViewController.onFilter = { [weak self] (price, date) in
             self?.events.removeAll {
-                (($0.price ?? 0.0) > price) && $0.time != date
+                ((($0.price as? NSString)?.floatValue ?? 0.0) > price) && $0.time != date
             }
             self?.tableView.reloadData()
         }
@@ -78,9 +94,6 @@ extension EventsViewController {
     
     func loadData() {
         viewModel.getEvents()
-        events = viewModel.availableEvents
-        myEvents = viewModel.myEvents
-        tableView.reloadData()
     }
     
     func setupUI() {

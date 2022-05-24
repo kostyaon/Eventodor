@@ -91,8 +91,8 @@ extension MapViewController {
     func addAnotation() {
         for event in availableEvents {
             let annotation = EventMap(event: event, title: event.name,
-                                      locationName: "Price: \(event.price ?? 0.0)  Date: \(event.time ?? "")",
-                                      coordinate: CLLocationCoordinate2D(latitude: event.coordinate?.longitude ?? 0.0, longitude: event.coordinate?.latitude ?? 0.0))
+                                      locationName: "Price: \(event.price ?? "")  Date: \(event.time ?? "")",
+                                      coordinate: CLLocationCoordinate2D(latitude: (event.coordinate?.longitude as? NSString)?.doubleValue ?? 0.0, longitude: (event.coordinate?.latitude as? NSString)?.doubleValue ?? 0.0))
             mapView.addAnnotation(annotation)
         }
     }

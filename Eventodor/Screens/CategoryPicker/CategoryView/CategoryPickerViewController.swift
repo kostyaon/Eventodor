@@ -78,7 +78,8 @@ extension CategoryPickerViewController {
         nextButton.setTitle(with: "category_next".localized())
         nextButton.onTap = { [weak self] in
             guard let this = self else { return }
-            
+            let baseTabBarController = BaseTabBarController()
+            this.navigationController?.setViewControllers([baseTabBarController], animated: true)
         }
     }
     

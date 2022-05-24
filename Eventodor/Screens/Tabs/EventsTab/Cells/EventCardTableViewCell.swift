@@ -45,10 +45,10 @@ class EventCardTableViewCell: UITableViewCell {
             moreLabel.text = " "
         }
         eventPhotoImageView.kf.setImage(with: URL(string: event.photo?.url ?? ""))
-        organizerNameLabel.text = event.organizer
+        organizerNameLabel.text = event.organizer?.name ?? ""
         eventNameLabel.text = event.name
         descriptionLabel.text = event.description
-        priceLabel.text = "Price: \(event.price ?? 0.0) dollars"
+        priceLabel.text = "Price: \(event.price ?? "") dollars"
         dateLabel.text = "Date: " + (event.time ?? "")
     }
 }

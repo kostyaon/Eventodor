@@ -18,6 +18,7 @@ class CategoryPickerViewModel: BaseViewModel {
         EventodorInterface.loadFromServer(router: EventodorRouter.Category.getCategories) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
+            
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)

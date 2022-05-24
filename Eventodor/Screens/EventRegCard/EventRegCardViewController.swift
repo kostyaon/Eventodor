@@ -52,7 +52,7 @@ extension EventRegCardViewController {
     func setupCardWithEvent() {
         eventLabel.text = event?.name
         dateLabel.text = event?.time
-        priceLabel.text = "\(event?.price ?? 0.0)"
+        priceLabel.text = "\(event?.price ?? "")"
     }
     
     func setupAction() {
