@@ -51,24 +51,26 @@ class RegistrationViewController: BaseViewController {
         
         super.viewDidLoad()
         setupUI()
-        setupViewModel()
+    }
+    
+    // MARK: - Override handlers
+    override func handleError() {
+        viewModel.presentError = { [weak self] message in
+            guard let this = self else { return }
+            this.showError(message: message)
+        }
+    }
+    
+    override func handleUpdateUI() {
+        viewModel.updateUI = { [weak self] in
+            guard let this = self else { return }
+        }
     }
 }
 
 // MARK: - Private method's
 private
 extension RegistrationViewController {
-    
-    func setupViewModel() {
-        viewModel.presentError = { [weak self] message in
-            guard let this = self else { return }
-            this.showError(message: message)
-        }
-        
-        viewModel.updateUI = { [weak self] in
-            guard let this = self else { return }
-        }
-    }
     
     func setupUI() {
         setupLabels()

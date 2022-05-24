@@ -27,7 +27,21 @@ class LoginViewController: BaseViewController {
         
         super.viewDidLoad()
         setupUI()
-        setupViewModel()
+    }
+    
+    // MARK: - Override handler
+    override func handleError() {
+        viewModel.presentError = { [weak self] message in
+            guard let this = self else { return }
+            this.showError(message: message)
+        }
+    }
+    
+    override func handleUpdateUI() {
+        viewModel.updateUI = { [weak self] in
+            guard let this = self else { return }
+            this.navigationController?.pushViewController(CategoryPickerViewController(), animated: true)
+        }
     }
     
     // MARK: - Helper method's
@@ -37,18 +51,6 @@ class LoginViewController: BaseViewController {
 // MARK: - Private method's
 private
 extension LoginViewController {
-    
-    func setupViewModel() {
-        viewModel.presentError = { [weak self] message in
-            guard let this = self else { return }
-            this.showError(message: message)
-        }
-        
-        viewModel.updateUI = { [weak self] in
-            guard let this = self else { return }
-            this.navigationController?.pushViewController(CategoryPickerViewController(), animated: true)
-        }
-    }
     
     func setupUI() {
         setupLabels()
