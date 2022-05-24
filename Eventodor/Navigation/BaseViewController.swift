@@ -32,6 +32,9 @@ class BaseViewController: UIViewController {
             let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
             view.addGestureRecognizer(tapGesture)
         }
+        
+        handleError()
+        handleUpdateUI()
     }
     
     // MARK: - Helper method's
@@ -69,6 +72,25 @@ class BaseViewController: UIViewController {
             self?.loadingViewController?.view.removeFromSuperview()
             self?.loadingViewController = nil
         }
+    }
+    
+    func showError(title: String = "error_title".localized(), message: String) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let actionOk = UIAlertAction(title: "ok_title".localized(), style: .default)
+        alert.addAction(actionOk)
+        present(alert, animated: true)
+    }
+}
+
+// MARK: - Error and update ui handler
+extension BaseViewController {
+    
+    @objc func handleError() {
+        //empty implementation
+    }
+    
+    @objc func handleUpdateUI() {
+        fatalError("Must Override")
     }
 }
 

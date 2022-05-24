@@ -39,7 +39,7 @@ class RegistrationViewController: BaseViewController {
     @IBOutlet weak var registerButton: EVENTODORButton!
     
     // MARK: - Properties
-    private var viewModel = RegistrationViewModel()
+    private var viewModel = AuthenticationViewModel(isRequestGroup: false)
     private var labels: [UILabel] {
         [loginLabel, passwordLabel, nameLabel, surnameLabel, patronymicLabel, phoneLabel, emailLabel, countryLabel, cityLabel, addressLabel, bankAccountLabel]
     }
@@ -51,6 +51,21 @@ class RegistrationViewController: BaseViewController {
         
         super.viewDidLoad()
         setupUI()
+    }
+    
+    // MARK: - Override handlers
+    override func handleError() {
+        viewModel.presentError = { [weak self] message in
+            guard let this = self else { return }
+            this.showError(message: message)
+        }
+    }
+    
+    override func handleUpdateUI() {
+        viewModel.updateUI = { [weak self] in
+            guard let this = self else { return }
+            this.navigationController?.pushViewController(CategoryPickerViewController(), animated: true)
+        }
     }
 }
 
@@ -66,12 +81,12 @@ extension RegistrationViewController {
     func setupLabels() {
         for label in labels {
             label.font = .systemFont(ofSize: 16)
-            label.textColor = UIColor(red: 83/256, green: 92/256, blue: 94/256, alpha: 1.0)
+            label.textColor = .labelColor
         }
         loginLabel.text = "auth_login_title".localized()
         passwordLabel.text = "auth_password_title".localized()
-        nameLabel.text = "register_surname".localized()
-        surnameLabel.text = "register_name".localized()
+        nameLabel.text = "register_name".localized()
+        surnameLabel.text = "register_surname".localized()
         patronymicLabel.text = "register_patronymic".localized()
         phoneLabel.text = "register_phone".localized()
         emailLabel.text = "register_email".localized()
@@ -86,7 +101,7 @@ extension RegistrationViewController {
     
     func prepareUser() -> User {
         return User(user_id: nil,
-                    photo: nil,
+                    photo_id: 1,
                     name: nameTextField.text,
                     password: passwordTextField.text,
                     surname: surnameTextField.text,
@@ -96,7 +111,8 @@ extension RegistrationViewController {
                     country: countryTextField.text,
                     city: cityTextField.text,
                     address: addressTextField.text,
-                    bankAccount: bankAccountTextField.text)
+                    bankAccount: bankAccountTextField.text,
+                    username: loginTextField.text)
     }
     
     func setupButton() {
@@ -104,18 +120,45 @@ extension RegistrationViewController {
         registerButton.setTitle(with: "auth_register_button".localized())
         registerButton.onTap = { [weak self] in
             guard let this = self else { return }
-            if this.termsOfUseButton.isEnabled {
-                this.showLoading()
-                let user = this.prepareUser()
-                this.viewModel.register(user: user)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-                    self?.hideLoading()
-                    let categoryViewController = CategoryPickerViewController()
-                    self?.navigationController?.pushViewController(categoryViewController, animated: true)
-                }
-            } else {
-                this.termsOfUseLabel.textColor = .red
-            }
+            this.registerUser()
+        }
+    }
+    
+    func registerUser() {
+        if checkRequiredFields() {
+            let user = prepareUser()
+            viewModel.register(with: user)
+        }
+    }
+    
+    func checkRequiredFields() -> Bool {
+        if  checkTerms() &&
+            checkField(label: loginLabel, field: loginTextField) &&
+            checkField(label: passwordLabel, field: passwordTextField) &&
+            checkField(label: emailLabel, field: emailTextField) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func checkTerms() -> Bool {
+        if termsOfUseButton.isEnabled {
+            termsOfUseLabel.textColor = .black
+            return true
+        } else {
+            termsOfUseLabel.textColor = .red
+            return false
+        }
+    }
+    
+    func checkField(label: UILabel, field: EVENTODORTextField) -> Bool {
+        if field.text?.isEmpty ?? true {
+            label.textColor = .red
+            return false
+        } else {
+            label.textColor = .labelColor
+            return true
         }
     }
     
