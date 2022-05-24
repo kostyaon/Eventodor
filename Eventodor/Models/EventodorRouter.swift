@@ -23,6 +23,67 @@ enum EventodorRouter {
         
         case getCategories
     }
+    
+    // Event
+    enum Event {
+        
+        case allEvents
+        case myEvents
+        case eventById(Int)
+    }
+}
+
+// MARK: - Events
+extension EventodorRouter.Event: EndpointType {
+    
+    var baseURL: String {
+        "http://127.0.0.1:8000/api/v1"
+    }
+    
+    var headers: HTTPHeaders? {
+        switch self {
+        case .allEvents, .eventById(_):
+            return [
+                "Cookie": "",
+                "Content-Type": "application/json",
+                "Authorization": "Token \((ConfigValues.tokenKey ?? ""))"
+            ]
+        case .myEvents:
+            return [:]
+        }
+    }
+    
+    var path: String {
+        switch self {
+        case .allEvents:
+            return "/event/"
+        case .myEvents:
+            return "/eventuser/"
+        case .eventById(let id):
+            return "/event/\(id)/"
+        }
+    }
+    
+    var parameters: Parameters? {
+        switch self {
+        case .allEvents, .myEvents, .eventById(_):
+            return [:]
+        }
+    }
+    
+    var httpMethod: HTTPMethod {
+        switch self {
+        case .allEvents, .myEvents, .eventById(_):
+            return .get
+        }
+    }
+    
+    var fullURL: URL {
+        switch self {
+        default:
+            return URL(string: self.baseURL + self.path)!
+        }
+    }
 }
 
 // MARK: - Category

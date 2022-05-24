@@ -22,6 +22,7 @@
 		6E3CE52827678918000E49D8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6E3CE52627678918000E49D8 /* LaunchScreen.storyboard */; };
 		6E3CE53127678BCC000E49D8 /* BaseTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E3CE53027678BCC000E49D8 /* BaseTabBarController.swift */; };
 		6E5840F1283CE22F008BD4DA /* +UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5840F0283CE22F008BD4DA /* +UIColor.swift */; };
+		6E5840F5283D2BA1008BD4DA /* Organizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5840F4283D2BA1008BD4DA /* Organizer.swift */; };
 		6E60F17427692DC300D8D133 /* AwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E60F17327692DC300D8D133 /* AwardsViewController.swift */; };
 		6E60F17627692F2F00D8D133 /* AwardsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E60F17527692F2F00D8D133 /* AwardsViewController.xib */; };
 		6E60F17A276930C000D8D133 /* RewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E60F178276930C000D8D133 /* RewardView.swift */; };
@@ -94,6 +95,7 @@
 		6E3CE52927678918000E49D8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6E3CE53027678BCC000E49D8 /* BaseTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseTabBarController.swift; sourceTree = "<group>"; };
 		6E5840F0283CE22F008BD4DA /* +UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+UIColor.swift"; sourceTree = "<group>"; };
+		6E5840F4283D2BA1008BD4DA /* Organizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer.swift; sourceTree = "<group>"; };
 		6E60F17327692DC300D8D133 /* AwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
 		6E60F17527692F2F00D8D133 /* AwardsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AwardsViewController.xib; sourceTree = "<group>"; };
 		6E60F178276930C000D8D133 /* RewardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardView.swift; sourceTree = "<group>"; };
@@ -445,6 +447,7 @@
 				6EBB3991276950E500C34CD1 /* Review.swift */,
 				6EAF994A276AA2E3000C6470 /* EventMap.swift */,
 				6E12F24027C28CAC00FD09AF /* EventodorRouter.swift */,
+				6E5840F4283D2BA1008BD4DA /* Organizer.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -645,6 +648,7 @@
 				6EEA34D22768C7AB00481985 /* EventCardTableViewCell.swift in Sources */,
 				6E60F17427692DC300D8D133 /* AwardsViewController.swift in Sources */,
 				6E7D79A42767A8AA004F9228 /* EVENTODORButton.swift in Sources */,
+				6E5840F5283D2BA1008BD4DA /* Organizer.swift in Sources */,
 				6E7589F5283CA2F300EC230D /* BaseViewModel.swift in Sources */,
 				6E7D79AC2767C0DA004F9228 /* RegistrationViewController.swift in Sources */,
 				6E12F23F27C28C8600FD09AF /* EndpointType.swift in Sources */,

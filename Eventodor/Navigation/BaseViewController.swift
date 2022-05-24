@@ -90,7 +90,7 @@ extension BaseViewController {
     }
     
     @objc func handleUpdateUI() {
-        fatalError("Must Override")
+      //  fatalError("Must Override")
     }
 }
 

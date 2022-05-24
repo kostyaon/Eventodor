@@ -18,7 +18,7 @@ extension Decodable {
             guard let data = try? JSONSerialization.data(withJSONObject: array, options: []) else { return nil }
             return decode(from: data)
         } else if let data = any as? Data {
-            return try? JSONDecoder().decode(Self.self, from: data)
+            return try! JSONDecoder().decode(Self.self, from: data)
         } else {
             return nil
         }
