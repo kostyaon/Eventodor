@@ -7,5 +7,6 @@ target 'Eventodor' do
 
   # Pods for Eventodor
   pod 'Kingfisher', '~> 7.0'
-  pod 'Alamofire'
+  pod 'Alamofire', '~> 5.4.0'
+  pod 'AlamofireNetworkActivityLogger', '~> 3.4.0'
 end
