@@ -18,7 +18,7 @@ class LoginViewController: BaseViewController {
     @IBOutlet weak var passwordTextField: EVENTODORTextField!
     
     // MARK: - Properties
-    private var viewModel = RegistrationViewModel()
+    private var viewModel = AuthenticationViewModel(isRequestGroup: true)
     
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
@@ -27,6 +27,7 @@ class LoginViewController: BaseViewController {
         
         super.viewDidLoad()
         setupUI()
+        setupViewModel()
     }
     
     // MARK: - Helper method's
@@ -37,6 +38,18 @@ class LoginViewController: BaseViewController {
 private
 extension LoginViewController {
     
+    func setupViewModel() {
+        viewModel.presentError = { [weak self] message in
+            guard let this = self else { return }
+            this.showError(message: message)
+        }
+        
+        viewModel.updateUI = { [weak self] in
+            guard let this = self else { return }
+            this.navigationController?.pushViewController(CategoryPickerViewController(), animated: true)
+        }
+    }
+    
     func setupUI() {
         setupLabels()
         setupButtons()
@@ -45,10 +58,10 @@ extension LoginViewController {
     func setupLabels() {
         loginLabel.font = .systemFont(ofSize: 16)
         loginLabel.text = "auth_login_title".localized()
-        loginLabel.textColor = UIColor(red: 83/256, green: 92/256, blue: 94/256, alpha: 1.0)
+        loginLabel.textColor = .labelColor
         passwordLabel.font = .systemFont(ofSize: 16)
         passwordLabel.text = "auth_password_title".localized()
-        passwordLabel.textColor = UIColor(red: 83/256, green: 92/256, blue: 94/256, alpha: 1.0)
+        passwordLabel.textColor = .labelColor
     }
     
     func setupButtons() {
@@ -63,23 +76,33 @@ extension LoginViewController {
     func setupActions() {
         loginButton.onTap = { [weak self] in
             guard let this = self else { return }
-            this.viewModel.login(username: this.loginTextField.text ?? "", password: this.passwordTextField.text ?? "")
-            if true {
-//                this.showLoading()
-//                this.viewModel.login(username: , password: <#T##String#>)
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//                    this.hideLoading()
-//                    let categoryPickerViewController = CategoryPickerViewController()
-//                    this.navigationController?.pushViewController(categoryPickerViewController, animated: true)
-//                }
-            } else {
-                this.loginLabel.textColor = .red
-                this.passwordLabel.textColor = .red
+            if this.checkRequiredFields() {
+                this.viewModel.login(username: this.loginTextField.text ?? "", password: this.passwordTextField.text ?? "")
             }
         }
         registerButton.onTap = { [weak self] in
+            guard let this = self else { return }
             let registrationViewController = RegistrationViewController()
-            self?.navigationController?.pushViewController(registrationViewController, animated: true)
+            this.navigationController?.pushViewController(registrationViewController, animated: true)
+        }
+    }
+    
+    func checkRequiredFields() -> Bool {
+        if  checkField(label: loginLabel, field: loginTextField) &&
+            checkField(label: passwordLabel, field: passwordTextField) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func checkField(label: UILabel, field: EVENTODORTextField) -> Bool {
+        if field.text?.isEmpty ?? true {
+            label.textColor = .red
+            return false
+        } else {
+            label.textColor = .labelColor
+            return true
         }
     }
 }

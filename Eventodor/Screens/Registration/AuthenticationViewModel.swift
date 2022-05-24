@@ -7,7 +7,7 @@
 
 import Foundation
 
-class RegistrationViewModel: BaseViewModel {
+class AuthenticationViewModel: BaseViewModel {
     
     enum ErrorType: Error {
         
@@ -18,19 +18,32 @@ class RegistrationViewModel: BaseViewModel {
     
     func login(username: String, password: String) {
         enterRequest()
-        EventodorInterface.uploadToServer(router: EventodorRouter.login(username, password)) { [weak self] result in
+        EventodorInterface.uploadToServer(router: EventodorRouter.Auth.login(username, password)) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
             switch result {
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let jsonResponse):
+                if let detail = jsonResponse["detail"] as? String {
+                    this.showMessage(message: detail)
+                    return
+                }
+                
+                if let errors = jsonResponse["non_field_errors"] as? [String] {
+                    this.showMessage(message: errors.first ?? "")
+                    return
+                }
+                
                 guard let user = RegUser.decode(from: jsonResponse) else { return }
                 if let token = user.key {
                     UserDefaults.standard.set(token, forKey: "token")
                 }
-                print("Success login \(user)")
             }
+        }
+        notifyWhenRequestsCompleted { [weak self] in
+            guard let this = self else { return }
+            this.updateUI?()
         }
     }
     
@@ -45,13 +58,13 @@ class RegistrationViewModel: BaseViewModel {
 }
 
 private
-extension RegistrationViewModel {
+extension AuthenticationViewModel {
     
     func showMessage(message: String) {
         presentError?(message)
     }
     
-    func showError(of error: RegistrationViewModel.ErrorType) {
+    func showError(of error: AuthenticationViewModel.ErrorType) {
         switch error {
         case .clientError:
             presentError?("error_client".localized())
@@ -64,7 +77,7 @@ extension RegistrationViewModel {
     
     func register(user: User) {
         enterRequest()
-        EventodorInterface.uploadToServer(router: EventodorRouter.register(user.username ?? "", user.email ?? "", user.password ?? "")) { [weak self] result in
+        EventodorInterface.uploadToServer(router: EventodorRouter.Auth.register(user.username ?? "", user.email ?? "", user.password ?? "")) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
             switch result {
@@ -98,7 +111,7 @@ extension RegistrationViewModel {
     
     func registerUser(with user: User) {
         enterRequest()
-        EventodorInterface.uploadToServer(router: EventodorRouter.registerUser(user)) { [weak self] result in
+        EventodorInterface.uploadToServer(router: EventodorRouter.Auth.registerUser(user)) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
             switch result {

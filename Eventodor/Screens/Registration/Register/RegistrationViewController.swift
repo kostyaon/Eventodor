@@ -39,7 +39,7 @@ class RegistrationViewController: BaseViewController {
     @IBOutlet weak var registerButton: EVENTODORButton!
     
     // MARK: - Properties
-    private var viewModel = RegistrationViewModel(isRequestGroup: false)
+    private var viewModel = AuthenticationViewModel(isRequestGroup: false)
     private var labels: [UILabel] {
         [loginLabel, passwordLabel, nameLabel, surnameLabel, patronymicLabel, phoneLabel, emailLabel, countryLabel, cityLabel, addressLabel, bankAccountLabel]
     }
@@ -64,6 +64,10 @@ extension RegistrationViewController {
             guard let this = self else { return }
             this.showError(message: message)
         }
+        
+        viewModel.updateUI = { [weak self] in
+            guard let this = self else { return }
+        }
     }
     
     func setupUI() {
@@ -74,7 +78,7 @@ extension RegistrationViewController {
     func setupLabels() {
         for label in labels {
             label.font = .systemFont(ofSize: 16)
-            label.textColor = UIColor(red: 83/256, green: 92/256, blue: 94/256, alpha: 1.0)
+            label.textColor = .labelColor
         }
         loginLabel.text = "auth_login_title".localized()
         passwordLabel.text = "auth_password_title".localized()
@@ -150,7 +154,7 @@ extension RegistrationViewController {
             label.textColor = .red
             return false
         } else {
-            label.textColor = UIColor(red: 83/256, green: 92/256, blue: 94/256, alpha: 1.0)
+            label.textColor = .labelColor
             return true
         }
     }

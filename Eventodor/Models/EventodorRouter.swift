@@ -10,13 +10,18 @@ import Alamofire
 
 enum EventodorRouter {
     
-    case register(String, String, String)
-    case registerUser(User)
-    case login(String, String)
+    // Authentication
+    enum Auth {
+        
+        case register(String, String, String)
+        case registerUser(User)
+        case login(String, String)
+    }
+    
 }
 
-// MARK: - Extensions
-extension EventodorRouter: EndpointType {
+// MARK: - Authentication
+extension EventodorRouter.Auth: EndpointType {
     
     var baseURL: String {
         "http://127.0.0.1:8000/api/v1"
