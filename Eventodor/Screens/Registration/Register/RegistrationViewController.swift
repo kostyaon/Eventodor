@@ -64,6 +64,7 @@ class RegistrationViewController: BaseViewController {
     override func handleUpdateUI() {
         viewModel.updateUI = { [weak self] in
             guard let this = self else { return }
+            this.navigationController?.pushViewController(CategoryPickerViewController(), animated: true)
         }
     }
 }
