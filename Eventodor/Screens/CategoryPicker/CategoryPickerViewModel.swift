@@ -7,32 +7,32 @@
 
 import Foundation
 
-class CategoryPickerViewModel {
+class CategoryPickerViewModel: BaseViewModel {
     
+    // Properties
     var availableCategories: [CategoryEVENTODOR]?
     
+    // Method's
     func getCategories() {
-        if let path = Bundle.main.path(forResource: "Categories", ofType: "json") {
-            if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
-                let jsonDecoder = JSONDecoder()
-                if let categories = try? jsonDecoder.decode([CategoryEVENTODOR].self, from: data) {
-                    availableCategories = categories
+        enterRequest()
+        EventodorInterface.loadFromServer(router: EventodorRouter.Category.getCategories) { [weak self] result in
+            guard let this = self else { return }
+            this.leaveRequest()
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let data):
+                if let jsonResponse = data as? [String: Any], let detail = jsonResponse["detail"] as? String {
+                    this.showMessage(message: detail)
+                    return
                 }
+                guard let jsonResponse = data as? [[String: Any]], let categories = [CategoryEVENTODOR].decode(from: jsonResponse) else { return }
+                this.availableCategories = categories
             }
         }
-    }
-    
-    func postCategories(_ indexes: [Int]) {
-        if let path = Bundle.main.path(forResource: "Categories", ofType: "json") {
-            AppEnvironment.categoryIndexes = indexes
-            if let data = try? Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe) {
-                let jsonDecoder = JSONDecoder()
-                if let categories = try? jsonDecoder.decode([CategoryEVENTODOR].self, from: data) {
-                    indexes.map {
-                        return $0 + 1
-                    }
-                }
-            }
+        notifyWhenRequestsCompleted { [weak self] in
+            guard let this = self else { return }
+            this.updateUI?()
         }
     }
 }

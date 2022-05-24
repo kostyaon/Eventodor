@@ -15,16 +15,37 @@ class CategoryPickerViewController: BaseViewController {
     @IBOutlet weak var nextButton: EVENTODORButton!
     
     // MARK: - Properties
-    private var categories: [CategoryEVENTODOR]?
+    private var categories: [CategoryEVENTODOR] = []
     private var selectedIndexes: [Int] = []
-    private let viewModel = CategoryPickerViewModel()
+    private let viewModel = CategoryPickerViewModel(isRequestGroup: true)
     
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadData()
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadData()
+    }
+    
+    // MARK: - Override handlers
+    override func handleError() {
+        viewModel.presentError = { [weak self] message in
+            guard let this = self else { return }
+            this.showError(title: "error_title".localized(), message: message)
+        }
+    }
+    
+    override func handleUpdateUI() {
+        viewModel.updateUI = { [weak self] in
+            guard let this = self else { return }
+            this.categories = this.viewModel.availableCategories ?? []
+            this.tableView.reloadData()
+        }
     }
 }
 
@@ -34,8 +55,6 @@ extension CategoryPickerViewController {
     
     func loadData() {
         viewModel.getCategories()
-        categories = viewModel.availableCategories
-        tableView.reloadData()
     }
     
     func setupUI() {
@@ -59,13 +78,7 @@ extension CategoryPickerViewController {
         nextButton.setTitle(with: "category_next".localized())
         nextButton.onTap = { [weak self] in
             guard let this = self else { return }
-            this.showLoading()
-            this.viewModel.postCategories(this.selectedIndexes)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                this.hideLoading()
-                let baseTabBarController = BaseTabBarController()
-                this.navigationController?.setViewControllers([baseTabBarController], animated: true)
-            }
+            
         }
     }
     
@@ -84,13 +97,13 @@ extension CategoryPickerViewController: UITableViewDataSource, UITableViewDelega
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return categories?.count ?? 0
+        return categories.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withType: CategoryTableViewCell.self, for: indexPath)
         cell.selectionStyle = .none
-        cell.configureCell(with: categories?[indexPath.row].name ?? "")
+        cell.configureCell(with: categories[indexPath.row].name ?? "")
         return cell
     }
     
