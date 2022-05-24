@@ -34,3 +34,8 @@
 "awards_collection" = "You're collection";
 "review_title" = "Review";
 "review_send" = "Send";
+"error_title" = "Error";
+"error_client" = "Oops, something goes wrong with the app!";
+"error_server" = "Oops, we have some problem on the server side!";
+"error_unknown" = "Oh f***k! Please, contact a technical support!";
+"ok_title" = "💩";

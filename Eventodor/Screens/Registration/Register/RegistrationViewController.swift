@@ -39,7 +39,7 @@ class RegistrationViewController: BaseViewController {
     @IBOutlet weak var registerButton: EVENTODORButton!
     
     // MARK: - Properties
-    private var viewModel = RegistrationViewModel()
+    private var viewModel = RegistrationViewModel(isRequestGroup: false)
     private var labels: [UILabel] {
         [loginLabel, passwordLabel, nameLabel, surnameLabel, patronymicLabel, phoneLabel, emailLabel, countryLabel, cityLabel, addressLabel, bankAccountLabel]
     }
@@ -51,12 +51,20 @@ class RegistrationViewController: BaseViewController {
         
         super.viewDidLoad()
         setupUI()
+        setupViewModel()
     }
 }
 
 // MARK: - Private method's
 private
 extension RegistrationViewController {
+    
+    func setupViewModel() {
+        viewModel.presentError = { [weak self] message in
+            guard let this = self else { return }
+            this.showError(message: message)
+        }
+    }
     
     func setupUI() {
         setupLabels()
@@ -70,8 +78,8 @@ extension RegistrationViewController {
         }
         loginLabel.text = "auth_login_title".localized()
         passwordLabel.text = "auth_password_title".localized()
-        nameLabel.text = "register_surname".localized()
-        surnameLabel.text = "register_name".localized()
+        nameLabel.text = "register_name".localized()
+        surnameLabel.text = "register_surname".localized()
         patronymicLabel.text = "register_patronymic".localized()
         phoneLabel.text = "register_phone".localized()
         emailLabel.text = "register_email".localized()
@@ -86,7 +94,7 @@ extension RegistrationViewController {
     
     func prepareUser() -> User {
         return User(user_id: nil,
-                    photo: nil,
+                    photo_id: 1,
                     name: nameTextField.text,
                     password: passwordTextField.text,
                     surname: surnameTextField.text,
@@ -96,7 +104,8 @@ extension RegistrationViewController {
                     country: countryTextField.text,
                     city: cityTextField.text,
                     address: addressTextField.text,
-                    bankAccount: bankAccountTextField.text)
+                    bankAccount: bankAccountTextField.text,
+                    username: loginTextField.text)
     }
     
     func setupButton() {
@@ -105,14 +114,8 @@ extension RegistrationViewController {
         registerButton.onTap = { [weak self] in
             guard let this = self else { return }
             if this.termsOfUseButton.isEnabled {
-            //    this.showLoading()
                 let user = this.prepareUser()
-                this.viewModel.register(user: user)
-//                DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
-//                    self?.hideLoading()
-//                    let categoryViewController = CategoryPickerViewController()
-//                    self?.navigationController?.pushViewController(categoryViewController, animated: true)
-//                }
+                this.viewModel.register(with: user)
             } else {
                 this.termsOfUseLabel.textColor = .red
             }

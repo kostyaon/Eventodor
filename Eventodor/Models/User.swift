@@ -21,7 +21,7 @@ struct RegUser: Decodable {
 struct User: Decodable {
     
     var user_id: Int?
-    var photo: Photo?
+    var photo_id: Int?// Photo?
     var name: String?
     var password: String?
     var surname: String?
@@ -32,6 +32,8 @@ struct User: Decodable {
     var city: String?
     var address: String?
     var bankAccount: String?
+    
+    let username: String?
 }
 
 struct Photo: Decodable {

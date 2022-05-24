@@ -11,6 +11,7 @@ import Alamofire
 enum EventodorRouter {
     
     case register(String, String, String)
+    case registerUser(User)
     case login(String, String)
 }
 
@@ -23,8 +24,15 @@ extension EventodorRouter: EndpointType {
     
     var headers: HTTPHeaders? {
         switch self {
+        case .registerUser(_):
+            return [
+                "Cookie": "",
+                "Content-Type": "application/json",
+                "Authorization": "Token \((UserDefaults.standard.string(forKey: "token") ?? ""))"
+            ]
         case .register(_, _, _), .login(_, _):
             return [
+                "Cookie": "",
                 "Content-Type": "application/json"
             ]
         default:
@@ -37,6 +45,8 @@ extension EventodorRouter: EndpointType {
     
     var path: String {
         switch self {
+        case .registerUser(_):
+            return "/user/"
         case .register(_, _, _):
             return "/registration/"
         case .login(_, _):
@@ -55,6 +65,19 @@ extension EventodorRouter: EndpointType {
                 "password1": password,
                 "password2": password
             ]
+        case .registerUser(let user):
+            return [
+                "photo_id": user.photo_id ?? 1,
+                "name": user.name ?? "",
+                "surname": user.surname ?? "",
+                "patronymic": user.patronymic ?? "",
+                "phone": user.phone ?? "",
+                "email": user.email ?? "",
+                "country": user.country ?? "",
+                "city": user.city ?? "",
+                "address": user.address ?? "",
+                "bankAccount": user.bankAccount ?? ""
+            ]
         case .login(let username, let password):
             return [
                 "username": username,
@@ -68,7 +91,7 @@ extension EventodorRouter: EndpointType {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .register(_, _, _), .login(_, _):
+        case .register(_, _, _), .login(_, _), .registerUser(_):
             return .post
         default:
             return .post
