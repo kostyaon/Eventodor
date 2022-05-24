@@ -113,12 +113,45 @@ extension RegistrationViewController {
         registerButton.setTitle(with: "auth_register_button".localized())
         registerButton.onTap = { [weak self] in
             guard let this = self else { return }
-            if this.termsOfUseButton.isEnabled {
-                let user = this.prepareUser()
-                this.viewModel.register(with: user)
-            } else {
-                this.termsOfUseLabel.textColor = .red
-            }
+            this.registerUser()
+        }
+    }
+    
+    func registerUser() {
+        if checkRequiredFields() {
+            let user = prepareUser()
+            viewModel.register(with: user)
+        }
+    }
+    
+    func checkRequiredFields() -> Bool {
+        if  checkTerms() &&
+            checkField(label: loginLabel, field: loginTextField) &&
+            checkField(label: passwordLabel, field: passwordTextField) &&
+            checkField(label: emailLabel, field: emailTextField) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    func checkTerms() -> Bool {
+        if termsOfUseButton.isEnabled {
+            termsOfUseLabel.textColor = .black
+            return true
+        } else {
+            termsOfUseLabel.textColor = .red
+            return false
+        }
+    }
+    
+    func checkField(label: UILabel, field: EVENTODORTextField) -> Bool {
+        if field.text?.isEmpty ?? true {
+            label.textColor = .red
+            return false
+        } else {
+            label.textColor = UIColor(red: 83/256, green: 92/256, blue: 94/256, alpha: 1.0)
+            return true
         }
     }
     

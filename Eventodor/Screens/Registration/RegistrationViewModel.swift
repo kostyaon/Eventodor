@@ -47,14 +47,14 @@ class RegistrationViewModel: BaseViewModel {
 private
 extension RegistrationViewModel {
     
-    func showError(of error: RegistrationViewModel.ErrorType, message: String? = nil) {
+    func showMessage(message: String) {
+        presentError?(message)
+    }
+    
+    func showError(of error: RegistrationViewModel.ErrorType) {
         switch error {
         case .clientError:
-            guard let message = message else {
-                presentError?("error_client".localized())
-                return
-            }
-            presentError?(message)
+            presentError?("error_client".localized())
         case .serverError:
             presentError?("error_server".localized())
         case .unknown:
@@ -71,17 +71,17 @@ extension RegistrationViewModel {
             case .success(let jsonResponse):
                 guard let responseUser = RegUser.decode(from: jsonResponse) else { return }
                 if let username = responseUser.username?.first {
-                    this.showError(of: .clientError, message: username)
+                    this.showMessage(message: username)
                     return
                 }
                 
                 if let email = responseUser.email?.first {
-                    this.showError(of: .clientError, message: email)
+                    this.showMessage(message: email)
                     return
                 }
                 
                 if let password1 = responseUser.password1?.first {
-                    this.showError(of: .clientError, message: password1)
+                    this.showMessage(message: password1)
                     return
                 }
                 
@@ -104,7 +104,7 @@ extension RegistrationViewModel {
             switch result {
             case .success(let jsonResponse):
                 if let details = jsonResponse["detail"] as? String {
-                    this.showError(of: .clientError, message: details)
+                    this.showMessage(message: details)
                     return
                 }
                 if let user = User.decode(from: jsonResponse) {
