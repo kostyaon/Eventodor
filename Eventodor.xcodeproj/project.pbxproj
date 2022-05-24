@@ -25,6 +25,8 @@
 		6E5840F5283D2BA1008BD4DA /* Organizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5840F4283D2BA1008BD4DA /* Organizer.swift */; };
 		6E5840F8283D6D77008BD4DA /* CardCellTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5840F7283D6D77008BD4DA /* CardCellTableViewCell.swift */; };
 		6E5840FA283D6E86008BD4DA /* CardCellTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5840F9283D6E86008BD4DA /* CardCellTableViewCell.xib */; };
+		6E5840FE283D754B008BD4DA /* DescriptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E5840FD283D754B008BD4DA /* DescriptionTableViewCell.swift */; };
+		6E584100283D7636008BD4DA /* DescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5840FF283D7636008BD4DA /* DescriptionTableViewCell.xib */; };
 		6E60F17427692DC300D8D133 /* AwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E60F17327692DC300D8D133 /* AwardsViewController.swift */; };
 		6E60F17627692F2F00D8D133 /* AwardsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E60F17527692F2F00D8D133 /* AwardsViewController.xib */; };
 		6E60F17A276930C000D8D133 /* RewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E60F178276930C000D8D133 /* RewardView.swift */; };
@@ -100,6 +102,8 @@
 		6E5840F4283D2BA1008BD4DA /* Organizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Organizer.swift; sourceTree = "<group>"; };
 		6E5840F7283D6D77008BD4DA /* CardCellTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardCellTableViewCell.swift; sourceTree = "<group>"; };
 		6E5840F9283D6E86008BD4DA /* CardCellTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CardCellTableViewCell.xib; sourceTree = "<group>"; };
+		6E5840FD283D754B008BD4DA /* DescriptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewCell.swift; sourceTree = "<group>"; };
+		6E5840FF283D7636008BD4DA /* DescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		6E60F17327692DC300D8D133 /* AwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
 		6E60F17527692F2F00D8D133 /* AwardsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AwardsViewController.xib; sourceTree = "<group>"; };
 		6E60F178276930C000D8D133 /* RewardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardView.swift; sourceTree = "<group>"; };
@@ -272,10 +276,28 @@
 		6E5840F6283D6D04008BD4DA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6E5840FC283D7534008BD4DA /* DescriptionCell */,
+				6E5840FB283D7526008BD4DA /* CardCell */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		6E5840FB283D7526008BD4DA /* CardCell */ = {
+			isa = PBXGroup;
+			children = (
 				6E5840F7283D6D77008BD4DA /* CardCellTableViewCell.swift */,
 				6E5840F9283D6E86008BD4DA /* CardCellTableViewCell.xib */,
 			);
-			path = Cells;
+			path = CardCell;
+			sourceTree = "<group>";
+		};
+		6E5840FC283D7534008BD4DA /* DescriptionCell */ = {
+			isa = PBXGroup;
+			children = (
+				6E5840FD283D754B008BD4DA /* DescriptionTableViewCell.swift */,
+				6E5840FF283D7636008BD4DA /* DescriptionTableViewCell.xib */,
+			);
+			path = DescriptionCell;
 			sourceTree = "<group>";
 		};
 		6E60F17127692D8F00D8D133 /* AwardsTab */ = {
@@ -582,6 +604,7 @@
 				6EAF9963276ACD89000C6470 /* Categories.json in Resources */,
 				6EEA34CF2768C72700481985 /* EventsViewController.xib in Resources */,
 				6E7D799527679AF3004F9228 /* Localizable.strings in Resources */,
+				6E584100283D7636008BD4DA /* DescriptionTableViewCell.xib in Resources */,
 				6E60F17627692F2F00D8D133 /* AwardsViewController.xib in Resources */,
 				6E60F185276930C800D8D133 /* RewardCollectionCell.xib in Resources */,
 				6E7D79AE2767E84D004F9228 /* RegistrationViewController.xib in Resources */,
@@ -666,6 +689,7 @@
 				6E7D79A42767A8AA004F9228 /* EVENTODORButton.swift in Sources */,
 				6E5840F5283D2BA1008BD4DA /* Organizer.swift in Sources */,
 				6E7589F5283CA2F300EC230D /* BaseViewModel.swift in Sources */,
+				6E5840FE283D754B008BD4DA /* DescriptionTableViewCell.swift in Sources */,
 				6E7D79AC2767C0DA004F9228 /* RegistrationViewController.swift in Sources */,
 				6E12F23F27C28C8600FD09AF /* EndpointType.swift in Sources */,
 				6E7D79982767A550004F9228 /* +String.swift in Sources */,
