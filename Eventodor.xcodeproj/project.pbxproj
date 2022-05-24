@@ -254,6 +254,15 @@
 			path = Navigation;
 			sourceTree = "<group>";
 		};
+		6E5840F3283CF392008BD4DA /* CategoryView */ = {
+			isa = PBXGroup;
+			children = (
+				6E7D79B22768AD03004F9228 /* CategoryPickerViewController.swift */,
+				6EEA34C22768B05200481985 /* CategoryPickerViewController.xib */,
+			);
+			path = CategoryView;
+			sourceTree = "<group>";
+		};
 		6E60F17127692D8F00D8D133 /* AwardsTab */ = {
 			isa = PBXGroup;
 			children = (
@@ -374,9 +383,8 @@
 		6E7D79B12768ACEB004F9228 /* CategoryPicker */ = {
 			isa = PBXGroup;
 			children = (
+				6E5840F3283CF392008BD4DA /* CategoryView */,
 				6EEA34C42768B2E700481985 /* Cells */,
-				6E7D79B22768AD03004F9228 /* CategoryPickerViewController.swift */,
-				6EEA34C22768B05200481985 /* CategoryPickerViewController.xib */,
 				6EAF9960276ACD01000C6470 /* CategoryPickerViewModel.swift */,
 			);
 			path = CategoryPicker;

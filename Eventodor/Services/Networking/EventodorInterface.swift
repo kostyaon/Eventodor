@@ -22,15 +22,15 @@ struct EventodorInterface {
         }
     }
     
-    static func loadFromServer<T: Decodable>(type: T.Type, router: EndpointType, completion: @escaping (Result<T, Error>) -> Void) {
-        AF.request(router.fullURL, method: router.httpMethod, parameters: router.parameters, headers: router.headers).validate().responseDecodable(of: type) { response in
-            if let error = response.error {
+    static func loadFromServer(router: EndpointType, completion: @escaping (Result<Any?, Error>) -> Void) {
+        AF.request(router.fullURL, method: router.httpMethod, parameters: router.parameters, headers: router.headers).response { AFResponse in
+            if let error = AFResponse.error {
                 completion(.failure(error))
+                return
             }
             
-            if let decodableModel = response.value {
-                completion(.success(decodableModel))
-            }
+            let jsonResponse = try? JSONSerialization.jsonObject(with: AFResponse.data!, options: [])
+            completion(.success(jsonResponse))
         }
     }
 }

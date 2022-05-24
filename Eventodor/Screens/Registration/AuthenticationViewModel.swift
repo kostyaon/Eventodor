@@ -9,13 +9,7 @@ import Foundation
 
 class AuthenticationViewModel: BaseViewModel {
     
-    enum ErrorType: Error {
-        
-        case clientError
-        case serverError
-        case unknown
-    }
-    
+    // Method's
     func login(username: String, password: String) {
         enterRequest()
         EventodorInterface.uploadToServer(router: EventodorRouter.Auth.login(username, password)) { [weak self] result in
@@ -37,7 +31,7 @@ class AuthenticationViewModel: BaseViewModel {
                 
                 guard let user = RegUser.decode(from: jsonResponse) else { return }
                 if let token = user.key {
-                    UserDefaults.standard.set(token, forKey: "token")
+                    ConfigValues.setToken(with: token)
                 }
             }
         }
@@ -57,23 +51,9 @@ class AuthenticationViewModel: BaseViewModel {
     }
 }
 
+// MARK: - Private method's
 private
 extension AuthenticationViewModel {
-    
-    func showMessage(message: String) {
-        presentError?(message)
-    }
-    
-    func showError(of error: AuthenticationViewModel.ErrorType) {
-        switch error {
-        case .clientError:
-            presentError?("error_client".localized())
-        case .serverError:
-            presentError?("error_server".localized())
-        case .unknown:
-            presentError?("error_unknown".localized())
-        }
-    }
     
     func register(user: User) {
         enterRequest()
@@ -99,7 +79,7 @@ extension AuthenticationViewModel {
                 }
                 
                 if let token = responseUser.key {
-                    UserDefaults.standard.set(token, forKey: "token")
+                    ConfigValues.setToken(with: token)
                 }
                 this.registerUser(with: user)
                 print("Register auth", responseUser)

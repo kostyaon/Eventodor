@@ -11,6 +11,15 @@ public typealias Closure = (() -> ())
 
 class BaseViewModel: NSObject {
     
+    // Types of erroe
+    enum ErrorType: Error {
+        
+        case clientError
+        case serverError
+        case unknown
+    }
+    
+    // Properties
     fileprivate var requestGroup: DispatchGroup?
     
     var updateUI: Closure?
@@ -43,4 +52,19 @@ extension BaseViewModel {
         }
     }
     
+    // Error message
+    func showMessage(message: String) {
+        presentError?(message)
+    }
+    
+    func showError(of error: ErrorType) {
+        switch error {
+        case .clientError:
+            presentError?("error_client".localized())
+        case .serverError:
+            presentError?("error_server".localized())
+        case .unknown:
+            presentError?("error_unknown".localized())
+        }
+    }
 }

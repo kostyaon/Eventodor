@@ -9,6 +9,7 @@ import Foundation
 
 class ConfigValues {
     
+    // Localization
     static let defaultLocalizationFile = "Localizable"
     
     static var localizationFile: String {
@@ -18,5 +19,14 @@ class ConfigValues {
             }
         }
         return ConfigValues.defaultLocalizationFile
+    }
+    
+    // Token
+    static var tokenKey: String? {
+        UserDefaults.standard.string(forKey: "token")
+    }
+    
+    static func setToken(with token: String) {
+        UserDefaults.standard.set(token, forKey: "token")
     }
 }

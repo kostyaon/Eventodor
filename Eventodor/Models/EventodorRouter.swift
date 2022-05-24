@@ -18,6 +18,58 @@ enum EventodorRouter {
         case login(String, String)
     }
     
+    // Category
+    enum Category {
+        
+        case getCategories
+    }
+}
+
+// MARK: - Category
+extension EventodorRouter.Category: EndpointType {
+    
+    var baseURL: String {
+        "http://127.0.0.1:8000/api/v1"
+    }
+    
+    var headers: HTTPHeaders? {
+        switch self {
+        case .getCategories:
+            return [
+                "Cookie": "",
+                "Content-Type": "application/json",
+                "Authorization": "Token \((ConfigValues.tokenKey ?? ""))"
+            ]
+        }
+    }
+    
+    var path: String {
+        switch self {
+        case .getCategories:
+            return "/category/"
+        }
+    }
+    
+    var parameters: Parameters? {
+        switch self {
+        case .getCategories:
+            return [:]
+        }
+    }
+    
+    var httpMethod: HTTPMethod {
+        switch self {
+        case .getCategories:
+            return .get
+        }
+    }
+    
+    var fullURL: URL {
+        switch self {
+        default:
+            return URL(string: self.baseURL + self.path)!
+        }
+    }
 }
 
 // MARK: - Authentication
@@ -33,7 +85,7 @@ extension EventodorRouter.Auth: EndpointType {
             return [
                 "Cookie": "",
                 "Content-Type": "application/json",
-                "Authorization": "Token \((UserDefaults.standard.string(forKey: "token") ?? ""))"
+                "Authorization": "Token \((ConfigValues.tokenKey ?? ""))"
             ]
         case .register(_, _, _), .login(_, _):
             return [
@@ -43,7 +95,7 @@ extension EventodorRouter.Auth: EndpointType {
         default:
             return [
                 "Content-Type": "application/json",
-                "Authorization": "Token \((UserDefaults.standard.string(forKey: "token") ?? ""))"
+                "Authorization": "Token \((ConfigValues.tokenKey ?? ""))"
             ]
         }
     }
