@@ -22,7 +22,7 @@ struct Event: Decodable {
     var time: String?
     var price: String?
     var rank: String?
-    var distance: Float?
+    var distance: Double?
 }
 
 struct CoordinateEVENTODOR: Decodable {

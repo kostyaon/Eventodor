@@ -51,3 +51,4 @@
 "error_success" = "Congrats!";
 "already_register" = "You have already register to the event!";
 "your_location" = "Your location";
+"location_error" = "You have some problems with the location! Please, check the location settings or contact a technical support!";
