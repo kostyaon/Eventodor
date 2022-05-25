@@ -34,6 +34,9 @@ class EventRegCardViewController: BaseViewController {
     override func handleError() {
         viewModel.presentError = { [weak self] message in
             guard let this = self else { return }
+            if message == "succesfull_registration".localized() {
+                this.showError(title: "error_success".localized(), message: message)
+            }
             this.showError(title: "error_title".localized(), message: message)
         }
     }
@@ -79,6 +82,10 @@ extension EventRegCardViewController: UITableViewDataSource, UITableViewDelegate
         case 2:
             let cell = tableView.dequeueReusableCell(withType: OrganizerTableViewCell.self, for: indexPath)
             cell.configure(with: event?.organizer)
+            cell.onRegisterButton = { [weak self] in
+                guard let this = self else { return }
+                this.viewModel.checkRegistration()
+            }
             return cell
         case 3:
             let cell = tableView.dequeueReusableCell(withType: ReviewTableViewCell.self, for: indexPath)

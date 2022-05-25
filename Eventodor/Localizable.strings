@@ -47,3 +47,6 @@
 "donate_title" = "Donate";
 "donate_description" = "If you want to support - donate!";
 "register_title" = "Register";
+"succesfull_registration" = "You have succesfully register to the event! See it on the MyEvents tab!";
+"error_success" = "Congrats!";
+"already_register" = "You have already register to the event!";

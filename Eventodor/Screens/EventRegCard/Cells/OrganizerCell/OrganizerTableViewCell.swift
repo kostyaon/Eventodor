@@ -19,6 +19,9 @@ class OrganizerTableViewCell: UITableViewCell {
     @IBOutlet weak var donateButton: EVENTODORButton!
     @IBOutlet weak var registerButton: EVENTODORButton!
     
+    // MARK: - Properties
+    var onRegisterButton: Closure?
+    
     // MARK: - Actions
     @IBAction func onDonate() {
         print("Tap on Donate button")
@@ -26,6 +29,7 @@ class OrganizerTableViewCell: UITableViewCell {
     
     @IBAction func onRegister() {
         print("Tap on register button")
+        onRegisterButton?()
     }
     
     // MARK: - Properties

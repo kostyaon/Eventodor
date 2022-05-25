@@ -29,7 +29,9 @@ enum EventodorRouter {
         
         case allEvents
         case myEvents
+        case eventsByUserId(Int)
         case eventById(Int)
+        case registerOnEvent(Int)
     }
     
     // Review
@@ -96,7 +98,7 @@ extension EventodorRouter.Event: EndpointType {
     
     var headers: HTTPHeaders? {
         switch self {
-        case .allEvents, .eventById(_):
+        case .allEvents, .eventById(_), .registerOnEvent(_), .eventsByUserId(_):
             return [
                 "Cookie": "",
                 "Content-Type": "application/json",
@@ -111,8 +113,10 @@ extension EventodorRouter.Event: EndpointType {
         switch self {
         case .allEvents:
             return "/event/"
-        case .myEvents:
+        case .myEvents, .registerOnEvent(_):
             return "/eventuser/"
+        case .eventsByUserId(let userId):
+            return "/eventuser/?userId=\(userId)"
         case .eventById(let id):
             return "/event/\(id)/"
         }
@@ -120,15 +124,22 @@ extension EventodorRouter.Event: EndpointType {
     
     var parameters: Parameters? {
         switch self {
-        case .allEvents, .myEvents, .eventById(_):
+        case .allEvents, .myEvents, .eventById(_), .eventsByUserId(_):
             return [:]
+        case .registerOnEvent(let eventId):
+            return [
+                "user_id": AppEnvironment.userId ?? 0,
+                "event_id": eventId
+            ]
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .allEvents, .myEvents, .eventById(_):
+        case .allEvents, .myEvents, .eventById(_), .eventsByUserId(_):
             return .get
+        case .registerOnEvent(_):
+            return .post
         }
     }
     
