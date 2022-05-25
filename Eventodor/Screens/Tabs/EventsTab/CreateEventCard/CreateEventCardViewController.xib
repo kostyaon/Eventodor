@@ -16,7 +16,7 @@
                 <outlet property="createButton" destination="MvD-aW-d0l" id="WWL-L0-3bt"/>
                 <outlet property="dateTextField" destination="EcB-ub-5Ub" id="jxy-gw-ebA"/>
                 <outlet property="descriptionTextField" destination="Dpm-dy-44p" id="i3j-Yz-xM9"/>
-                <outlet property="mapView" destination="PFb-NW-nSG" id="veN-81-Lz9"/>
+                <outlet property="mapView" destination="PFb-NW-nSG" id="WhV-sz-RBk"/>
                 <outlet property="nameTextField" destination="CZF-ym-pOh" id="tbX-lV-SwV"/>
                 <outlet property="organizaationTextField" destination="lHF-RA-Ssl" id="TjH-lZ-Cgk"/>
                 <outlet property="personsAmountTextField" destination="0IA-v7-P0T" id="M73-Sv-Mxt"/>
