@@ -31,7 +31,61 @@ enum EventodorRouter {
         case myEvents
         case eventById(Int)
     }
+    
+    // Review
+    enum Review {
+        
+        case getReview
+    }
 }
+
+// MARK: - Review
+extension EventodorRouter.Review: EndpointType {
+    
+    var baseURL: String {
+        "http://127.0.0.1:8000/api/v1"
+    }
+    
+    var headers: HTTPHeaders? {
+        switch self {
+        case .getReview:
+            return [
+                "Cookie": "",
+                "Content-Type": "application/json",
+                "Authorization": "Token \((ConfigValues.tokenKey ?? ""))"
+            ]
+        }
+    }
+    
+    var path: String {
+        switch self {
+        case .getReview:
+            return "/review/"
+        }
+    }
+    
+    var parameters: Parameters? {
+        switch self {
+        case .getReview:
+            return [:]
+        }
+    }
+    
+    var httpMethod: HTTPMethod {
+        switch self {
+        case .getReview:
+            return .get
+        }
+    }
+    
+    var fullURL: URL {
+        switch self {
+        default:
+            return URL(string: self.baseURL + self.path)!
+        }
+    }
+}
+
 
 // MARK: - Events
 extension EventodorRouter.Event: EndpointType {

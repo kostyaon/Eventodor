@@ -17,10 +17,15 @@ class OrganizerTableViewCell: UITableViewCell {
     @IBOutlet weak var emailLabel: UILabel!
     @IBOutlet weak var supportLabel: UILabel!
     @IBOutlet weak var donateButton: EVENTODORButton!
+    @IBOutlet weak var registerButton: EVENTODORButton!
     
     // MARK: - Actions
     @IBAction func onDonate() {
         print("Tap on Donate button")
+    }
+    
+    @IBAction func onRegister() {
+        print("Tap on register button")
     }
     
     // MARK: - Properties
@@ -53,5 +58,6 @@ extension OrganizerTableViewCell {
         emailTitleLabel.text = "email_title".localized()
         supportLabel.text = "donate_description".localized()
         donateButton.setTitle(with: "donate_title".localized())
+        registerButton.setTitle(with: "register_title".localized())
     }
 }

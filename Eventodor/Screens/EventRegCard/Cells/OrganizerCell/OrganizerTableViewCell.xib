@@ -58,15 +58,31 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ing-tv-WKX" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQ4-b3-asm">
                                 <rect key="frame" x="0.0" y="61.5" width="414" height="31"/>
-                                <inset key="contentEdgeInsets" minX="25" minY="0.0" maxX="25" maxY="0.0"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Donate"/>
-                                <connections>
-                                    <action selector="onDonate" destination="1C2-UA-n0N" eventType="touchUpInside" id="qCS-tL-Pui"/>
-                                </connections>
-                            </button>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ing-tv-WKX" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="31"/>
+                                        <inset key="contentEdgeInsets" minX="25" minY="0.0" maxX="25" maxY="0.0"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Donate"/>
+                                        <connections>
+                                            <action selector="onDonate" destination="1C2-UA-n0N" eventType="touchUpInside" id="qCS-tL-Pui"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOI-kH-YM4" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
+                                        <rect key="frame" x="207" y="0.0" width="207" height="31"/>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                        <connections>
+                                            <action selector="onRegister" destination="1C2-UA-n0N" eventType="touchUpInside" id="YKe-rS-5eo"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="eOI-kH-YM4" firstAttribute="width" secondItem="ing-tv-WKX" secondAttribute="width" id="nVE-uY-FbL"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                     </stackView>
                 </subviews>
@@ -82,6 +98,7 @@
                 <outlet property="emailTitleLabel" destination="LmY-Gl-scV" id="wqM-CX-1lA"/>
                 <outlet property="organizerLabel" destination="M3h-jh-Qbq" id="leu-8b-OBc"/>
                 <outlet property="organizerTitleLabel" destination="JpN-vv-0GV" id="daA-ji-UzP"/>
+                <outlet property="registerButton" destination="eOI-kH-YM4" id="Jec-7f-5M4"/>
                 <outlet property="supportLabel" destination="cvs-QV-OYU" id="UC9-wF-olX"/>
             </connections>
             <point key="canvasLocation" x="179.71014492753625" y="34.151785714285715"/>

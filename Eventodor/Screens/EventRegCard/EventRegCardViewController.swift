@@ -14,12 +14,36 @@ class EventRegCardViewController: BaseViewController {
 
     // MARK: - Properties
     var event: Event?
+    private var eventReviews: [Review] = []
+    private let viewModel = EventRegCardViewModel(isRequestGroup: true)
     
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupUI()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadData()
+    }
+    
+    // MARK: - Override handlers
+    override func handleError() {
+        viewModel.presentError = { [weak self] message in
+            guard let this = self else { return }
+            this.showError(title: "error_title".localized(), message: message)
+        }
+    }
+    
+    override func handleUpdateUI() {
+        viewModel.updateUI = { [weak self] in
+            guard let this = self else { return }
+            this.eventReviews = this.viewModel.reviews
+            this.tableView.reloadData()
+        }
     }
 }
 
@@ -35,7 +59,7 @@ extension EventRegCardViewController: UITableViewDataSource, UITableViewDelegate
         case 0...2:
             return 1
         case 3:
-            return 11
+            return eventReviews.count
         default:
             return 0
         }
@@ -55,6 +79,10 @@ extension EventRegCardViewController: UITableViewDataSource, UITableViewDelegate
             let cell = tableView.dequeueReusableCell(withType: OrganizerTableViewCell.self, for: indexPath)
             cell.configure(with: event?.organizer)
             return cell
+        case 3:
+            let cell = tableView.dequeueReusableCell(withType: ReviewTableViewCell.self, for: indexPath)
+            cell.configure(with: eventReviews[indexPath.row])
+            return cell
         default:
             return UITableViewCell()
         }
@@ -70,6 +98,8 @@ extension EventRegCardViewController: UITableViewDataSource, UITableViewDelegate
             return 220
         case 2:
             return 102
+        case 3:
+            return 120
         default:
             return 70
         }
@@ -79,6 +109,11 @@ extension EventRegCardViewController: UITableViewDataSource, UITableViewDelegate
 // MARK: - Private method's
 private
 extension EventRegCardViewController {
+    
+    func loadData() {
+        viewModel.eventId = event?.id ?? 0
+        viewModel.getReview()
+    }
     
     func setupUI() {
         setupTableView()
@@ -94,5 +129,6 @@ extension EventRegCardViewController {
         tableView.register(nibWithClass: CardCellTableViewCell.self)
         tableView.register(nibWithClass: DescriptionTableViewCell.self)
         tableView.register(nibWithClass: OrganizerTableViewCell.self)
+        tableView.register(nibWithClass: ReviewTableViewCell.self)
     }
 }

@@ -31,7 +31,7 @@
 "awards_title" = "Awards";
 "awards_description" = "Describe that you're the most beatiful and powerful user in the app";
 "awards_proud" = "We're proud of you";
-"awards_collection" = "You're collection";
+"awards_collection" = "Your collection";
 "review_title" = "Review";
 "review_send" = "Send";
 "error_title" = "Error";
@@ -46,3 +46,4 @@
 "email_title" = "Email";
 "donate_title" = "Donate";
 "donate_description" = "If you want to support - donate!";
+"register_title" = "Register";

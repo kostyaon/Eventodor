@@ -9,7 +9,7 @@ import Foundation
 
 struct Event: Decodable {
     
-    var event_id: Int?
+    var id: Int?
     var photo: Photo?
     var organizer: Organizer?
     var coordinate: CoordinateEVENTODOR?

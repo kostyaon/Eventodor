@@ -29,6 +29,9 @@
 		6E584100283D7636008BD4DA /* DescriptionTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E5840FF283D7636008BD4DA /* DescriptionTableViewCell.xib */; };
 		6E584103283D77F8008BD4DA /* OrganizerTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E584102283D77F8008BD4DA /* OrganizerTableViewCell.swift */; };
 		6E584105283DF3F1008BD4DA /* OrganizerTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E584104283DF3F1008BD4DA /* OrganizerTableViewCell.xib */; };
+		6E584107283DFC20008BD4DA /* EventRegCardViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E584106283DFC20008BD4DA /* EventRegCardViewModel.swift */; };
+		6E58410A283E016B008BD4DA /* ReviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E584109283E016B008BD4DA /* ReviewTableViewCell.swift */; };
+		6E58410C283E040E008BD4DA /* ReviewTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E58410B283E040E008BD4DA /* ReviewTableViewCell.xib */; };
 		6E60F17427692DC300D8D133 /* AwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E60F17327692DC300D8D133 /* AwardsViewController.swift */; };
 		6E60F17627692F2F00D8D133 /* AwardsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E60F17527692F2F00D8D133 /* AwardsViewController.xib */; };
 		6E60F17A276930C000D8D133 /* RewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E60F178276930C000D8D133 /* RewardView.swift */; };
@@ -108,6 +111,9 @@
 		6E5840FF283D7636008BD4DA /* DescriptionTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTableViewCell.xib; sourceTree = "<group>"; };
 		6E584102283D77F8008BD4DA /* OrganizerTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizerTableViewCell.swift; sourceTree = "<group>"; };
 		6E584104283DF3F1008BD4DA /* OrganizerTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OrganizerTableViewCell.xib; sourceTree = "<group>"; };
+		6E584106283DFC20008BD4DA /* EventRegCardViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventRegCardViewModel.swift; sourceTree = "<group>"; };
+		6E584109283E016B008BD4DA /* ReviewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewTableViewCell.swift; sourceTree = "<group>"; };
+		6E58410B283E040E008BD4DA /* ReviewTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ReviewTableViewCell.xib; sourceTree = "<group>"; };
 		6E60F17327692DC300D8D133 /* AwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
 		6E60F17527692F2F00D8D133 /* AwardsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AwardsViewController.xib; sourceTree = "<group>"; };
 		6E60F178276930C000D8D133 /* RewardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardView.swift; sourceTree = "<group>"; };
@@ -280,6 +286,7 @@
 		6E5840F6283D6D04008BD4DA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
+				6E584108283E0158008BD4DA /* ReviewCell */,
 				6E584101283D77E6008BD4DA /* OrganizerCell */,
 				6E5840FC283D7534008BD4DA /* DescriptionCell */,
 				6E5840FB283D7526008BD4DA /* CardCell */,
@@ -312,6 +319,15 @@
 				6E584104283DF3F1008BD4DA /* OrganizerTableViewCell.xib */,
 			);
 			path = OrganizerCell;
+			sourceTree = "<group>";
+		};
+		6E584108283E0158008BD4DA /* ReviewCell */ = {
+			isa = PBXGroup;
+			children = (
+				6E584109283E016B008BD4DA /* ReviewTableViewCell.swift */,
+				6E58410B283E040E008BD4DA /* ReviewTableViewCell.xib */,
+			);
+			path = ReviewCell;
 			sourceTree = "<group>";
 		};
 		6E60F17127692D8F00D8D133 /* AwardsTab */ = {
@@ -485,6 +501,7 @@
 				6E5840F6283D6D04008BD4DA /* Cells */,
 				6EBB39882769462500C34CD1 /* EventRegCardViewController.swift */,
 				6EBB398A276946B200C34CD1 /* EventRegCardViewController.xib */,
+				6E584106283DFC20008BD4DA /* EventRegCardViewModel.swift */,
 			);
 			path = EventRegCard;
 			sourceTree = "<group>";
@@ -611,6 +628,7 @@
 				6EB670CB2769388200480908 /* ReviewViewController.xib in Resources */,
 				6EAF995E276ACCB5000C6470 /* Coordinates.json in Resources */,
 				6EEA34C32768B05200481985 /* CategoryPickerViewController.xib in Resources */,
+				6E58410C283E040E008BD4DA /* ReviewTableViewCell.xib in Resources */,
 				6EBB398B276946B200C34CD1 /* EventRegCardViewController.xib in Resources */,
 				6EEA34C82768B40400481985 /* CategoryTableViewCell.xib in Resources */,
 				6E60F183276930C800D8D133 /* LabelCollectionCell.xib in Resources */,
@@ -697,6 +715,7 @@
 				6EBB3992276950E500C34CD1 /* Review.swift in Sources */,
 				6EEA34CA2768B4DF00481985 /* +UITableView.swift in Sources */,
 				6EBB399027694FAF00C34CD1 /* Event.swift in Sources */,
+				6E58410A283E016B008BD4DA /* ReviewTableViewCell.swift in Sources */,
 				6E3CE53127678BCC000E49D8 /* BaseTabBarController.swift in Sources */,
 				6E3CE51C27678915000E49D8 /* AppDelegate.swift in Sources */,
 				6E584103283D77F8008BD4DA /* OrganizerTableViewCell.swift in Sources */,
@@ -710,6 +729,7 @@
 				6E12F23F27C28C8600FD09AF /* EndpointType.swift in Sources */,
 				6E7D79982767A550004F9228 /* +String.swift in Sources */,
 				6EBB39892769462500C34CD1 /* EventRegCardViewController.swift in Sources */,
+				6E584107283DFC20008BD4DA /* EventRegCardViewModel.swift in Sources */,
 				6E7D79A82767B243004F9228 /* BaseViewController.swift in Sources */,
 				6E7D79AA2767B5E9004F9228 /* EVENTODORTextField.swift in Sources */,
 				6E0AE09D27691662006A3FDA /* CreateEventCardViewController.swift in Sources */,
