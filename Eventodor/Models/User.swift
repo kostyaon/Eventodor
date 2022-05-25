@@ -20,7 +20,7 @@ struct RegUser: Decodable {
 
 struct User: Decodable {
     
-    var user_id: Int?
+    var id: Int?
     var photo_id: Int?// Photo?
     var name: String?
     var password: String?

@@ -29,9 +29,120 @@ enum EventodorRouter {
         
         case allEvents
         case myEvents
+        case eventsByUserId(Int)
         case eventById(Int)
+        case registerOnEvent(Int)
+        case usersByEventId(Int)
+    }
+    
+    // Users
+    enum Users {
+        
+        case userById(Int)
+    }
+    
+    // Review
+    enum Review {
+        
+        case getReview
     }
 }
+
+// MARK: - Users
+extension EventodorRouter.Users: EndpointType {
+    
+    var baseURL: String {
+        "http://127.0.0.1:8000/api/v1"
+    }
+    
+    var headers: HTTPHeaders? {
+        switch self {
+        case .userById(_):
+            return [
+                "Cookie": "",
+                "Content-Type": "application/json",
+                "Authorization": "Token \((ConfigValues.tokenKey ?? ""))"
+            ]
+        }
+    }
+    
+    var path: String {
+        switch self {
+        case .userById(let id):
+            return "/user/\(id)/"
+        }
+    }
+    
+    var parameters: Parameters? {
+        switch self {
+        case .userById(_):
+            return [:]
+        }
+    }
+    
+    var httpMethod: HTTPMethod {
+        switch self {
+        case .userById(_):
+            return .get
+        }
+    }
+    
+    var fullURL: URL {
+        switch self {
+        default:
+            return URL(string: self.baseURL + self.path)!
+        }
+    }
+}
+
+
+// MARK: - Review
+extension EventodorRouter.Review: EndpointType {
+    
+    var baseURL: String {
+        "http://127.0.0.1:8000/api/v1"
+    }
+    
+    var headers: HTTPHeaders? {
+        switch self {
+        case .getReview:
+            return [
+                "Cookie": "",
+                "Content-Type": "application/json",
+                "Authorization": "Token \((ConfigValues.tokenKey ?? ""))"
+            ]
+        }
+    }
+    
+    var path: String {
+        switch self {
+        case .getReview:
+            return "/review/"
+        }
+    }
+    
+    var parameters: Parameters? {
+        switch self {
+        case .getReview:
+            return [:]
+        }
+    }
+    
+    var httpMethod: HTTPMethod {
+        switch self {
+        case .getReview:
+            return .get
+        }
+    }
+    
+    var fullURL: URL {
+        switch self {
+        default:
+            return URL(string: self.baseURL + self.path)!
+        }
+    }
+}
+
 
 // MARK: - Events
 extension EventodorRouter.Event: EndpointType {
@@ -42,7 +153,7 @@ extension EventodorRouter.Event: EndpointType {
     
     var headers: HTTPHeaders? {
         switch self {
-        case .allEvents, .eventById(_):
+        case .allEvents, .eventById(_), .registerOnEvent(_), .eventsByUserId(_), .usersByEventId(_):
             return [
                 "Cookie": "",
                 "Content-Type": "application/json",
@@ -57,8 +168,12 @@ extension EventodorRouter.Event: EndpointType {
         switch self {
         case .allEvents:
             return "/event/"
-        case .myEvents:
+        case .myEvents, .registerOnEvent(_):
             return "/eventuser/"
+        case .eventsByUserId(let userId):
+            return "/eventuser/?userId=\(userId)"
+        case .usersByEventId(let eventId):
+            return "/eventuser/?eventId=\(eventId)"
         case .eventById(let id):
             return "/event/\(id)/"
         }
@@ -66,15 +181,22 @@ extension EventodorRouter.Event: EndpointType {
     
     var parameters: Parameters? {
         switch self {
-        case .allEvents, .myEvents, .eventById(_):
+        case .allEvents, .myEvents, .eventById(_), .eventsByUserId(_), .usersByEventId(_):
             return [:]
+        case .registerOnEvent(let eventId):
+            return [
+                "user_id": AppEnvironment.userId ?? 0,
+                "event_id": eventId
+            ]
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .allEvents, .myEvents, .eventById(_):
+        case .allEvents, .myEvents, .eventById(_), .eventsByUserId(_), .usersByEventId(_):
             return .get
+        case .registerOnEvent(_):
+            return .post
         }
     }
     

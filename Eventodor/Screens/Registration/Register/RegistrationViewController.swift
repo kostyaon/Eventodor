@@ -100,7 +100,7 @@ extension RegistrationViewController {
     }
     
     func prepareUser() -> User {
-        return User(user_id: nil,
+        return User(id: nil,
                     photo_id: 1,
                     name: nameTextField.text,
                     password: passwordTextField.text,
