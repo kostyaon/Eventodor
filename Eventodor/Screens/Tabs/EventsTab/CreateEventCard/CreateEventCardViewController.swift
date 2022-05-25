@@ -30,6 +30,7 @@ class CreateEventCardViewController: BaseMapViewController {
     private var event: Event?
     private var eventLocationAnnotation = MKPointAnnotation()
     private var isEventLocationSet = false
+    private let viewModel = CreateEventViewModel(isRequestGroup: true)
     
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
@@ -48,6 +49,21 @@ class CreateEventCardViewController: BaseMapViewController {
     
     deinit {
         locationManager.stopUpdatingLocation()
+    }
+    
+    // MARK: - Override handler
+    override func handleError() {
+        viewModel.presentError = { [weak self] message in
+            guard let this = self else { return }
+            this.showError(title: "error_title".localized(), message: message)
+        }
+    }
+    
+    override func handleUpdateUI() {
+        viewModel.updateUI = { [weak self] in
+            guard let this = self else { return }
+            this.showError(title: "error_success".localized(), message: "succesfully_created_event".localized())
+        }
     }
 }
 
@@ -82,13 +98,27 @@ extension CreateEventCardViewController {
     }
     
     // Method's
+    func uploadData() {
+        prepareEvent()
+        viewModel.postEvent(event: event)
+    }
+    
     func prepareEvent() {
+        event = Event()
         event?.photo = nil
         let organizer = AppEnvironment.user
         event?.organizer = Organizer(id: nil, name: organizer?.name, surname: organizer?.surname, patronymic: organizer?.patronymic, phone: organizer?.phone, email: organizer?.email, country: organizer?.country, city: organizer?.city, address: organizer?.address, bankAccount: organizer?.bankAccount, photo_id: organizer?.photo_id, building_id: nil)
         event?.coordinate = CoordinateEVENTODOR(coordinate_id: nil, longitude: "\(eventLocationAnnotation.coordinate.latitude)", latitude: "\(eventLocationAnnotation.coordinate.longitude)", height: nil)
         event?.category = CategoryEVENTODOR(category_id: nil, name: categoryTextField.text)
-       // event?.address = 
+        event?.address = organizer?.address
+        event?.persons_amount = (personsAmountTextField.text as? NSString)?.integerValue
+        event?.register_persons_amount = 0
+        event?.name = nameTextField.text
+        event?.description = descriptionTextField.text
+        event?.time = "\(datePicker.date)"
+        event?.price = priceTextField.text
+        event?.rank = "3.8"
+        event?.distance = nil
     }
     
     func checkFields() -> Bool {
@@ -122,6 +152,7 @@ extension CreateEventCardViewController {
             if !this.checkFields() {
                 this.showError(title: "error_title".localized(), message: "input_field".localized())
             } else {
+                this.uploadData()
                 print(this.eventLocationAnnotation.coordinate)
             }
         }

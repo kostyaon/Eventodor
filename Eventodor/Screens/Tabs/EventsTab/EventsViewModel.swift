@@ -20,7 +20,7 @@ class EventsViewModel: BaseViewModel {
         availableEvents = []
         myEvents = []
         enterRequest()
-        EventodorInterface.loadFromServer(router: EventodorRouter.Event.allEvents) { [weak self] result in
+        EventodorInterface.loadFromServer(router: EventodorRouter.EventRouter.allEvents) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
             
@@ -58,7 +58,7 @@ extension EventsViewModel {
     
     func getMyEvents() {
         enterRequest()
-        EventodorInterface.loadFromServer(router: EventodorRouter.Event.myEvents) { [weak self] result in
+        EventodorInterface.loadFromServer(router: EventodorRouter.EventRouter.myEvents) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
             
@@ -85,7 +85,7 @@ extension EventsViewModel {
     
     func getEvent(byId id: Int) {
         enterRequest()
-        EventodorInterface.loadFromServer(router: EventodorRouter.Event.eventById(id)) { [weak self] result in
+        EventodorInterface.loadFromServer(router: EventodorRouter.EventRouter.eventById(id)) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
             
