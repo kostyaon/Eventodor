@@ -42,3 +42,7 @@
 "time_title" = "Time";
 "price_title" = "Price";
 "currency_symbol" = "$";
+"organizer_title" = "Organizer";
+"email_title" = "Email";
+"donate_title" = "Donate";
+"donate_description" = "If you want to support - donate!";

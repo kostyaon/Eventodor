@@ -51,6 +51,10 @@ extension EventRegCardViewController: UITableViewDataSource, UITableViewDelegate
             let cell = tableView.dequeueReusableCell(withType: DescriptionTableViewCell.self, for: indexPath)
             cell.configure(with: event)
             return cell
+        case 2:
+            let cell = tableView.dequeueReusableCell(withType: OrganizerTableViewCell.self, for: indexPath)
+            cell.configure(with: event?.organizer)
+            return cell
         default:
             return UITableViewCell()
         }
@@ -64,6 +68,8 @@ extension EventRegCardViewController: UITableViewDataSource, UITableViewDelegate
         switch indexPath.section {
         case 0:
             return 220
+        case 2:
+            return 102
         default:
             return 70
         }
@@ -87,5 +93,6 @@ extension EventRegCardViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.register(nibWithClass: CardCellTableViewCell.self)
         tableView.register(nibWithClass: DescriptionTableViewCell.self)
+        tableView.register(nibWithClass: OrganizerTableViewCell.self)
     }
 }
