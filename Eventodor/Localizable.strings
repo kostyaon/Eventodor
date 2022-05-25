@@ -53,3 +53,4 @@
 "your_location" = "Your location";
 "location_error" = "You have some problems with the location! Please, check the location settings or contact a technical support!";
 "event_location" = "Here!";
+"input_field" = "Not all fields are filling!";

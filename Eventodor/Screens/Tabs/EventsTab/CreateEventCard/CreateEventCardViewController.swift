@@ -12,17 +12,20 @@ import CoreLocation
 class CreateEventCardViewController: BaseMapViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var bgView: UIView!
-    @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var organizaationTextField: EVENTODORTextField!
     @IBOutlet weak var categoryTextField: EVENTODORTextField!
     @IBOutlet weak var personsAmountTextField: EVENTODORTextField!
     @IBOutlet weak var nameTextField: EVENTODORTextField!
     @IBOutlet weak var descriptionTextField: EVENTODORTextField!
-    @IBOutlet weak var dateTextField: EVENTODORTextField!
     @IBOutlet weak var priceTextField: EVENTODORTextField!
     @IBOutlet weak var createButton: EVENTODORButton!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    
+    // MARK: - Action
+    @IBAction func onGetLocation() {
+        getCurrentLocation()
+    }
     
     // MARK: - Properties
     private var eventLocationAnnotation = MKPointAnnotation()
@@ -52,6 +55,14 @@ class CreateEventCardViewController: BaseMapViewController {
 private
 extension CreateEventCardViewController {
     
+    // Properties
+    var fields: [EVENTODORTextField] {
+        [categoryTextField, organizaationTextField, personsAmountTextField,
+         nameTextField, descriptionTextField, priceTextField
+        ]
+    }
+    
+    // @objc method's
     @objc func onBgView() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -70,9 +81,17 @@ extension CreateEventCardViewController {
         }
     }
     
+    // Method's
+    func checkFields() -> Bool {
+        for field in fields {
+            if field.text?.isEmpty == true {
+                return false
+            }
+        }
+        return true
+    }
+    
     func setupUI() {
-        setupCardView()
-        setupAction()
         setupText()
         setupGestures()
     }
@@ -91,20 +110,16 @@ extension CreateEventCardViewController {
         createButton.setTitle(with: "create_event_title".localized())
         createButton.onTap = { [weak self] in
             guard let this = self else { return }
-            print(this.eventLocationAnnotation.coordinate)
+            if !this.checkFields() {
+                this.showError(title: "error_title".localized(), message: "input_field".localized())
+            } else {
+                print(this.eventLocationAnnotation.coordinate)
+            }
         }
         titleLabel.text = "create_event_button".localized()
     }
     
-    func setupAction() {
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onBgView))
-        bgView.addGestureRecognizer(tapGesture)
-    }
-    
-    func setupCardView() {
-        cardView.layer.cornerRadius = 24
-        cardView.layer.shadowOpacity = 0.5
-        cardView.layer.shadowOffset = CGSize(width: 0.0, height: 10.0)
-        cardView.layer.shadowRadius = 15
+    func checkFields() {
+        
     }
 }
