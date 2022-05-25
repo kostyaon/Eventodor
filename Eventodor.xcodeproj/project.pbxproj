@@ -58,10 +58,7 @@
 		6EAF9949276AA048000C6470 /* +MKMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF9948276AA048000C6470 /* +MKMapView.swift */; };
 		6EAF994B276AA2E3000C6470 /* EventMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF994A276AA2E3000C6470 /* EventMap.swift */; };
 		6EAF9954276AC342000C6470 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF9953276AC342000C6470 /* AuthenticationViewModel.swift */; };
-		6EAF995E276ACCB5000C6470 /* Coordinates.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF994D276AB149000C6470 /* Coordinates.json */; };
-		6EAF995F276ACCB7000C6470 /* Authentification.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF994E276ABC90000C6470 /* Authentification.json */; };
 		6EAF9961276ACD01000C6470 /* CategoryPickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF9960276ACD01000C6470 /* CategoryPickerViewModel.swift */; };
-		6EAF9963276ACD89000C6470 /* Categories.json in Resources */ = {isa = PBXBuildFile; fileRef = 6EAF9962276ACD1F000C6470 /* Categories.json */; };
 		6EAF9965276AD0A8000C6470 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF9964276AD0A8000C6470 /* AppEnvironment.swift */; };
 		6EAF9967276AD27F000C6470 /* EventsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EAF9966276AD27F000C6470 /* EventsViewModel.swift */; };
 		6EB670C92769386C00480908 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB670C82769386C00480908 /* ReviewViewController.swift */; };
@@ -139,11 +136,8 @@
 		6EAF9946276A9FC0000C6470 /* MapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapViewController.xib; sourceTree = "<group>"; };
 		6EAF9948276AA048000C6470 /* +MKMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "+MKMapView.swift"; sourceTree = "<group>"; };
 		6EAF994A276AA2E3000C6470 /* EventMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMap.swift; sourceTree = "<group>"; };
-		6EAF994D276AB149000C6470 /* Coordinates.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Coordinates.json; sourceTree = "<group>"; };
-		6EAF994E276ABC90000C6470 /* Authentification.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Authentification.json; sourceTree = "<group>"; };
 		6EAF9953276AC342000C6470 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		6EAF9960276ACD01000C6470 /* CategoryPickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryPickerViewModel.swift; sourceTree = "<group>"; };
-		6EAF9962276ACD1F000C6470 /* Categories.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Categories.json; sourceTree = "<group>"; };
 		6EAF9964276AD0A8000C6470 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		6EAF9966276AD27F000C6470 /* EventsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventsViewModel.swift; sourceTree = "<group>"; };
 		6EB670C82769386C00480908 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
@@ -256,10 +250,6 @@
 				6E7D799427679AF3004F9228 /* Localizable.strings */,
 				6E3CE52627678918000E49D8 /* LaunchScreen.storyboard */,
 				6E3CE52927678918000E49D8 /* Info.plist */,
-				6EAF994D276AB149000C6470 /* Coordinates.json */,
-				6EAF9962276ACD1F000C6470 /* Categories.json */,
-				6EAF994E276ABC90000C6470 /* Authentification.json */,
-				6EAF9964276AD0A8000C6470 /* AppEnvironment.swift */,
 			);
 			path = Eventodor;
 			sourceTree = "<group>";
@@ -392,6 +382,7 @@
 		6E7D79992767A66A004F9228 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				6EAF9964276AD0A8000C6470 /* AppEnvironment.swift */,
 				6E7D799A2767A678004F9228 /* ConfigValues.swift */,
 			);
 			path = Config;
@@ -619,21 +610,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6EAF995F276ACCB7000C6470 /* Authentification.json in Resources */,
 				6EBB39862769412B00C34CD1 /* ProfileViewController.xib in Resources */,
 				6E7D79A62767A9CC004F9228 /* LoginViewController.xib in Resources */,
 				6E60F17B276930C000D8D133 /* RewardView.xib in Resources */,
 				6EAF9947276A9FC0000C6470 /* MapViewController.xib in Resources */,
 				6E3CE52827678918000E49D8 /* LaunchScreen.storyboard in Resources */,
 				6EB670CB2769388200480908 /* ReviewViewController.xib in Resources */,
-				6EAF995E276ACCB5000C6470 /* Coordinates.json in Resources */,
 				6EEA34C32768B05200481985 /* CategoryPickerViewController.xib in Resources */,
 				6E58410C283E040E008BD4DA /* ReviewTableViewCell.xib in Resources */,
 				6EBB398B276946B200C34CD1 /* EventRegCardViewController.xib in Resources */,
 				6EEA34C82768B40400481985 /* CategoryTableViewCell.xib in Resources */,
 				6E60F183276930C800D8D133 /* LabelCollectionCell.xib in Resources */,
 				6EEA34D82768CAF700481985 /* EventCardTableViewCell.xib in Resources */,
-				6EAF9963276ACD89000C6470 /* Categories.json in Resources */,
 				6EEA34CF2768C72700481985 /* EventsViewController.xib in Resources */,
 				6E7D799527679AF3004F9228 /* Localizable.strings in Resources */,
 				6E584100283D7636008BD4DA /* DescriptionTableViewCell.xib in Resources */,

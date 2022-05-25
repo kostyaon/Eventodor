@@ -27,17 +27,22 @@ class MapViewController: BaseViewController {
         button.addTarget(self, action: #selector(onEventPin), for: .touchUpInside)
         return button
     }()
-    private let viewModel = EventsViewModel()
+    private let viewModel = EventsViewModel(isRequestGroup: true)
     private var availableEvents: [Event] = []
+    private var isCurrentLocationEnabled = false
     
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        loadData()
         setupMapView()
         defineMappingRegion()
-        addAnotation()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        loadData()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -49,6 +54,23 @@ class MapViewController: BaseViewController {
     deinit {
         locationManager.stopUpdatingLocation()
     }
+    
+    // MARK: - Override handlers
+    override func handleError() {
+        viewModel.presentError = { [weak self] message in
+            guard let this = self else { return }
+            this.showError(title: "error_title".localized(), message: message)
+        }
+    }
+    
+    override func handleUpdateUI() {
+        viewModel.updateUI = { [weak self] in
+            guard let this = self else { return }
+            this.availableEvents = this.viewModel.availableEvents
+            this.addAnotation()
+            this.mapView.reloadInputViews()
+        }
+    }
 }
 
 // MARK: - Private method's
@@ -59,14 +81,11 @@ extension MapViewController {
         print("Select event - \(selectedEvent?.name ?? "NOPE")")
         let registerViewController = EventRegCardViewController()
         registerViewController.event = selectedEvent
-        registerViewController.modalPresentationStyle = .overCurrentContext
         self.present(registerViewController, animated: true, completion: nil)
     }
     
     func loadData() {
         viewModel.getEvents()
-        availableEvents = viewModel.availableEvents
-        mapView.reloadInputViews()
     }
     
     func setupMapView() {
@@ -103,6 +122,7 @@ extension MapViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestAlwaysAuthorization()
         if CLLocationManager.locationServicesEnabled() {
+            isCurrentLocationEnabled = false
             locationManager.startUpdatingLocation()
         }
     }
@@ -112,7 +132,7 @@ extension MapViewController {
 extension MapViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        if annotation.title == "Your location" {
+        if annotation.title == "your_location".localized() {
             let view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "MyAnnotation")
             view.markerTintColor = .green
             return view
@@ -139,7 +159,12 @@ extension MapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation:CLLocation = locations[0] as CLLocation
-        print(currentLocation)
+        if !isCurrentLocationEnabled {
+            isCurrentLocationEnabled = true
+            viewModel.currentLocation = currentLocation
+        }
+        
+      
         let center = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         mapView.setRegion(region, animated: true)
@@ -147,11 +172,12 @@ extension MapViewController: CLLocationManagerDelegate {
         // Indicate user's location
         let myLocation = MKPointAnnotation()
         myLocation.coordinate = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
-        myLocation.title = "Your location"
+        myLocation.title = "your_location".localized()
         mapView.addAnnotation(myLocation)
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        showError(title: "error_title".localized(), message: "location_error".localized())
         print("Error - locationManager: \(error.localizedDescription)")
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class EventsViewController: BaseViewController {
     
@@ -28,6 +29,10 @@ class EventsViewController: BaseViewController {
     private var myEvents: [Event] = []
     private var viewModel = EventsViewModel(isRequestGroup: true)
     
+    // MARK: - Location properties
+    private let locationManager = CLLocationManager()
+    private var isCurrentLocationEnabled = false
+    
     // MARK: - Lifecycle method's
     init(eventState: EventsViewController.EventState) {
         self.eventState = eventState
@@ -47,6 +52,8 @@ class EventsViewController: BaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        isCurrentLocationEnabled = false
+        startUpdatingLocation()
         loadData()
     }
     
@@ -72,6 +79,7 @@ class EventsViewController: BaseViewController {
 private
 extension EventsViewController {
     
+    // @objc method's
     @objc func onCreate() {
         print("Create event")
         let createCardViewController = CreateEventCardViewController()
@@ -92,6 +100,18 @@ extension EventsViewController {
         self.present(filterCardViewController, animated: true, completion: nil)
     }
     
+    // Location method's
+    func startUpdatingLocation() {
+        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    // Method's
     func loadData() {
         viewModel.getEvents()
     }
@@ -178,5 +198,23 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
             cardViewController.event = events[indexPath.row]
             self.navigationController?.pushViewController(cardViewController, animated: true)
         }
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+extension EventsViewController: CLLocationManagerDelegate {
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        let location = locations[0]
+        if !isCurrentLocationEnabled {
+            isCurrentLocationEnabled = true
+            viewModel.currentLocation = location
+            locationManager.stopUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        showError(title: "error_title".localized(), message: "location_error".localized())
+        print("Error - locationManager: \(error.localizedDescription)")
     }
 }

@@ -6,15 +6,18 @@
 //
 
 import Foundation
+import CoreLocation
 
 class EventsViewModel: BaseViewModel {
     
     // Properties
     var availableEvents: [Event] = []
     var myEvents: [Event] = []
+    var currentLocation: CLLocation?
     
     // Method's
     func getEvents() {
+        availableEvents = []
         myEvents = []
         enterRequest()
         EventodorInterface.loadFromServer(router: EventodorRouter.Event.allEvents) { [weak self] result in
@@ -30,18 +33,28 @@ class EventsViewModel: BaseViewModel {
                     return
                 }
                 guard let jsonResponse = data as? [[String: Any]], let events = [Event].decode(from: jsonResponse) else { return }
-                this.availableEvents = events
+                events.forEach({ this.calculateDistance(for: $0) })
                 this.getMyEvents()
             }
         }
     }
-    
-    
 }
 
 // MARK: - Private method's
 private
 extension EventsViewModel {
+    
+    func calculateDistance(for event: Event) {
+        let eventLocation = CLLocation(latitude: (event.coordinate?.longitude as? NSString)?.doubleValue ?? 0.0, longitude: (event.coordinate?.latitude as? NSString)?.doubleValue ?? 0.0)
+        var distance = 0.0
+        if let currentLocation = currentLocation {
+            distance = currentLocation.distance(from: eventLocation)
+            print("Distance to \(event.name ?? "") is \(distance) meters")
+        }
+        var appendedEvent = event
+        appendedEvent.distance = distance
+        availableEvents.append(appendedEvent)
+    }
     
     func getMyEvents() {
         enterRequest()
