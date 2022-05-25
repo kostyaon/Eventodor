@@ -13,6 +13,7 @@ class EventRegCardViewModel: BaseViewModel {
     var eventId: Int?
     var reviews: [Review] = []
     var rank: Float?
+    var participants: [User] = []
     
     // Functions
     func getReview() {
@@ -32,11 +33,8 @@ class EventRegCardViewModel: BaseViewModel {
                 guard let jsonResponse = data as? [[String: Any]], let allReviews = [Review].decode(from: jsonResponse) else { return }
                 this.reviews = allReviews.filter({ $0.event_id == this.eventId })
                 this.calculateRank()
+                this.getParticpants()
             }
-        }
-        notifyWhenRequestsCompleted { [weak self] in
-            guard let this = self else { return }
-            this.updateUI?()
         }
     }
     
@@ -75,6 +73,52 @@ class EventRegCardViewModel: BaseViewModel {
 private
 extension EventRegCardViewModel {
     
+    func getParticpants() {
+        participants = []
+        enterRequest()
+        EventodorInterface.loadFromServer(router: EventodorRouter.Event.usersByEventId(eventId ?? 0)) { [weak self] result in
+            guard let this = self else { return }
+            this.leaveRequest()
+            
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let data):
+                if let jsonResponse = data as? [String: Any], let detail = jsonResponse["detail"] as? String {
+                    this.showMessage(message: detail)
+                    return
+                }
+                guard let jsonResponse = data as? [[String: Any]], let eventUsers = [EventUser].decode(from: jsonResponse) else { return }
+                let users = eventUsers.map({ return $0.user_id })
+                users.forEach({ this.getUser(with: $0 ?? 0) })
+            }
+        }
+    }
+    
+    func getUser(with id: Int) {
+        enterRequest()
+        EventodorInterface.loadFromServer(router: EventodorRouter.Users.userById(id)) { [weak self] result in
+            guard let this = self else { return }
+            this.leaveRequest()
+            
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let data):
+                if let jsonResponse = data as? [String: Any], let detail = jsonResponse["detail"] as? String {
+                    this.showMessage(message: detail)
+                    return
+                }
+                guard let jsonResponse = data as? [String: Any], let user = User.decode(from: jsonResponse) else { return }
+                this.participants.append(user)
+            }
+        }
+        notifyWhenRequestsCompleted { [weak self] in
+            guard let this = self else { return }
+            this.updateUI?()
+        }
+    }
+    
     func registerOnEvent() {
         enterRequest()
         EventodorInterface.uploadToServer(router: EventodorRouter.Event.registerOnEvent(eventId ?? 0)) { [weak self] result in
@@ -105,6 +149,10 @@ extension EventRegCardViewModel {
         let numberOfRanks = allRanks.count
         var sum: Float = 0.0
         allRanks.forEach({ sum += ($0 ?? 0.0) })
-        rank = sum / Float(numberOfRanks)
+        if numberOfRanks <= 0 {
+            rank = 0
+        } else {
+            rank = sum / Float(numberOfRanks)
+        }
     }
 }

@@ -36,6 +36,7 @@ class EventRegCardViewController: BaseViewController {
             guard let this = self else { return }
             if message == "succesfull_registration".localized() {
                 this.showError(title: "error_success".localized(), message: message)
+                this.loadData()
             }
             this.showError(title: "error_title".localized(), message: message)
         }
@@ -46,6 +47,7 @@ class EventRegCardViewController: BaseViewController {
             guard let this = self else { return }
             this.eventReviews = this.viewModel.reviews
             this.event?.rank = "\(this.viewModel.rank ?? 0.0)"
+            this.event?.register_persons_amount = this.viewModel.participants.count
             this.tableView.reloadData()
         }
     }
@@ -81,7 +83,7 @@ extension EventRegCardViewController: UITableViewDataSource, UITableViewDelegate
             return cell
         case 2:
             let cell = tableView.dequeueReusableCell(withType: OrganizerTableViewCell.self, for: indexPath)
-            cell.configure(with: event?.organizer)
+            cell.configure(with: event)
             cell.onRegisterButton = { [weak self] in
                 guard let this = self else { return }
                 this.viewModel.checkRegistration()

@@ -42,8 +42,13 @@ class OrganizerTableViewCell: UITableViewCell {
     }
     
     // MARK: - Helper method's
-    func configure(with organizer: Organizer?) {
-        guard let organizer = organizer else { return }
+    func configure(with event: Event?) {
+        guard let event = event, let organizer = event.organizer else { return }
+        if (event.register_persons_amount ?? 0) == (event.persons_amount ?? 0) {
+            registerButton.isEnabled = false
+        } else {
+            registerButton.isEnabled = true
+        }
         organizerLabel.text = organizer.name
         emailLabel.text = organizer.email
     }

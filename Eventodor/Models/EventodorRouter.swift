@@ -32,6 +32,13 @@ enum EventodorRouter {
         case eventsByUserId(Int)
         case eventById(Int)
         case registerOnEvent(Int)
+        case usersByEventId(Int)
+    }
+    
+    // Users
+    enum Users {
+        
+        case userById(Int)
     }
     
     // Review
@@ -40,6 +47,54 @@ enum EventodorRouter {
         case getReview
     }
 }
+
+// MARK: - Users
+extension EventodorRouter.Users: EndpointType {
+    
+    var baseURL: String {
+        "http://127.0.0.1:8000/api/v1"
+    }
+    
+    var headers: HTTPHeaders? {
+        switch self {
+        case .userById(_):
+            return [
+                "Cookie": "",
+                "Content-Type": "application/json",
+                "Authorization": "Token \((ConfigValues.tokenKey ?? ""))"
+            ]
+        }
+    }
+    
+    var path: String {
+        switch self {
+        case .userById(let id):
+            return "/user/\(id)/"
+        }
+    }
+    
+    var parameters: Parameters? {
+        switch self {
+        case .userById(_):
+            return [:]
+        }
+    }
+    
+    var httpMethod: HTTPMethod {
+        switch self {
+        case .userById(_):
+            return .get
+        }
+    }
+    
+    var fullURL: URL {
+        switch self {
+        default:
+            return URL(string: self.baseURL + self.path)!
+        }
+    }
+}
+
 
 // MARK: - Review
 extension EventodorRouter.Review: EndpointType {
@@ -98,7 +153,7 @@ extension EventodorRouter.Event: EndpointType {
     
     var headers: HTTPHeaders? {
         switch self {
-        case .allEvents, .eventById(_), .registerOnEvent(_), .eventsByUserId(_):
+        case .allEvents, .eventById(_), .registerOnEvent(_), .eventsByUserId(_), .usersByEventId(_):
             return [
                 "Cookie": "",
                 "Content-Type": "application/json",
@@ -117,6 +172,8 @@ extension EventodorRouter.Event: EndpointType {
             return "/eventuser/"
         case .eventsByUserId(let userId):
             return "/eventuser/?userId=\(userId)"
+        case .usersByEventId(let eventId):
+            return "/eventuser/?eventId=\(eventId)"
         case .eventById(let id):
             return "/event/\(id)/"
         }
@@ -124,7 +181,7 @@ extension EventodorRouter.Event: EndpointType {
     
     var parameters: Parameters? {
         switch self {
-        case .allEvents, .myEvents, .eventById(_), .eventsByUserId(_):
+        case .allEvents, .myEvents, .eventById(_), .eventsByUserId(_), .usersByEventId(_):
             return [:]
         case .registerOnEvent(let eventId):
             return [
@@ -136,7 +193,7 @@ extension EventodorRouter.Event: EndpointType {
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .allEvents, .myEvents, .eventById(_), .eventsByUserId(_):
+        case .allEvents, .myEvents, .eventById(_), .eventsByUserId(_), .usersByEventId(_):
             return .get
         case .registerOnEvent(_):
             return .post
