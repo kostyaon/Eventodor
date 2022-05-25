@@ -12,6 +12,7 @@ class EventRegCardViewModel: BaseViewModel {
     // Properties
     var eventId: Int?
     var reviews: [Review] = []
+    var rank: Float?
     
     // Functions
     func getReview() {
@@ -30,11 +31,25 @@ class EventRegCardViewModel: BaseViewModel {
                 }
                 guard let jsonResponse = data as? [[String: Any]], let allReviews = [Review].decode(from: jsonResponse) else { return }
                 this.reviews = allReviews.filter({ $0.event_id == this.eventId })
+                this.calculateRank()
             }
         }
         notifyWhenRequestsCompleted { [weak self] in
             guard let this = self else { return }
             this.updateUI?()
         }
+    }
+}
+
+// MARK: - Private
+private
+extension EventRegCardViewModel {
+    
+    func calculateRank() {
+        let allRanks = reviews.map({ return $0.rank })
+        let numberOfRanks = allRanks.count
+        var sum: Float = 0.0
+        allRanks.forEach({ sum += ($0 ?? 0.0) })
+        rank = sum / Float(numberOfRanks)
     }
 }

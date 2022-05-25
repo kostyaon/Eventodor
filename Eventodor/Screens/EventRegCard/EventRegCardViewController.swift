@@ -42,6 +42,7 @@ class EventRegCardViewController: BaseViewController {
         viewModel.updateUI = { [weak self] in
             guard let this = self else { return }
             this.eventReviews = this.viewModel.reviews
+            this.event?.rank = "\(this.viewModel.rank ?? 0.0)"
             this.tableView.reloadData()
         }
     }
