@@ -10,6 +10,7 @@ import Foundation
 struct AppEnvironment {
     
     static var userId: Int? = 1
+    static var user: User?
     static var categoryIndexes: [Int]?
     static var isRegister: Bool? = false
     static var isRegisterOnEvent: Bool? = false

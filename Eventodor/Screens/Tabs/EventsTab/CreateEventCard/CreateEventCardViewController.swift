@@ -13,7 +13,6 @@ class CreateEventCardViewController: BaseMapViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var organizaationTextField: EVENTODORTextField!
     @IBOutlet weak var categoryTextField: EVENTODORTextField!
     @IBOutlet weak var personsAmountTextField: EVENTODORTextField!
     @IBOutlet weak var nameTextField: EVENTODORTextField!
@@ -28,6 +27,7 @@ class CreateEventCardViewController: BaseMapViewController {
     }
     
     // MARK: - Properties
+    private var event: Event?
     private var eventLocationAnnotation = MKPointAnnotation()
     private var isEventLocationSet = false
     
@@ -57,7 +57,7 @@ extension CreateEventCardViewController {
     
     // Properties
     var fields: [EVENTODORTextField] {
-        [categoryTextField, organizaationTextField, personsAmountTextField,
+        [categoryTextField, personsAmountTextField,
          nameTextField, descriptionTextField, priceTextField
         ]
     }
@@ -82,6 +82,15 @@ extension CreateEventCardViewController {
     }
     
     // Method's
+    func prepareEvent() {
+        event?.photo = nil
+        let organizer = AppEnvironment.user
+        event?.organizer = Organizer(id: nil, name: organizer?.name, surname: organizer?.surname, patronymic: organizer?.patronymic, phone: organizer?.phone, email: organizer?.email, country: organizer?.country, city: organizer?.city, address: organizer?.address, bankAccount: organizer?.bankAccount, photo_id: organizer?.photo_id, building_id: nil)
+        event?.coordinate = CoordinateEVENTODOR(coordinate_id: nil, longitude: "\(eventLocationAnnotation.coordinate.latitude)", latitude: "\(eventLocationAnnotation.coordinate.longitude)", height: nil)
+        event?.category = CategoryEVENTODOR(category_id: nil, name: categoryTextField.text)
+       // event?.address = 
+    }
+    
     func checkFields() -> Bool {
         for field in fields {
             if field.text?.isEmpty == true {
@@ -117,9 +126,5 @@ extension CreateEventCardViewController {
             }
         }
         titleLabel.text = "create_event_button".localized()
-    }
-    
-    func checkFields() {
-        
     }
 }
