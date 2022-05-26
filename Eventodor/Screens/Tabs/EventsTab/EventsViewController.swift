@@ -180,6 +180,7 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
             cell.onReviewTap = { [weak self] in
                 guard let this = self else { return }
                 let reviewController = ReviewViewController()
+                reviewController.event = this.myEvents[indexPath.row]
                 reviewController.modalPresentationStyle = .overFullScreen
                 this.present(reviewController, animated: true)
             }

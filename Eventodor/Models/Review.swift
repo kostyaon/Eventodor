@@ -11,6 +11,7 @@ struct Review: Decodable {
     
     var review_id: Int?
     let event_id: Int?
+    let user_id: Int?
     var description: String?
     var rank: Float?
     let reviewer: String?
@@ -60,6 +61,7 @@ struct Review: Decodable {
     
     init(from decoder: Decoder) throws {
         let container = try? decoder.container(keyedBy: CodingKeys.self)
+        self.user_id = try? container?.decodeIfPresent(Int.self, forKey: .user_id)
         self.review_id = try? container?.decode(Int.self, forKey: .review_id)
         self.description = try? container?.decode(String.self, forKey: .description)
         let rankString = try? container?.decode(String.self, forKey: .rank)

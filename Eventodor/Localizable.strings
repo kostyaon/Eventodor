@@ -56,3 +56,6 @@
 "input_field" = "Not all fields are filling!";
 "succesfully_created_event" = "Event has been created succesfully";
 "set_review_label" = "Review";
+"create_review_success" = "You have posted your review!";
+"app_error" = "Oops, contact the technical support!";
+"review_field_empty" = "The review field is required!";

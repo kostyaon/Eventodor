@@ -46,6 +46,7 @@ enum EventodorRouter {
     enum Review {
         
         case getReview
+        case sendReview(Int, Int, String, Float)
     }
 }
 
@@ -106,7 +107,7 @@ extension EventodorRouter.Review: EndpointType {
     
     var headers: HTTPHeaders? {
         switch self {
-        case .getReview:
+        case .getReview, .sendReview(_, _, _, _):
             return [
                 "Cookie": "",
                 "Content-Type": "application/json",
@@ -117,7 +118,7 @@ extension EventodorRouter.Review: EndpointType {
     
     var path: String {
         switch self {
-        case .getReview:
+        case .getReview, .sendReview:
             return "/review/"
         }
     }
@@ -126,6 +127,13 @@ extension EventodorRouter.Review: EndpointType {
         switch self {
         case .getReview:
             return [:]
+        case .sendReview(let event_id, let user_id, let description, let rank):
+            return [
+                "event_id": event_id,
+                "user_id": user_id,
+                "description": description,
+                "rank": rank
+            ]
         }
     }
     
@@ -133,6 +141,8 @@ extension EventodorRouter.Review: EndpointType {
         switch self {
         case .getReview:
             return .get
+        case .sendReview:
+            return .post
         }
     }
     
