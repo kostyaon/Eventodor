@@ -32,12 +32,9 @@ class AuthenticationViewModel: BaseViewModel {
                 guard let user = RegUser.decode(from: jsonResponse) else { return }
                 if let token = user.key {
                     AppEnvironment.setToken(with: token)
+                    this.filterUser(username: user.username?.first ?? "")
                 }
             }
-        }
-        notifyWhenRequestsCompleted { [weak self] in
-            guard let this = self else { return }
-            this.updateUI?()
         }
     }
     
@@ -57,7 +54,7 @@ extension AuthenticationViewModel {
     
     func register(user: User) {
         enterRequest()
-        EventodorInterface.uploadToServer(router: EventodorRouter.Auth.register(user.username ?? "", user.email ?? "", user.password ?? "")) { [weak self] result in
+        EventodorInterface.uploadToServer(router: EventodorRouter.Auth.register(user.myusername ?? "", user.email ?? "", user.password ?? "")) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
             switch result {
@@ -102,10 +99,36 @@ extension AuthenticationViewModel {
                 }
                 if let user = User.decode(from: jsonResponse) {
                     print("Register user", user)
+                    AppEnvironment.user = user
                 }
             case .failure(let error):
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    func filterUser(username: String) {
+        enterRequest()
+        EventodorInterface.loadFromServer(router: EventodorRouter.Users.getUsers) { [weak self] result in
+            guard let this = self else { return }
+            this.leaveRequest()
+            
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let data):
+                if let jsonResponse = data as? [String: Any], let detail = jsonResponse["detail"] as? String {
+                    this.showMessage(message: detail)
+                    return
+                }
+                guard let jsonResponse = data as? [[String: Any]], let users = [User].decode(from: jsonResponse) else { return }
+                let myUser = users.filter({ $0.myusername == username })
+                AppEnvironment.user = myUser.first
+            }
+        }
+        notifyWhenRequestsCompleted { [weak self] in
+            guard let this = self else { return }
+            this.updateUI?()
         }
     }
 }

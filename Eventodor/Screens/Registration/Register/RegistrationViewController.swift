@@ -112,7 +112,7 @@ extension RegistrationViewController {
                     city: cityTextField.text,
                     address: addressTextField.text,
                     bankAccount: bankAccountTextField.text,
-                    username: loginTextField.text)
+                    myusername: loginTextField.text)
     }
     
     func setupButton() {
