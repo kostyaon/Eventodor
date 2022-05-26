@@ -13,12 +13,14 @@ class FilterEventCardViewController: BaseViewController {
     @IBOutlet weak var bgView: UIView!
     @IBOutlet weak var cardView: UIView!
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var dateTextField: EVENTODORTextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var categoryButton: EVENTODORButton!
     @IBOutlet weak var priceTextField: EVENTODORTextField!
     @IBOutlet weak var filterButton: EVENTODORButton!
     
     // MARK: - Properties
-    var onFilter: ((Float, String) -> ())?
+    var onFilter: ((Float, Date) -> ())?
+    var onCategory: Closure?
     
     // MARK: - Lifecycle method's
     override func viewDidLoad() {
@@ -38,17 +40,27 @@ extension FilterEventCardViewController {
     }
     
     func setupUI() {
+        setupButtons()
         setupCardView()
         setupAction()
         setupText()
     }
     
+    func setupButtons() {
+        categoryButton.onTap = { [weak self] in
+            guard let this = self else { return }
+            this.onCategory?()
+        }
+        filterButton.onTap = { [weak self] in
+            guard let this = self else { return }
+            this.onFilter?(Float((this.priceTextField.text as? NSString)?.doubleValue ?? 0.0), this.datePicker.date)
+            this.dismiss(animated: true, completion: nil)
+        }
+    }
+    
     func setupText() {
         filterButton.setTitle(with: "filter_event_title".localized())
-        filterButton.onTap = { [weak self] in
-            self?.onFilter?((self?.priceTextField.text as NSString?)?.floatValue ?? 0.0, self?.dateTextField.text ?? "")
-            self?.dismiss(animated: true, completion: nil)
-        }
+        categoryButton.setTitle(with: "categoty_choose_title".localized())
         titleLabel.text = "filter_event_button".localized()
     }
     

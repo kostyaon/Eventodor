@@ -88,13 +88,27 @@ extension EventsViewController {
     
     @objc func onFilter() {
         print("Filter events")
+        loadData()
         let filterCardViewController = FilterEventCardViewController()
         filterCardViewController.modalPresentationStyle = .overCurrentContext
         filterCardViewController.onFilter = { [weak self] (price, date) in
-            self?.events.removeAll {
-                ((($0.price as? NSString)?.floatValue ?? 0.0) > price) && $0.time != date
+            guard let this = self else { return }
+            var filterEvents: [Event] = []
+            for event in this.events {
+                let ePrice = (event.price as? NSString)?.floatValue ?? 0.0
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "dd:MM:yyyy"
+                let eDate = dateFormatter.date(from: event.time ?? "") ?? Date()
+                if eDate <= date && ePrice <= price {
+                    filterEvents.append(event)
+                }
+                this.events = filterEvents
+                this.tableView.reloadData()
             }
-            self?.tableView.reloadData()
+        }
+        filterCardViewController.onCategory = { [weak self] in
+            guard let this = self else { return }
+            this.navigationController?.pushViewController(CategoryPickerViewController(), animated: true)
         }
         self.present(filterCardViewController, animated: true, completion: nil)
     }

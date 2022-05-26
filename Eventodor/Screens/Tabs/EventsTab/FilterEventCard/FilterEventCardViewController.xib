@@ -12,7 +12,8 @@
             <connections>
                 <outlet property="bgView" destination="oOk-xm-iQG" id="E08-C5-b4d"/>
                 <outlet property="cardView" destination="S6f-Zf-l3b" id="gwJ-9x-UcA"/>
-                <outlet property="dateTextField" destination="hJl-dU-GBc" id="NQV-nG-JUQ"/>
+                <outlet property="categoryButton" destination="rkN-TM-Uxm" id="4ts-Kg-d5d"/>
+                <outlet property="datePicker" destination="le4-Ws-1KT" id="e0s-Ro-u9E"/>
                 <outlet property="filterButton" destination="w3B-Bl-Zv0" id="Baf-jB-via"/>
                 <outlet property="priceTextField" destination="k6b-PU-qx3" id="YEn-vi-BEc"/>
                 <outlet property="titleLabel" destination="H9X-ub-dY1" id="uNK-Xc-2ic"/>
@@ -29,7 +30,7 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S6f-Zf-l3b">
-                    <rect key="frame" x="50" y="327" width="314" height="208"/>
+                    <rect key="frame" x="50" y="206" width="314" height="450"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Filter" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H9X-ub-dY1">
                             <rect key="frame" x="10" y="30" width="294" height="21"/>
@@ -41,18 +42,16 @@
                             <nil key="highlightedColor"/>
                         </label>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="9" translatesAutoresizingMaskIntoConstraints="NO" id="IAb-kO-I6F">
-                            <rect key="frame" x="20" y="61" width="274" height="117"/>
+                            <rect key="frame" x="20" y="61" width="274" height="347"/>
                             <subviews>
-                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hJl-dU-GBc" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="274" height="34"/>
+                                <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" style="wheels" translatesAutoresizingMaskIntoConstraints="NO" id="le4-Ws-1KT">
+                                    <rect key="frame" x="0.0" y="0.0" width="274" height="216"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="34" id="Qrc-Aa-FlQ"/>
+                                        <constraint firstAttribute="height" constant="216" id="pfy-Ep-2Kw"/>
                                     </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    <textInputTraits key="textInputTraits"/>
-                                </textField>
+                                </datePicker>
                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="k6b-PU-qx3" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="43" width="274" height="34"/>
+                                    <rect key="frame" x="0.0" y="225" width="274" height="34"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="34" id="hkn-KY-WKP"/>
                                     </constraints>
@@ -60,17 +59,30 @@
                                     <textInputTraits key="textInputTraits"/>
                                 </textField>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w3B-Bl-Zv0" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="86" width="274" height="31"/>
+                                    <rect key="frame" x="0.0" y="268" width="274" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="bKU-Vm-kVO"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rkN-TM-Uxm" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="312" width="274" height="35"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="35" id="k6g-MM-6L1"/>
+                                    </constraints>
                                     <state key="normal" title="Button"/>
                                     <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                 </button>
                             </subviews>
                             <constraints>
-                                <constraint firstItem="hJl-dU-GBc" firstAttribute="leading" secondItem="IAb-kO-I6F" secondAttribute="leading" id="BUW-p5-Jn6"/>
-                                <constraint firstAttribute="trailing" secondItem="hJl-dU-GBc" secondAttribute="trailing" id="CmM-M5-gay"/>
                                 <constraint firstAttribute="trailing" secondItem="w3B-Bl-Zv0" secondAttribute="trailing" id="HH1-T2-NoK"/>
                                 <constraint firstItem="k6b-PU-qx3" firstAttribute="leading" secondItem="IAb-kO-I6F" secondAttribute="leading" id="HJz-N4-1Tb"/>
+                                <constraint firstItem="le4-Ws-1KT" firstAttribute="leading" secondItem="IAb-kO-I6F" secondAttribute="leading" id="HyP-i6-5Ob"/>
+                                <constraint firstItem="rkN-TM-Uxm" firstAttribute="leading" secondItem="IAb-kO-I6F" secondAttribute="leading" id="T4z-6c-mDP"/>
                                 <constraint firstItem="w3B-Bl-Zv0" firstAttribute="leading" secondItem="IAb-kO-I6F" secondAttribute="leading" id="Uiz-75-PjK"/>
+                                <constraint firstAttribute="trailing" secondItem="rkN-TM-Uxm" secondAttribute="trailing" id="WJC-Ld-Sar"/>
+                                <constraint firstAttribute="trailing" secondItem="le4-Ws-1KT" secondAttribute="trailing" id="fwU-EA-H3r"/>
                                 <constraint firstAttribute="trailing" secondItem="k6b-PU-qx3" secondAttribute="trailing" id="i3G-jn-Fwe"/>
                             </constraints>
                         </stackView>
@@ -82,7 +94,7 @@
                         <constraint firstItem="H9X-ub-dY1" firstAttribute="top" secondItem="S6f-Zf-l3b" secondAttribute="top" constant="30" id="YCg-dt-PU6"/>
                         <constraint firstAttribute="trailing" secondItem="H9X-ub-dY1" secondAttribute="trailing" constant="10" id="csf-rC-kUp"/>
                         <constraint firstItem="IAb-kO-I6F" firstAttribute="leading" secondItem="S6f-Zf-l3b" secondAttribute="leading" constant="20" id="lHS-x6-zEx"/>
-                        <constraint firstAttribute="height" constant="208" id="mPc-hz-AoB"/>
+                        <constraint firstAttribute="height" constant="450" id="mPc-hz-AoB"/>
                         <constraint firstItem="H9X-ub-dY1" firstAttribute="leading" secondItem="S6f-Zf-l3b" secondAttribute="leading" constant="10" id="tVQ-5C-UC6"/>
                     </constraints>
                 </view>
