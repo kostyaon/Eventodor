@@ -31,9 +31,14 @@ class DescriptionTableViewCell: UITableViewCell {
         guard let event = event else { return }
         descriptionLabel.text = event.description
         timeTitleLabel.text = "time_title".localized()
-        timeLabel.text = event.time ?? ""
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd:MM:yyyy    "
+        let viewDate = dateFormatter.date(from: event.time ?? "")
+        timeLabel.text = dateFormatter.string(from: viewDate ?? Date())
+  
         priceTitleLabel.text = "price_title".localized()
-        priceLabel.text = event.price ?? "" + "currency_symbol".localized()
+        priceLabel.text = "\(String(format: "%.2f", (event.price as? NSString)?.doubleValue ?? 0.0)) бел. руб."
     }
 }
 

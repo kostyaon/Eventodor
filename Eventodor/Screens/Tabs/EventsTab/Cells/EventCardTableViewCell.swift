@@ -57,7 +57,7 @@ class EventCardTableViewCell: UITableViewCell {
         organizerNameLabel.text = event.organizer?.name ?? ""
         eventNameLabel.text = event.name
         descriptionLabel.text = event.description
-        priceLabel.text = "Цена входа: \(event.price ?? "") бел. руб."
+        priceLabel.text = "Цена входа: \(String(format: "%.2f", (event.price as? NSString)?.doubleValue ?? 0.0)) бел. руб."
         
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd:MM:yyyy"
