@@ -99,7 +99,7 @@ extension EventsViewController {
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "dd:MM:yyyy"
                 let eDate = dateFormatter.date(from: event.time ?? "") ?? Date()
-                if eDate <= date && ePrice <= price {
+                if eDate <= date || ePrice <= price {
                     filterEvents.append(event)
                 }
                 this.events = filterEvents

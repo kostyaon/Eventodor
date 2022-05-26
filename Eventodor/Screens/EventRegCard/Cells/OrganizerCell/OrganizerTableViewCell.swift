@@ -21,10 +21,15 @@ class OrganizerTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     var onRegisterButton: Closure?
+    private var bankAccountDonate: String?
     
     // MARK: - Actions
     @IBAction func onDonate() {
         print("Tap on Donate button")
+        guard let bankAccountDonate = bankAccountDonate else {
+            return
+        }
+        supportLabel.text = bankAccountDonate
     }
     
     @IBAction func onRegister() {
@@ -57,6 +62,7 @@ class OrganizerTableViewCell: UITableViewCell {
         }
         organizerLabel.text = organizer.name
         emailLabel.text = organizer.email
+        bankAccountDonate = event.organizer?.bankAccount ?? "donate_description".localized()
     }
 }
 
