@@ -15,6 +15,7 @@ class BaseMapViewController: BaseViewController {
     @IBOutlet weak var mapView: MKMapView!
     
     // MARK: - Properties
+    var myLocation: CLLocation?
     var locationManager = CLLocationManager()
     private var eventLocationAnnotation = MKPointAnnotation()
     private var isEventLocationSet = false
@@ -71,7 +72,8 @@ extension BaseMapViewController {
 extension BaseMapViewController: CLLocationManagerDelegate {
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        let currentLocation:CLLocation = locations[0] as CLLocation
+        let currentLocation: CLLocation = locations[0] as CLLocation
+        myLocation = currentLocation
         let center = CLLocationCoordinate2D(latitude: currentLocation.coordinate.latitude, longitude: currentLocation.coordinate.longitude)
         let region = MKCoordinateRegion(center: center, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         mapView.setRegion(region, animated: true)

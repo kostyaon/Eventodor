@@ -30,6 +30,7 @@ class CreateEventViewModel: BaseViewModel {
                     return
                 }
                 guard let _ = Event.decode(from: jsonResponse) else { return }
+                AppEnvironment.setCreateAward(bool: true)
                 this.updateUI?()
             }
         }

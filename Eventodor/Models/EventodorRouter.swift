@@ -40,6 +40,7 @@ enum EventodorRouter {
     enum Users {
         
         case userById(Int)
+        case getUsers
     }
     
     // Review
@@ -59,7 +60,7 @@ extension EventodorRouter.Users: EndpointType {
     
     var headers: HTTPHeaders? {
         switch self {
-        case .userById(_):
+        case .userById(_), .getUsers:
             return [
                 "Cookie": "",
                 "Content-Type": "application/json",
@@ -72,19 +73,21 @@ extension EventodorRouter.Users: EndpointType {
         switch self {
         case .userById(let id):
             return "/user/\(id)/"
+        case .getUsers:
+            return "/user/"
         }
     }
     
     var parameters: Parameters? {
         switch self {
-        case .userById(_):
+        case .userById(_), .getUsers:
             return [:]
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .userById(_):
+        case .userById(_), .getUsers:
             return .get
         }
     }
@@ -357,7 +360,8 @@ extension EventodorRouter.Auth: EndpointType {
                 "country": user.country ?? "",
                 "city": user.city ?? "",
                 "address": user.address ?? "",
-                "bankAccount": user.bankAccount ?? ""
+                "bankAccount": user.bankAccount ?? "",
+                "myusername": user.myusername ?? ""
             ]
         case .login(let username, let password):
             return [

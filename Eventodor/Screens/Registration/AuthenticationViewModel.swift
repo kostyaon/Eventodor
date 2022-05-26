@@ -31,23 +31,15 @@ class AuthenticationViewModel: BaseViewModel {
                 
                 guard let user = RegUser.decode(from: jsonResponse) else { return }
                 if let token = user.key {
-                    ConfigValues.setToken(with: token)
+                    AppEnvironment.setToken(with: token)
+                    this.filterUser(username: username)
                 }
             }
-        }
-        notifyWhenRequestsCompleted { [weak self] in
-            guard let this = self else { return }
-            this.updateUI?()
         }
     }
     
     func register(with user: User) {
         register(user: user)
-        self.notifyWhenRequestsCompleted { [weak self] in
-            guard let this = self else { return }
-            print("Requests completed")
-            this.updateUI?()
-        }
     }
 }
 
@@ -57,7 +49,7 @@ extension AuthenticationViewModel {
     
     func register(user: User) {
         enterRequest()
-        EventodorInterface.uploadToServer(router: EventodorRouter.Auth.register(user.username ?? "", user.email ?? "", user.password ?? "")) { [weak self] result in
+        EventodorInterface.uploadToServer(router: EventodorRouter.Auth.register(user.myusername ?? "", user.email ?? "", user.password ?? "")) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
             switch result {
@@ -79,7 +71,7 @@ extension AuthenticationViewModel {
                 }
                 
                 if let token = responseUser.key {
-                    ConfigValues.setToken(with: token)
+                    AppEnvironment.setToken(with: token)
                 }
                 this.registerUser(with: user)
                 print("Register auth", responseUser)
@@ -102,10 +94,39 @@ extension AuthenticationViewModel {
                 }
                 if let user = User.decode(from: jsonResponse) {
                     print("Register user", user)
+                    AppEnvironment.user = user
+                    AppEnvironment.setUserId(with: user.id)
+                    this.updateUI?()
                 }
             case .failure(let error):
                 print(error.localizedDescription)
             }
+        }
+    }
+    
+    func filterUser(username: String) {
+        enterRequest()
+        EventodorInterface.loadFromServer(router: EventodorRouter.Users.getUsers) { [weak self] result in
+            guard let this = self else { return }
+            this.leaveRequest()
+            
+            switch result {
+            case .failure(let error):
+                print(error.localizedDescription)
+            case .success(let data):
+                if let jsonResponse = data as? [String: Any], let detail = jsonResponse["detail"] as? String {
+                    this.showMessage(message: detail)
+                    return
+                }
+                guard let jsonResponse = data as? [[String: Any]], let users = [User].decode(from: jsonResponse) else { return }
+                let myUser = users.filter({ $0.myusername == username })
+                AppEnvironment.user = myUser.first
+                AppEnvironment.setUserId(with: myUser.first?.id)
+            }
+        }
+        notifyWhenRequestsCompleted { [weak self] in
+            guard let this = self else { return }
+            this.updateUI?()
         }
     }
 }

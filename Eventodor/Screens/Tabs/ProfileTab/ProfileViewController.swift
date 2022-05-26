@@ -32,9 +32,30 @@ private
 extension ProfileViewController {
     
     func setupUI() {
+        setupUserInfo()
         logoutButton.setTitle(with: "Logout")
         logoutButton.onTap = { [weak self] in
-            self?.navigationController?.setViewControllers([LoginViewController()], animated: true)
+            guard let this = self else { return }
+            let sceneDelegate = this.view.window?.windowScene?.delegate as! SceneDelegate
+            sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
+            
+            // Delete token
+            AppEnvironment.removeToken()
+            AppEnvironment.removeUserId()
+            AppEnvironment.removeAwards()
+            
+            // Animate
+            let options: UIView.AnimationOptions = .transitionCrossDissolve
+            let duration: TimeInterval = 0.3
+            UIView.transition(with: sceneDelegate.window ?? UIWindow(), duration: duration, options: options, animations: {})
         }
+    }
+    
+    func setupUserInfo() {
+        let user = AppEnvironment.user
+        nameSurnameLabel.text = "\(user?.name ?? "Empty") \(user?.surname ?? "Empty")"
+        patronymicLabel.text = user?.patronymic ?? "Empty"
+        emailLabel.text = "Email: \(user?.email ?? "Empty")"
+        bankAccountLabel.text = "Bank account: \n\(user?.bankAccount ?? "Empty")"
     }
 }

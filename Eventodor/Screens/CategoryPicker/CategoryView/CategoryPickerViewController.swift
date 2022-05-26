@@ -78,6 +78,7 @@ extension CategoryPickerViewController {
         nextButton.setTitle(with: "category_next".localized())
         nextButton.onTap = { [weak self] in
             guard let this = self else { return }
+            AppEnvironment.categoryIndexes = this.selectedIndexes
             let baseTabBarController = BaseTabBarController()
             this.navigationController?.setViewControllers([baseTabBarController], animated: true)
         }
@@ -111,7 +112,7 @@ extension CategoryPickerViewController: UITableViewDataSource, UITableViewDelega
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let cell = tableView.cellForRow(at: indexPath) as? CategoryTableViewCell else { return }
         cell.isSelected = true
-        selectedIndexes.append(indexPath.row)
+        selectedIndexes.append(indexPath.row + 1)
     }
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {

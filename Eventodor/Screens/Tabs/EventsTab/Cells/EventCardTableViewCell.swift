@@ -34,15 +34,16 @@ class EventCardTableViewCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        eventPhotoImageView.image = nil
+        // eventPhotoImageView.image = nil
     }
     
     // MARK: - Helper method's
     func configureCell(event: Event, type: EventsViewController.EventState) {
         if let distance = event.distance {
-            distanceLabel.text = "\(distance) km"
+            let viewDistance = String(format: "%.2f", distance / 1000)
+            distanceLabel.text = "\(viewDistance)"
         } else {
-            distanceLabel.text = "MY"
+            distanceLabel.text = "МОЕ"
         }
         
         if type == .myEvents {
@@ -50,12 +51,18 @@ class EventCardTableViewCell: UITableViewCell {
             reviewAction()
         }
         
-        eventPhotoImageView.kf.setImage(with: URL(string: event.photo?.url ?? ""))
+        if let url = event.photo?.url {
+            eventPhotoImageView.kf.setImage(with: URL(string: url))
+        }
         organizerNameLabel.text = event.organizer?.name ?? ""
         eventNameLabel.text = event.name
         descriptionLabel.text = event.description
-        priceLabel.text = "Price: \(event.price ?? "") dollars"
-        dateLabel.text = "Date: " + (event.time ?? "")
+        priceLabel.text = "Цена входа: \(String(format: "%.2f", (event.price as? NSString)?.doubleValue ?? 0.0)) бел. руб."
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd:MM:yyyy"
+        let viewDate = dateFormatter.date(from: event.time ?? "")
+        dateLabel.text = "Дата: " + (dateFormatter.string(from: viewDate ?? Date()))
     }
 }
 
@@ -90,15 +97,15 @@ extension EventCardTableViewCell {
         eventNameLabel.textColor = .black
         eventNameLabel.text = "Event name"
         
-        priceLabel.font = .boldSystemFont(ofSize: 12)
+        priceLabel.font = .boldSystemFont(ofSize: 15)
         priceLabel.textColor = .black
         priceLabel.text = "Price"
         
-        dateLabel.font = .systemFont(ofSize: 12)
+        dateLabel.font = .systemFont(ofSize: 13)
         dateLabel.textColor = UIColor(red: 83/256, green: 92/256, blue: 94/256, alpha: 1.0)
         dateLabel.text = "Date"
         
-        moreLabel.font = .boldSystemFont(ofSize: 16)
+        moreLabel.font = .boldSystemFont(ofSize: 14)
         moreLabel.textColor = .black
         moreLabel.text = "event_more".localized()
         
@@ -108,6 +115,7 @@ extension EventCardTableViewCell {
     }
     
     func setupImageView() {
+        eventPhotoImageView.image = UIImage(named: "gradient")
         distanceCircleImageView.image = distanceCircleImageView.image?.withRenderingMode(.alwaysTemplate)
         distanceCircleImageView.tintColor = UIColor(red: 220/256, green: 0.0, blue: 0.0, alpha: 1.0)
         distanceCircleImageView.layer.shadowOpacity = 0.3

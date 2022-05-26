@@ -27,6 +27,7 @@ class CreateEventCardViewController: BaseMapViewController {
     }
     
     // MARK: - Properties
+    var onCreateEvent: Closure?
     private var event: Event?
     private var eventLocationAnnotation = MKPointAnnotation()
     private var isEventLocationSet = false
@@ -63,6 +64,7 @@ class CreateEventCardViewController: BaseMapViewController {
         viewModel.updateUI = { [weak self] in
             guard let this = self else { return }
             this.showError(title: "error_success".localized(), message: "succesfully_created_event".localized())
+            this.onCreateEvent?()
         }
     }
 }
@@ -108,8 +110,16 @@ extension CreateEventCardViewController {
         event?.photo = nil
         let organizer = AppEnvironment.user
         event?.organizer = Organizer(id: nil, name: organizer?.name, surname: organizer?.surname, patronymic: organizer?.patronymic, phone: organizer?.phone, email: organizer?.email, country: organizer?.country, city: organizer?.city, address: organizer?.address, bankAccount: organizer?.bankAccount, photo_id: organizer?.photo_id, building_id: nil)
-        event?.coordinate = CoordinateEVENTODOR(coordinate_id: nil, longitude: "\(eventLocationAnnotation.coordinate.latitude)", latitude: "\(eventLocationAnnotation.coordinate.longitude)", height: nil)
-        event?.category = CategoryEVENTODOR(category_id: nil, name: categoryTextField.text)
+        
+        var coordinate = CLLocationCoordinate2D()
+        if eventLocationAnnotation.coordinate.latitude == 0.0 && eventLocationAnnotation.coordinate.longitude == 0.0 {
+            coordinate = CLLocationCoordinate2D(latitude: myLocation?.coordinate.latitude ?? 0.0, longitude: myLocation?.coordinate.longitude ?? 0.0)
+        } else {
+            coordinate = eventLocationAnnotation.coordinate
+        }
+        
+        event?.coordinate = CoordinateEVENTODOR(coordinate_id: nil, longitude: "\(coordinate.latitude)", latitude: "\(coordinate.longitude)", height: nil)
+        event?.category = CategoryEVENTODOR(id: nil, name: categoryTextField.text)
         event?.address = organizer?.address
         event?.persons_amount = (personsAmountTextField.text as? NSString)?.integerValue
         event?.register_persons_amount = 0
@@ -146,7 +156,7 @@ extension CreateEventCardViewController {
     }
     
     func setupText() {
-        createButton.setTitle(with: "create_event_title".localized())
+        createButton.setTitle(with: "create_event_button".localized())
         createButton.onTap = { [weak self] in
             guard let this = self else { return }
             if !this.checkFields() {
@@ -156,6 +166,6 @@ extension CreateEventCardViewController {
                 print(this.eventLocationAnnotation.coordinate)
             }
         }
-        titleLabel.text = "create_event_button".localized()
+        titleLabel.text = "create_event_title".localized()
     }
 }

@@ -35,7 +35,7 @@ struct CoordinateEVENTODOR: Decodable {
 
 struct CategoryEVENTODOR: Decodable {
     
-    var category_id: Int?
+    var id: Int?
     var name: String?
 }
 

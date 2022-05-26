@@ -20,16 +20,16 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Events map" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NG9-kv-Hqy">
-                    <rect key="frame" x="125.5" y="94" width="163" height="36"/>
+                    <rect key="frame" x="125.5" y="54" width="163" height="36"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="30"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fi4-cF-hsM">
-                    <rect key="frame" x="0.0" y="138" width="414" height="758"/>
+                    <rect key="frame" x="0.0" y="98" width="414" height="798"/>
                 </mapView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SNF-yk-gGM">
-                    <rect key="frame" x="359" y="190" width="45" height="31"/>
+                    <rect key="frame" x="359" y="134" width="45" height="31"/>
                     <color key="tintColor" red="0.0" green="0.75254814988232854" blue="0.80523619988952022" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                     <state key="normal" title="Button"/>
                     <buttonConfiguration key="configuration" style="plain" image="location.circle.fill" catalog="system"/>
@@ -44,10 +44,10 @@
                 <constraint firstItem="Fi4-cF-hsM" firstAttribute="top" secondItem="NG9-kv-Hqy" secondAttribute="bottom" constant="8" symbolic="YES" id="6i4-od-fNE"/>
                 <constraint firstItem="NG9-kv-Hqy" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="Biy-xD-Lkd"/>
                 <constraint firstAttribute="bottom" secondItem="Fi4-cF-hsM" secondAttribute="bottom" id="DT6-1W-iBR"/>
-                <constraint firstItem="SNF-yk-gGM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="146" id="LcD-Ws-HL3"/>
+                <constraint firstItem="SNF-yk-gGM" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="90" id="LcD-Ws-HL3"/>
                 <constraint firstItem="SNF-yk-gGM" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" constant="-10" id="MK1-ws-PIM"/>
                 <constraint firstItem="Fi4-cF-hsM" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="dsa-fd-5ec"/>
-                <constraint firstItem="NG9-kv-Hqy" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="50" id="pPw-fI-kYe"/>
+                <constraint firstItem="NG9-kv-Hqy" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="pPw-fI-kYe"/>
                 <constraint firstItem="Fi4-cF-hsM" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="wIA-h6-wbV"/>
             </constraints>
             <point key="canvasLocation" x="137.68115942028987" y="101.78571428571428"/>

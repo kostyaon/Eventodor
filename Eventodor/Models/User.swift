@@ -33,7 +33,7 @@ struct User: Decodable {
     var address: String?
     var bankAccount: String?
     
-    let username: String?
+    let myusername: String?
 }
 
 struct Photo: Decodable {

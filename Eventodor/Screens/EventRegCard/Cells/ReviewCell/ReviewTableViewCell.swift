@@ -26,10 +26,16 @@ class ReviewTableViewCell: UITableViewCell {
         setupUI()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15))
+    }
+    
     // MARK: - Helper method's
     func configure(with review: Review) {
         usernameLabel.text = review.reviewer
-        ratingLabel.text = "\(review.rank ?? 0.0)"
+        ratingLabel.text = String(format: "%.1f", review.rank ?? 0.0) + " " + "★"
         reviewLabel.text = review.description
     }
 }
@@ -44,6 +50,7 @@ extension ReviewTableViewCell {
     }
     
     func setupImageView() {
+        avatarImageView.image = UIImage(named: "head")
         avatarImageView.layer.cornerRadius = avatarImageView.bounds.height / 2
     }
     

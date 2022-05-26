@@ -21,10 +21,15 @@ class OrganizerTableViewCell: UITableViewCell {
     
     // MARK: - Properties
     var onRegisterButton: Closure?
+    private var bankAccountDonate: String?
     
     // MARK: - Actions
     @IBAction func onDonate() {
         print("Tap on Donate button")
+        guard let bankAccountDonate = bankAccountDonate else {
+            return
+        }
+        supportLabel.text = bankAccountDonate
     }
     
     @IBAction func onRegister() {
@@ -41,6 +46,12 @@ class OrganizerTableViewCell: UITableViewCell {
         setupUI()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 10, left: 15, bottom: 10, right: 15))
+    }
+    
     // MARK: - Helper method's
     func configure(with event: Event?) {
         guard let event = event, let organizer = event.organizer else { return }
@@ -51,6 +62,7 @@ class OrganizerTableViewCell: UITableViewCell {
         }
         organizerLabel.text = organizer.name
         emailLabel.text = organizer.email
+        bankAccountDonate = event.organizer?.bankAccount ?? "donate_description".localized()
     }
 }
 

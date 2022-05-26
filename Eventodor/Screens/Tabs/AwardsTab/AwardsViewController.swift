@@ -95,7 +95,7 @@ extension AwardsViewController: UICollectionViewDataSource, UICollectionViewDele
         case 0:
             return 1
         case 1:
-            if (AppEnvironment.isRegisterOnEvent ?? false) {
+            if (AppEnvironment.isCreateAward ?? false) {
                 return 1
             } else {
                 return 0
@@ -112,7 +112,7 @@ extension AwardsViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
         case 1:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RewardCollectionCell.reuseId, for: indexPath) as? RewardCollectionCell
-            cell?.configureCell(text: "First step", imageName: "award4")
+            cell?.configureCell(text: "create_award".localized(), imageName: "award4")
             return cell ?? UICollectionViewCell()
         default:
             return UICollectionViewCell()

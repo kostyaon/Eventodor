@@ -40,7 +40,20 @@ class EventsViewModel: BaseViewModel {
                     return
                 }
                 guard let jsonResponse = data as? [[String: Any]], let events = [Event].decode(from: jsonResponse) else { return }
-                events.forEach({ this.calculateDistance(for: $0, type: .events) })
+                
+                // Filter
+                if !AppEnvironment.categoryIndexes.isEmpty {
+                    var filterEvents: [Event] = []
+                    for event in events {
+                        if AppEnvironment.categoryIndexes.contains(event.category?.id ?? 0) {
+                            filterEvents.append(event)
+                        }
+                    }
+                    filterEvents.forEach({ this.calculateDistance(for: $0, type: .events) })
+                } else {
+                    events.forEach({ this.calculateDistance(for: $0, type: .events) })
+                }
+                this.availableEvents.sort(by: { ($0.distance ?? 0.0) < ($1.distance ?? 0.0) })
                 this.getMyEvents()
             }
         }
