@@ -10,6 +10,13 @@ import CoreLocation
 
 class EventsViewModel: BaseViewModel {
     
+    // Event enum
+    enum EventType {
+        
+        case events
+        case myEvents
+    }
+    
     // Properties
     var availableEvents: [Event] = []
     var myEvents: [Event] = []
@@ -33,7 +40,7 @@ class EventsViewModel: BaseViewModel {
                     return
                 }
                 guard let jsonResponse = data as? [[String: Any]], let events = [Event].decode(from: jsonResponse) else { return }
-                events.forEach({ this.calculateDistance(for: $0) })
+                events.forEach({ this.calculateDistance(for: $0, type: .events) })
                 this.getMyEvents()
             }
         }
@@ -44,7 +51,7 @@ class EventsViewModel: BaseViewModel {
 private
 extension EventsViewModel {
     
-    func calculateDistance(for event: Event) {
+    func calculateDistance(for event: Event, type: EventType) {
         let eventLocation = CLLocation(latitude: (event.coordinate?.longitude as? NSString)?.doubleValue ?? 0.0, longitude: (event.coordinate?.latitude as? NSString)?.doubleValue ?? 0.0)
         var distance = 0.0
         if let currentLocation = currentLocation {
@@ -53,7 +60,11 @@ extension EventsViewModel {
         }
         var appendedEvent = event
         appendedEvent.distance = distance
-        availableEvents.append(appendedEvent)
+        if type == .events {
+            availableEvents.append(appendedEvent)
+        } else {
+            myEvents.append(appendedEvent)
+        }
     }
     
     func getMyEvents() {
@@ -98,7 +109,7 @@ extension EventsViewModel {
                     return
                 }
                 guard let jsonResponse = data as? [String: Any], let event = Event.decode(from: jsonResponse) else { return }
-                this.myEvents.append(event)
+                this.calculateDistance(for: event, type: .myEvents)
             }
         }
     }

@@ -165,38 +165,41 @@ extension EventsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if eventState == .events {
+        switch eventState {
+        case .events:
             return events.count
-        } else {
-            if (AppEnvironment.myEvent ?? false) {
-                return myEvents.count
-            } else {
-                return 0
-            }
+        case .myEvents:
+            return myEvents.count
         }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withType: EventCardTableViewCell.self, for: indexPath)
         if eventState == .myEvents {
-            cell.configureCell(event: myEvents[indexPath.row], distance: nil)
+            cell.configureCell(event: myEvents[indexPath.row], type: eventState)
+            cell.onReviewTap = { [weak self] in
+                guard let this = self else { return }
+                let reviewController = ReviewViewController()
+                reviewController.event = this.myEvents[indexPath.row]
+                reviewController.modalPresentationStyle = .overFullScreen
+                this.present(reviewController, animated: true)
+            }
         } else {
-            cell.configureCell(event: events[indexPath.row], distance: nil)
+            cell.configureCell(event: events[indexPath.row], type: eventState)
         }
         cell.selectionStyle = .none
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if eventState == .myEvents {
-            let reviewViewController = ReviewViewController()
-            reviewViewController.modalPresentationStyle = .overCurrentContext
-            self.present(reviewViewController, animated: true, completion: nil)
-        } else {
-            let cardViewController = EventRegCardViewController()
+        let cardViewController = EventRegCardViewController()
+        switch eventState {
+        case .events:
             cardViewController.event = events[indexPath.row]
-            self.navigationController?.pushViewController(cardViewController, animated: true)
+        case .myEvents:
+            cardViewController.event = myEvents[indexPath.row]
         }
+        self.navigationController?.pushViewController(cardViewController, animated: true)
     }
 }
 

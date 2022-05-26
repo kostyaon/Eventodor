@@ -22,6 +22,7 @@ class EventCardTableViewCell: UITableViewCell {
     @IBOutlet weak var moreLabel: UILabel!
     
     // MARK: - Properties
+    var onReviewTap: Closure?
     
     // MARK: - Lifecycle method's
     override func awakeFromNib() {
@@ -37,13 +38,18 @@ class EventCardTableViewCell: UITableViewCell {
     }
     
     // MARK: - Helper method's
-    func configureCell(event: Event, distance: Int?) {
+    func configureCell(event: Event, type: EventsViewController.EventState) {
         if let distance = event.distance {
             distanceLabel.text = "\(distance) km"
         } else {
             distanceLabel.text = "MY"
-            moreLabel.text = " "
         }
+        
+        if type == .myEvents {
+            moreLabel.text = "set_review_label".localized()
+            reviewAction()
+        }
+        
         eventPhotoImageView.kf.setImage(with: URL(string: event.photo?.url ?? ""))
         organizerNameLabel.text = event.organizer?.name ?? ""
         eventNameLabel.text = event.name
@@ -56,6 +62,19 @@ class EventCardTableViewCell: UITableViewCell {
 // MARK: - Private method's
 private
 extension EventCardTableViewCell {
+    
+    // @objc method's
+    @objc func onReview() {
+        onReviewTap?()
+    }
+    
+    // Method's
+    func reviewAction() {
+        moreLabel.isUserInteractionEnabled = true
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(onReview))
+        moreLabel.addGestureRecognizer(tapGesture)
+    }
     
     func setupUI() {
         setupLabels()
