@@ -16,8 +16,10 @@ struct AppEnvironment {
     static var user: User?
     static var categoryIndexes: [Int] = []
     static var isRegister: Bool? = false
-    static var isRegisterOnEvent: Bool? = false
     static var myEvent: Bool? = false
+    static var isCreateAward: Bool? {
+        UserDefaults.standard.bool(forKey: "award_create")
+    }
     
     // Method's
     static func setToken(with token: String) {
@@ -36,5 +38,14 @@ struct AppEnvironment {
     
     static func removeUserId() {
         UserDefaults.standard.removeObject(forKey: "user_id")
+    }
+    
+    static func setCreateAward(bool: Bool) {
+        UserDefaults.standard.set(bool, forKey: "award_create")
+    }
+    
+    
+    static func removeAwards() {
+        UserDefaults.standard.removeObject(forKey: "award_create")
     }
 }

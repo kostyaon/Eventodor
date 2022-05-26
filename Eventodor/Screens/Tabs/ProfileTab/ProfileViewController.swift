@@ -41,6 +41,8 @@ extension ProfileViewController {
             
             // Delete token
             AppEnvironment.removeToken()
+            AppEnvironment.removeUserId()
+            AppEnvironment.removeAwards()
             
             // Animate
             let options: UIView.AnimationOptions = .transitionCrossDissolve
