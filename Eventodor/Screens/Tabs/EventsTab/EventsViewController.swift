@@ -112,7 +112,11 @@ extension EventsViewController {
         }
         filterCardViewController.onCategory = { [weak self] in
             guard let this = self else { return }
-            this.navigationController?.pushViewController(CategoryPickerViewController(), animated: true)
+            let sceneDelegate = this.view.window?.windowScene?.delegate as! SceneDelegate
+            sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: CategoryPickerViewController())
+            let options: UIView.AnimationOptions = .transitionCrossDissolve
+            let duration: TimeInterval = 0.3
+            UIView.transition(with: sceneDelegate.window ?? UIWindow(), duration: duration, options: options, animations: {})
         }
         self.present(filterCardViewController, animated: true, completion: nil)
     }

@@ -50,6 +50,7 @@ extension FilterEventCardViewController {
         categoryButton.onTap = { [weak self] in
             guard let this = self else { return }
             this.onCategory?()
+            this.dismiss(animated: true, completion: nil)
         }
         filterButton.onTap = { [weak self] in
             guard let this = self else { return }

@@ -52,7 +52,7 @@
                                                 <constraint firstAttribute="height" constant="120" id="1rO-e7-0mu"/>
                                             </constraints>
                                         </imageView>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Category" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dR3-wI-S8Y" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Категория" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dR3-wI-S8Y" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
                                             <rect key="frame" x="15" y="135" width="384" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="oiA-ot-UGI"/>
@@ -60,7 +60,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Persons amount" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0IA-v7-P0T" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Количество участников" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0IA-v7-P0T" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
                                             <rect key="frame" x="15" y="190" width="384" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="LmV-c3-xWr"/>
@@ -68,7 +68,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                         </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZF-ym-pOh" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Назвние" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CZF-ym-pOh" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
                                             <rect key="frame" x="15" y="245" width="384" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="x7V-c7-x5Z"/>
@@ -76,7 +76,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Description" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dpm-dy-44p" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Описание" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dpm-dy-44p" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
                                             <rect key="frame" x="15" y="300" width="384" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="hCg-tK-hje"/>
@@ -84,7 +84,7 @@
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <textInputTraits key="textInputTraits"/>
                                         </textField>
-                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Price" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vvk-6s-gki" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
+                                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Цена (бел.руб.)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vvk-6s-gki" customClass="EVENTODORTextField" customModule="Eventodor" customModuleProvider="target">
                                             <rect key="frame" x="15" y="355" width="384" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="E4Y-ID-9yk"/>
