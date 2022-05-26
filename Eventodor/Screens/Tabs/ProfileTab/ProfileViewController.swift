@@ -33,7 +33,7 @@ extension ProfileViewController {
     
     func setupUI() {
         setupUserInfo()
-        logoutButton.setTitle(with: "Logout")
+        logoutButton.setTitle(with: "Выйти")
         logoutButton.onTap = { [weak self] in
             guard let this = self else { return }
             let sceneDelegate = this.view.window?.windowScene?.delegate as! SceneDelegate
@@ -53,9 +53,9 @@ extension ProfileViewController {
     
     func setupUserInfo() {
         let user = AppEnvironment.user
-        nameSurnameLabel.text = "\(user?.name ?? "Empty") \(user?.surname ?? "Empty")"
-        patronymicLabel.text = user?.patronymic ?? "Empty"
-        emailLabel.text = "Email: \(user?.email ?? "Empty")"
-        bankAccountLabel.text = "Bank account: \n\(user?.bankAccount ?? "Empty")"
+        nameSurnameLabel.text = "\(user?.name ?? "Пусто") \(user?.surname ?? "Пусто")"
+        patronymicLabel.text = user?.patronymic ?? "Пусто"
+        emailLabel.text = "Почта: \(user?.email ?? "Пусто")"
+        bankAccountLabel.text = "Номер банковского счета: \n\(user?.bankAccount ?? "Пусто")"
     }
 }

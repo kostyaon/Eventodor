@@ -36,6 +36,7 @@
 		6E584111283E8C45008BD4DA /* EVENTODORGeocoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E584110283E8C45008BD4DA /* EVENTODORGeocoder.swift */; };
 		6E584113283ECE61008BD4DA /* CreateEventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E584112283ECE61008BD4DA /* CreateEventViewModel.swift */; };
 		6E584115283F9A7D008BD4DA /* ReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E584114283F9A7C008BD4DA /* ReviewViewModel.swift */; };
+		6E5841172840197D008BD4DA /* Localizable-Ru.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6E5841162840197D008BD4DA /* Localizable-Ru.strings */; };
 		6E60F17427692DC300D8D133 /* AwardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E60F17327692DC300D8D133 /* AwardsViewController.swift */; };
 		6E60F17627692F2F00D8D133 /* AwardsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E60F17527692F2F00D8D133 /* AwardsViewController.xib */; };
 		6E60F17A276930C000D8D133 /* RewardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E60F178276930C000D8D133 /* RewardView.swift */; };
@@ -119,6 +120,7 @@
 		6E584110283E8C45008BD4DA /* EVENTODORGeocoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EVENTODORGeocoder.swift; sourceTree = "<group>"; };
 		6E584112283ECE61008BD4DA /* CreateEventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEventViewModel.swift; sourceTree = "<group>"; };
 		6E584114283F9A7C008BD4DA /* ReviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewModel.swift; sourceTree = "<group>"; };
+		6E5841162840197D008BD4DA /* Localizable-Ru.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = "Localizable-Ru.strings"; sourceTree = "<group>"; };
 		6E60F17327692DC300D8D133 /* AwardsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AwardsViewController.swift; sourceTree = "<group>"; };
 		6E60F17527692F2F00D8D133 /* AwardsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AwardsViewController.xib; sourceTree = "<group>"; };
 		6E60F178276930C000D8D133 /* RewardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RewardView.swift; sourceTree = "<group>"; };
@@ -258,6 +260,7 @@
 				6E3CE52127678915000E49D8 /* Main.storyboard */,
 				6E3CE52427678918000E49D8 /* Assets.xcassets */,
 				6E7D799427679AF3004F9228 /* Localizable.strings */,
+				6E5841162840197D008BD4DA /* Localizable-Ru.strings */,
 				6E3CE52627678918000E49D8 /* LaunchScreen.storyboard */,
 				6E3CE52927678918000E49D8 /* Info.plist */,
 			);
@@ -653,6 +656,7 @@
 				6E3CE52527678918000E49D8 /* Assets.xcassets in Resources */,
 				6E0AE0A42769244A006A3FDA /* FilterEventCardViewController.xib in Resources */,
 				6E3CE52327678915000E49D8 /* Main.storyboard in Resources */,
+				6E5841172840197D008BD4DA /* Localizable-Ru.strings in Resources */,
 				6E5840FA283D6E86008BD4DA /* CardCellTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

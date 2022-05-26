@@ -10,7 +10,7 @@ import Foundation
 class ConfigValues {
     
     // Localization
-    static let defaultLocalizationFile = "Localizable"
+    static let defaultLocalizationFile = "Localizable-Ru"
     
     static var localizationFile: String {
         if let configuration = Bundle.main.infoDictionary?["Configuration"] as? Dictionary<String, String> {
