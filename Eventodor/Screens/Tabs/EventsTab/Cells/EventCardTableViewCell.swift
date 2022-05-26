@@ -43,7 +43,7 @@ class EventCardTableViewCell: UITableViewCell {
             let viewDistance = String(format: "%.2f", distance / 1000)
             distanceLabel.text = "\(viewDistance)"
         } else {
-            distanceLabel.text = "MY"
+            distanceLabel.text = "МОЕ"
         }
         
         if type == .myEvents {
@@ -57,8 +57,12 @@ class EventCardTableViewCell: UITableViewCell {
         organizerNameLabel.text = event.organizer?.name ?? ""
         eventNameLabel.text = event.name
         descriptionLabel.text = event.description
-        priceLabel.text = "Price: \(event.price ?? "") dollars"
-        dateLabel.text = "Date: " + (event.time ?? "")
+        priceLabel.text = "Цена входа: \(event.price ?? "") бел. руб."
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd:MM:yyyy"
+        let viewDate = dateFormatter.date(from: event.time ?? "")
+        dateLabel.text = "Дата: " + (dateFormatter.string(from: viewDate ?? Date()))
     }
 }
 

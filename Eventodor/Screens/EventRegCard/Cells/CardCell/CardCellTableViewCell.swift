@@ -30,11 +30,17 @@ class CardCellTableViewCell: UITableViewCell {
     // MARK: - Helper method's
     func configure(with event: Event?) {
         guard let event = event else { return }
-        cardImageView.kf.setImage(with: URL(string: event.photo?.url ?? ""))
+        if let url = event.photo?.url {
+            cardImageView.kf.setImage(with: URL(string: url))
+        }
         eventNameLabel.text = event.name
-        distanceLabel.text = "\(event.distance ?? 0.0) km"
-        ratingLabel.text = event.rank ?? "" + " " + "*"
-        participantCountLabel.text = "\(event.register_persons_amount ?? 0)/\(event.persons_amount ?? 0)"
+        if let distance = event.distance {
+            distanceLabel.text = "\(String(format: "%.2f", distance / 1000)) км"
+        } else {
+            distanceLabel.text = "МОЕ"
+        }
+        ratingLabel.text = String(format: "%.1f", event.rank ?? 0.0) + " " + "★"
+        participantCountLabel.text = "Участников: \(event.register_persons_amount ?? 0)/\(event.persons_amount ?? 0)"
     }
 }
 
@@ -43,10 +49,10 @@ private
 extension CardCellTableViewCell {
     
     func setupUI() {
-        setupLabels()
+        setupImageView()
     }
     
-    func setupLabels() {
-        
+    func setupImageView() {
+        cardImageView.image = UIImage(named: "gradient")
     }
 }
