@@ -27,6 +27,7 @@ class CreateEventCardViewController: BaseMapViewController {
     }
     
     // MARK: - Properties
+    var onCreateEvent: Closure?
     private var event: Event?
     private var eventLocationAnnotation = MKPointAnnotation()
     private var isEventLocationSet = false
@@ -63,6 +64,7 @@ class CreateEventCardViewController: BaseMapViewController {
         viewModel.updateUI = { [weak self] in
             guard let this = self else { return }
             this.showError(title: "error_success".localized(), message: "succesfully_created_event".localized())
+            this.onCreateEvent?()
         }
     }
 }

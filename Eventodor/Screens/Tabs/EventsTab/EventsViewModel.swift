@@ -53,7 +53,7 @@ class EventsViewModel: BaseViewModel {
                 } else {
                     events.forEach({ this.calculateDistance(for: $0, type: .events) })
                 }
-                this.availableEvents.sort(by: { ($0.distance ?? 0.0) > ($1.distance ?? 0.0) })
+                this.availableEvents.sort(by: { ($0.distance ?? 0.0) < ($1.distance ?? 0.0) })
                 this.getMyEvents()
             }
         }

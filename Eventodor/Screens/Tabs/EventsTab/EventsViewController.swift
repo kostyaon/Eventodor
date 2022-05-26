@@ -83,6 +83,10 @@ extension EventsViewController {
     @objc func onCreate() {
         print("Create event")
         let createCardViewController = CreateEventCardViewController()
+        createCardViewController.onCreateEvent = { [weak self] in
+            guard let this = self else { return }
+            this.loadData()
+        }
         self.present(createCardViewController, animated: true, completion: nil)
     }
     
