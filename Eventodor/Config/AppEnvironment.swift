@@ -28,4 +28,13 @@ struct AppEnvironment {
         UserDefaults.standard.removeObject(forKey: "token")
         UserDefaults.standard.removeObject(forKey: "token")
     }
+    
+    static func setUserId(with id: Int?) {
+        guard let id = id else { return }
+        UserDefaults.standard.set(id, forKey: "user_id")
+    }
+    
+    static func removeUserId() {
+        UserDefaults.standard.removeObject(forKey: "user_id")
+    }
 }

@@ -95,6 +95,7 @@ extension AuthenticationViewModel {
                 if let user = User.decode(from: jsonResponse) {
                     print("Register user", user)
                     AppEnvironment.user = user
+                    AppEnvironment.setUserId(with: user.id)
                     this.updateUI?()
                 }
             case .failure(let error):
@@ -120,6 +121,7 @@ extension AuthenticationViewModel {
                 guard let jsonResponse = data as? [[String: Any]], let users = [User].decode(from: jsonResponse) else { return }
                 let myUser = users.filter({ $0.myusername == username })
                 AppEnvironment.user = myUser.first
+                AppEnvironment.setUserId(with: myUser.first?.id)
             }
         }
         notifyWhenRequestsCompleted { [weak self] in
