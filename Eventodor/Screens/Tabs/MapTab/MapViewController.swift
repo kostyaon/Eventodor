@@ -9,10 +9,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class MapViewController: BaseViewController {
-    
-    // MARK: - Outlets
-    @IBOutlet weak var mapView: MKMapView!
+class MapViewController: BaseMapViewController {
     
     // MARK: - Actions
     @IBAction func onGetLocation(_ sender: UIButton) {
@@ -20,7 +17,6 @@ class MapViewController: BaseViewController {
     }
     
     // MARK: - Properties
-    private var locationManager: CLLocationManager!
     private var selectedEvent: Event?
     private lazy var disclosureButton: UIButton = {
         let button = UIButton(type: .detailDisclosure)
@@ -35,8 +31,7 @@ class MapViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupMapView()
-        defineMappingRegion()
+        configureMap()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,6 +43,7 @@ class MapViewController: BaseViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
+        isCurrentLocationEnabled = false
         getCurrentLocation()
     }
     
@@ -84,27 +80,13 @@ extension MapViewController {
         self.present(registerViewController, animated: true, completion: nil)
     }
     
+    func configureMap() {
+        mapView.delegate = self
+        locationManager.delegate = self
+    }
+    
     func loadData() {
         viewModel.getEvents()
-    }
-    
-    func setupMapView() {
-        mapView.delegate = self
-        let initialLocation = CLLocation(latitude: 53.91974976740907, longitude: 27.593096852856355)
-        mapView.centerToLocation(initialLocation)
-    }
-    
-    func defineMappingRegion() {
-        let minskCenter = CLLocation(latitude: 53.91974976740907, longitude: 27.593096852856355)
-        let region = MKCoordinateRegion(
-            center: minskCenter.coordinate,
-            latitudinalMeters: 20000,
-            longitudinalMeters: 25000)
-        mapView.setCameraBoundary(
-            MKMapView.CameraBoundary(coordinateRegion: region),
-            animated: true)
-        let zoomRange = MKMapView.CameraZoomRange(maxCenterCoordinateDistance: 50000)
-        mapView.setCameraZoomRange(zoomRange, animated: true)
     }
     
     func addAnotation() {
@@ -115,23 +97,12 @@ extension MapViewController {
             mapView.addAnnotation(annotation)
         }
     }
-    
-    func getCurrentLocation() {
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        locationManager.requestAlwaysAuthorization()
-        if CLLocationManager.locationServicesEnabled() {
-            isCurrentLocationEnabled = false
-            locationManager.startUpdatingLocation()
-        }
-    }
 }
 
 // MARK: - MKMapView delegate method's
-extension MapViewController: MKMapViewDelegate {
+extension MapViewController {
     
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+    override func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if annotation.title == "your_location".localized() {
             let view = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "MyAnnotation")
             view.markerTintColor = .green
@@ -155,9 +126,9 @@ extension MapViewController: MKMapViewDelegate {
 }
 
 // MARK: - CLLocationManagerDelegate method's
-extension MapViewController: CLLocationManagerDelegate {
+extension MapViewController {
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    override func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let currentLocation:CLLocation = locations[0] as CLLocation
         if !isCurrentLocationEnabled {
             isCurrentLocationEnabled = true
@@ -174,10 +145,5 @@ extension MapViewController: CLLocationManagerDelegate {
         myLocation.coordinate = CLLocationCoordinate2DMake(currentLocation.coordinate.latitude, currentLocation.coordinate.longitude)
         myLocation.title = "your_location".localized()
         mapView.addAnnotation(myLocation)
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        showError(title: "error_title".localized(), message: "location_error".localized())
-        print("Error - locationManager: \(error.localizedDescription)")
     }
 }

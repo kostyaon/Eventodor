@@ -52,3 +52,6 @@
 "already_register" = "You have already register to the event!";
 "your_location" = "Your location";
 "location_error" = "You have some problems with the location! Please, check the location settings or contact a technical support!";
+"event_location" = "Here!";
+"input_field" = "Not all fields are filling!";
+"succesfully_created_event" = "Event has been created succesfully";

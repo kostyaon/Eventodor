@@ -40,7 +40,7 @@ class EventRegCardViewModel: BaseViewModel {
     
     func checkRegistration() {
         enterRequest()
-        EventodorInterface.loadFromServer(router: EventodorRouter.Event.eventsByUserId(AppEnvironment.userId ?? 0)) { [weak self] result in
+        EventodorInterface.loadFromServer(router: EventodorRouter.EventRouter.eventsByUserId(AppEnvironment.userId ?? 0)) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
             
@@ -76,7 +76,7 @@ extension EventRegCardViewModel {
     func getParticpants() {
         participants = []
         enterRequest()
-        EventodorInterface.loadFromServer(router: EventodorRouter.Event.usersByEventId(eventId ?? 0)) { [weak self] result in
+        EventodorInterface.loadFromServer(router: EventodorRouter.EventRouter.usersByEventId(eventId ?? 0)) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
             
@@ -121,7 +121,7 @@ extension EventRegCardViewModel {
     
     func registerOnEvent() {
         enterRequest()
-        EventodorInterface.uploadToServer(router: EventodorRouter.Event.registerOnEvent(eventId ?? 0)) { [weak self] result in
+        EventodorInterface.uploadToServer(router: EventodorRouter.EventRouter.registerOnEvent(eventId ?? 0)) { [weak self] result in
             guard let this = self else { return }
             this.leaveRequest()
             

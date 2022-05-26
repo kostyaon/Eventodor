@@ -83,7 +83,6 @@ extension EventsViewController {
     @objc func onCreate() {
         print("Create event")
         let createCardViewController = CreateEventCardViewController()
-        createCardViewController.modalPresentationStyle = .overCurrentContext
         self.present(createCardViewController, animated: true, completion: nil)
     }
     
