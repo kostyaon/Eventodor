@@ -117,7 +117,7 @@ extension CreateEventCardViewController {
         }
         
         event?.coordinate = CoordinateEVENTODOR(coordinate_id: nil, longitude: "\(coordinate.latitude)", latitude: "\(coordinate.longitude)", height: nil)
-        event?.category = CategoryEVENTODOR(category_id: nil, name: categoryTextField.text)
+        event?.category = CategoryEVENTODOR(id: nil, name: categoryTextField.text)
         event?.address = organizer?.address
         event?.persons_amount = (personsAmountTextField.text as? NSString)?.integerValue
         event?.register_persons_amount = 0

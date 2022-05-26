@@ -14,7 +14,7 @@ struct AppEnvironment {
         return user?.id
     }
     static var user: User?
-    static var categoryIndexes: [Int]?
+    static var categoryIndexes: [Int] = []
     static var isRegister: Bool? = false
     static var isRegisterOnEvent: Bool? = false
     static var myEvent: Bool? = false
