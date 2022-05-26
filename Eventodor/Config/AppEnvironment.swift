@@ -26,5 +26,6 @@ struct AppEnvironment {
     
     static func removeToken() {
         UserDefaults.standard.removeObject(forKey: "token")
+        UserDefaults.standard.removeObject(forKey: "token")
     }
 }

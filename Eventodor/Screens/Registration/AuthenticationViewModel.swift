@@ -32,7 +32,7 @@ class AuthenticationViewModel: BaseViewModel {
                 guard let user = RegUser.decode(from: jsonResponse) else { return }
                 if let token = user.key {
                     AppEnvironment.setToken(with: token)
-                    this.filterUser(username: user.username?.first ?? "")
+                    this.filterUser(username: username)
                 }
             }
         }
@@ -40,11 +40,6 @@ class AuthenticationViewModel: BaseViewModel {
     
     func register(with user: User) {
         register(user: user)
-        self.notifyWhenRequestsCompleted { [weak self] in
-            guard let this = self else { return }
-            print("Requests completed")
-            this.updateUI?()
-        }
     }
 }
 
@@ -100,6 +95,7 @@ extension AuthenticationViewModel {
                 if let user = User.decode(from: jsonResponse) {
                     print("Register user", user)
                     AppEnvironment.user = user
+                    this.updateUI?()
                 }
             case .failure(let error):
                 print(error.localizedDescription)

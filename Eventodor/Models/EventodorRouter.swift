@@ -360,7 +360,8 @@ extension EventodorRouter.Auth: EndpointType {
                 "country": user.country ?? "",
                 "city": user.city ?? "",
                 "address": user.address ?? "",
-                "bankAccount": user.bankAccount ?? ""
+                "bankAccount": user.bankAccount ?? "",
+                "myusername": user.myusername ?? ""
             ]
         case .login(let username, let password):
             return [

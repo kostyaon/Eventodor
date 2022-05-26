@@ -32,6 +32,7 @@ private
 extension ProfileViewController {
     
     func setupUI() {
+        setupUserInfo()
         logoutButton.setTitle(with: "Logout")
         logoutButton.onTap = { [weak self] in
             guard let this = self else { return }
@@ -46,5 +47,13 @@ extension ProfileViewController {
             let duration: TimeInterval = 0.3
             UIView.transition(with: sceneDelegate.window ?? UIWindow(), duration: duration, options: options, animations: {})
         }
+    }
+    
+    func setupUserInfo() {
+        let user = AppEnvironment.user
+        nameSurnameLabel.text = "\(user?.name ?? "Empty") \(user?.surname ?? "Empty")"
+        patronymicLabel.text = user?.patronymic ?? "Empty"
+        emailLabel.text = "Email: \(user?.email ?? "Empty")"
+        bankAccountLabel.text = "Bank account: \n\(user?.bankAccount ?? "Empty")"
     }
 }
