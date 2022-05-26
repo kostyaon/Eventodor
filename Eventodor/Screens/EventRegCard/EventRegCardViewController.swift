@@ -107,7 +107,7 @@ extension EventRegCardViewController: UITableViewDataSource, UITableViewDelegate
         case 0:
             return 220
         case 1:
-            return UITableView.automaticDimension
+            return 80
         case 2:
             return 180
         default:
