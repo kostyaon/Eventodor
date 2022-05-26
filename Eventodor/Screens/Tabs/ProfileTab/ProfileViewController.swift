@@ -34,7 +34,17 @@ extension ProfileViewController {
     func setupUI() {
         logoutButton.setTitle(with: "Logout")
         logoutButton.onTap = { [weak self] in
-            self?.navigationController?.setViewControllers([LoginViewController()], animated: true)
+            guard let this = self else { return }
+            let sceneDelegate = this.view.window?.windowScene?.delegate as! SceneDelegate
+            sceneDelegate.window?.rootViewController = UINavigationController(rootViewController: LoginViewController())
+            
+            // Delete token
+            AppEnvironment.removeToken()
+            
+            // Animate
+            let options: UIView.AnimationOptions = .transitionCrossDissolve
+            let duration: TimeInterval = 0.3
+            UIView.transition(with: sceneDelegate.window ?? UIWindow(), duration: duration, options: options, animations: {})
         }
     }
 }

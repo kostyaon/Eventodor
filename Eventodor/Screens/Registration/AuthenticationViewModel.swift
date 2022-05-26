@@ -31,7 +31,7 @@ class AuthenticationViewModel: BaseViewModel {
                 
                 guard let user = RegUser.decode(from: jsonResponse) else { return }
                 if let token = user.key {
-                    ConfigValues.setToken(with: token)
+                    AppEnvironment.setToken(with: token)
                 }
             }
         }
@@ -79,7 +79,7 @@ extension AuthenticationViewModel {
                 }
                 
                 if let token = responseUser.key {
-                    ConfigValues.setToken(with: token)
+                    AppEnvironment.setToken(with: token)
                 }
                 this.registerUser(with: user)
                 print("Register auth", responseUser)
