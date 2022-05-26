@@ -27,6 +27,12 @@ class CardCellTableViewCell: UITableViewCell {
         setupUI()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0))
+    }
+    
     // MARK: - Helper method's
     func configure(with event: Event?) {
         guard let event = event else { return }

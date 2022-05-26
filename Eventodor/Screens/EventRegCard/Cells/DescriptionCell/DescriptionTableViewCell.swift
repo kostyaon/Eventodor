@@ -26,14 +26,20 @@ class DescriptionTableViewCell: UITableViewCell {
         setupUI()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15))
+    }
+    
     // MARK: - Helper method's
     func configure(with event: Event?) {
         guard let event = event else { return }
-        descriptionLabel.text = event.description
+        descriptionLabel.text = event.description ?? ""
         timeTitleLabel.text = "time_title".localized()
         
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd:MM:yyyy    "
+        dateFormatter.dateFormat = "dd:MM:yyyy"
         let viewDate = dateFormatter.date(from: event.time ?? "")
         timeLabel.text = dateFormatter.string(from: viewDate ?? Date())
   

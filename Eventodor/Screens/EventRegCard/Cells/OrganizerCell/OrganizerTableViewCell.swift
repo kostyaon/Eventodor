@@ -41,6 +41,12 @@ class OrganizerTableViewCell: UITableViewCell {
         setupUI()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        self.contentView.frame = contentView.frame.inset(by: UIEdgeInsets(top: 5, left: 15, bottom: 5, right: 15))
+    }
+    
     // MARK: - Helper method's
     func configure(with event: Event?) {
         guard let event = event, let organizer = event.organizer else { return }

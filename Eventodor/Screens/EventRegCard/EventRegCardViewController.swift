@@ -106,13 +106,21 @@ extension EventRegCardViewController: UITableViewDataSource, UITableViewDelegate
         switch indexPath.section {
         case 0:
             return 220
+        case 1:
+            return UITableView.automaticDimension
         case 2:
-            return 102
-        case 3:
-            return 120
+            return 180
         default:
-            return 70
+            return 140
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 0
     }
 }
 

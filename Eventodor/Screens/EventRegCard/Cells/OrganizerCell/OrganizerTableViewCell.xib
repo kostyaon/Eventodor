@@ -8,61 +8,65 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="102" id="1C2-UA-n0N" customClass="OrganizerTableViewCell" customModule="Eventodor" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="173" id="1C2-UA-n0N" customClass="OrganizerTableViewCell" customModule="Eventodor" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="173"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1C2-UA-n0N" id="nTb-Bw-kIx">
-                <rect key="frame" x="0.0" y="0.0" width="414" height="102"/>
+                <rect key="frame" x="0.0" y="0.0" width="414" height="173"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="fDW-Hh-WOm">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="92.5"/>
+                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="fDW-Hh-WOm">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="173"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nEq-Nk-0Wj">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nEq-Nk-0Wj">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpN-vv-0GV">
-                                        <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="43.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M3h-jh-Qbq">
-                                        <rect key="frame" x="41.5" y="0.0" width="372.5" height="20.5"/>
+                                        <rect key="frame" x="48.5" y="0.0" width="365.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RYw-dx-gcj">
-                                <rect key="frame" x="0.0" y="20.5" width="414" height="20.5"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="RYw-dx-gcj">
+                                <rect key="frame" x="0.0" y="30.5" width="414" height="20.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LmY-Gl-scV">
-                                        <rect key="frame" x="0.0" y="0.0" width="41.5" height="20.5"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="43.5" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zNO-VK-ubd">
-                                        <rect key="frame" x="41.5" y="0.0" width="372.5" height="20.5"/>
+                                        <rect key="frame" x="48.5" y="0.0" width="365.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvs-QV-OYU">
-                                <rect key="frame" x="0.0" y="41" width="414" height="20.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cvs-QV-OYU">
+                                <rect key="frame" x="0.0" y="61" width="414" height="62"/>
+                                <color key="backgroundColor" red="1" green="0.6019923411259035" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xQ4-b3-asm">
-                                <rect key="frame" x="0.0" y="61.5" width="414" height="31"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="xQ4-b3-asm">
+                                <rect key="frame" x="0.0" y="133" width="414" height="40"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ing-tv-WKX" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="207" height="31"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="202" height="40"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="0O2-yC-Wgx"/>
+                                        </constraints>
                                         <inset key="contentEdgeInsets" minX="25" minY="0.0" maxX="25" maxY="0.0"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Donate"/>
@@ -71,7 +75,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOI-kH-YM4" customClass="EVENTODORButton" customModule="Eventodor" customModuleProvider="target">
-                                        <rect key="frame" x="207" y="0.0" width="207" height="31"/>
+                                        <rect key="frame" x="212" y="0.0" width="202" height="40"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                         <connections>
@@ -81,6 +85,7 @@
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="eOI-kH-YM4" firstAttribute="width" secondItem="ing-tv-WKX" secondAttribute="width" id="nVE-uY-FbL"/>
+                                    <constraint firstItem="eOI-kH-YM4" firstAttribute="height" secondItem="ing-tv-WKX" secondAttribute="height" id="xTK-cd-Gb2"/>
                                 </constraints>
                             </stackView>
                         </subviews>
@@ -90,6 +95,7 @@
                     <constraint firstItem="fDW-Hh-WOm" firstAttribute="leading" secondItem="nTb-Bw-kIx" secondAttribute="leading" id="6Xd-qC-gbs"/>
                     <constraint firstItem="fDW-Hh-WOm" firstAttribute="top" secondItem="nTb-Bw-kIx" secondAttribute="top" id="EVJ-SS-Gq9"/>
                     <constraint firstAttribute="trailing" secondItem="fDW-Hh-WOm" secondAttribute="trailing" id="fya-eJ-Ekq"/>
+                    <constraint firstAttribute="bottom" secondItem="fDW-Hh-WOm" secondAttribute="bottom" id="tNF-RL-TcA"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -101,7 +107,7 @@
                 <outlet property="registerButton" destination="eOI-kH-YM4" id="Jec-7f-5M4"/>
                 <outlet property="supportLabel" destination="cvs-QV-OYU" id="UC9-wF-olX"/>
             </connections>
-            <point key="canvasLocation" x="179.71014492753625" y="34.151785714285715"/>
+            <point key="canvasLocation" x="179.71014492753625" y="57.924107142857139"/>
         </tableViewCell>
     </objects>
 </document>
